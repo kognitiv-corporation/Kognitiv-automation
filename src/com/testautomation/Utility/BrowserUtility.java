@@ -13,7 +13,7 @@ public class BrowserUtility
 	{
 		if(browserName.equals("Chrome"))
 		{
-			System.setProperty("webdriver.chrome.driver", "resources\\drivers\\chromedriver.exe");
+			System.setProperty("webdriver.chrome.driver", "resources/drivers/chromedriver.exe");
 			driver=new ChromeDriver();
 			driver.manage().window().maximize();
 			driver.get(url);
