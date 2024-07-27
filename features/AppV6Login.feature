@@ -11,5 +11,5 @@ Scenario Outline: Appv6 login validations
 
 	Examples:
 		|email|password|
-		|shammika.dahanayaka@kognitiv.com|Shammi4144*|
+		|shammika.dahanayaka@kognitiv.com|Summer2023|
 

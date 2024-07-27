@@ -13,7 +13,7 @@ import cucumber.api.testng.*;
 @CucumberOptions (
         features = "./features/"
         ,glue = {"com.testautomation.StepDef"}
-        ,tags = {"@Login"}
+        ,tags = {"@Promotion"}
         ,monochrome = true)
 public class TestRunner {
     private TestNGCucumberRunner testNGCucumberRunner;
