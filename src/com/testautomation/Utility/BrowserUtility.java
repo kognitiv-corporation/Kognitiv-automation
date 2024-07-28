@@ -15,6 +15,7 @@ public class BrowserUtility
 		if(browserName.equals("Chrome"))
 		{
 			System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver");
+			//System.setProperty("webdriver.chrome.driver", "resources/drivers/chromedriver.exe");
 			ChromeOptions options = new ChromeOptions();
 			options.addArguments("--headless");
 			options.addArguments("--no-sandbox");

@@ -13,6 +13,7 @@ import cucumber.api.testng.*;
 @CucumberOptions (
         features = "./features/"
         ,glue = {"com.testautomation.StepDef"}
+        ,plugin = {"pretty", "json:target/cucumber-reports/Cucumber.json"}
         ,tags = {"@Promotion"}
         ,monochrome = true)
 public class TestRunner {
