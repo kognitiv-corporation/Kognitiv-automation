@@ -1,28 +1,30 @@
 package com.testautomation.StepDef;
 
+import com.testautomation.Utility.BrowserUtility;
+import com.testautomation.Utility.PropertiesFileReader;
 import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
+import org.openqa.selenium.WebDriver;
+
+import java.util.Properties;
 
 public class TestHooks {
-	
-	@Before
-	public void beforeScenario(Scenario scenario) {		
-		System.out.println("Started execution for the scenario : " + scenario.getName());
-	}
-	
-	@Before("@TestCase2")
-	public void beforeTestCase2(Scenario scenario) {		
 
-		System.out.println("=========================================");
-		System.out.println("Executing before Testcase2");
-		System.out.println("=========================================");
-		
+	private WebDriver driver;
+	private Properties properties;
+
+	@Before
+	public void setUp(Scenario scenario) throws Throwable {
+		properties = new PropertiesFileReader().getProperty();
+		driver = BrowserUtility.getDriver(properties.getProperty("browser.name"), properties.getProperty("browser.baseURL"));
 	}
-	
+
 	@After
-	public void AfterScenario(Scenario scenario) {
-		System.out.println("Completed execution for the scenario :" + scenario.getName());
+	public void tearDown(Scenario scenario) {
+		if (driver != null) {
+			BrowserUtility.quitDriver();
+		}
 	}
 
 }

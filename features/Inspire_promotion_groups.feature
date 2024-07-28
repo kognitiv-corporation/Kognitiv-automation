@@ -21,3 +21,4 @@ Feature: AppV6 login validation
     Examples:
       |email|password|tabName|groupName|
       |shammika.dahanayaka@kognitiv.com|Summer2023|Inspire|NewGroup1|
+      |shammika.dahanayaka@kognitiv.com|Summer2023|Inspire|NewGroup2|

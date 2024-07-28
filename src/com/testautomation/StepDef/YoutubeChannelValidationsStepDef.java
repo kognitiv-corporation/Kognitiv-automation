@@ -36,7 +36,7 @@ public class YoutubeChannelValidationsStepDef extends ExtentReportListener
             test=test.createNode(Scenario.class, "AppV6 Login - Success validations");
             logInfo=test.createNode(new GherkinKeyword("Given"), "open_Chrome_browser_with_URL");
             Properties properties=obj.getProperty();
-            driver=BrowserUtility.OpenBrowser(driver, properties.getProperty("browser.name"), properties.getProperty("browser.baseURL"));
+            driver=BrowserUtility.getDriver(properties.getProperty("browser.name"), properties.getProperty("browser.baseURL"));
 
             logInfo.pass("Opened chrome browser and entered url");
             logInfo.addScreenCaptureFromPath(captureScreenShot(driver));
