@@ -2,6 +2,7 @@ package com.testautomation.Utility;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.CapabilityType;
@@ -14,7 +15,14 @@ public class BrowserUtility
 		if(browserName.equals("Chrome"))
 		{
 			System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver");
-			driver=new ChromeDriver();
+			ChromeOptions options = new ChromeOptions();
+			options.addArguments("--headless");
+			options.addArguments("--no-sandbox");
+			options.addArguments("--disable-dev-shm-usage");
+			options.addArguments("--remote-debugging-port=9222");
+
+			driver = new ChromeDriver(options);
+			//driver=new ChromeDriver();
 			driver.manage().window().maximize();
 			driver.get(url);
 			Thread.sleep(5000);
