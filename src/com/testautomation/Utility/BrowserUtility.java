@@ -18,16 +18,16 @@ public class BrowserUtility {
 	public static WebDriver getDriver(String browserName, String url) throws InterruptedException {
 		if (driver == null) {
 			if (browserName.equalsIgnoreCase("Chrome")) {
-				System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver");
-				//System.setProperty("webdriver.chrome.driver", "resources/drivers/chromedriver.exe");
+				//System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver");
+				System.setProperty("webdriver.chrome.driver", "resources/drivers/chromedriver.exe");
 				ChromeOptions options = new ChromeOptions();
 				options.addArguments("--headless");
 				options.addArguments("--no-sandbox");
 				options.addArguments("--disable-dev-shm-usage");
 				options.addArguments("--remote-debugging-port=9222");
 
-				driver = new ChromeDriver(options);
-				//driver = new ChromeDriver();
+				//driver = new ChromeDriver(options);
+				driver = new ChromeDriver();
 				driver.manage().window().maximize();
 				driver.get(url);
 				Thread.sleep(5000);

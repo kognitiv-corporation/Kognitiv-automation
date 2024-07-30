@@ -7,7 +7,7 @@
 <!-- Test Started... -->
   <test name="Automation Test Report">
     <classes>
-      <class name="com.testautomation.TestRunner.TestRunner"/>
+      <class name="com.testautomation.TestRunner.TestRunner_pulse"/>
     </classes>
   </test> 
    

@@ -14,7 +14,7 @@ public class TestHooks {
 	private WebDriver driver;
 	private Properties properties;
 
-	@Before
+/*	@Before
 	public void setUp(Scenario scenario) throws Throwable {
 		properties = new PropertiesFileReader().getProperty();
 		driver = BrowserUtility.getDriver(properties.getProperty("browser.name"), properties.getProperty("browser.baseURL"));
@@ -25,6 +25,6 @@ public class TestHooks {
 		if (driver != null) {
 			BrowserUtility.quitDriver();
 		}
-	}
+	}*/
 
 }

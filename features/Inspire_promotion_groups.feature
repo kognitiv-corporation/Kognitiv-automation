@@ -1,12 +1,12 @@
-@AppV6
-Feature: AppV6 login validation
+@Inspire
+Feature: AppV6 promotion group validation
 
   @Promotion
-  Scenario Outline: Appv6 login validations
-    Given Open Chrome browser with a URL
-    When Enter email address "<email>"
-    And Enter password "<password>"
-    And Click Login button
+  Scenario Outline: Appv6 promotion group validations
+    Given Open Chrome browser with a Inspire URL
+    When Enter user name as email address "<email>"
+    And Enter user password "<password>"
+    And Click the Login button
     Then Validate application name
     When I click "<tabName>" from tab menu
     And Validate page name

@@ -1,29 +1,28 @@
 package com.testautomation.PageObjects;
 
-import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
-public class AppV6LoginPage {
+public class InspireLoginPage {
 
     WebDriver driver;
 
-    public AppV6LoginPage(WebDriver driver)
+    public InspireLoginPage(WebDriver driver)
     {
         this.driver=driver;
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(how= How.XPATH,using="//input[@id='email']")
+    @FindBy(how= How.ID,using="Email")
     public WebElement emailTxtBx;
 
-    @FindBy(how= How.XPATH,using="//input[@id='password']")
+    @FindBy(how= How.ID,using="Password")
     public WebElement passwordTxtBx;
 
-    @FindBy(how= How.XPATH,using="//button[@id='next']")
+    @FindBy(how= How.NAME,using="button")
     public WebElement loginBtn;
 
     public void enterEmail(String emailAddress) throws Exception
@@ -40,6 +39,7 @@ public class AppV6LoginPage {
     {
         loginBtn.click();
     }
+
 
 
 }

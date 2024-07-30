@@ -5,31 +5,29 @@ import com.aventstack.extentreports.GherkinKeyword;
 import com.aventstack.extentreports.gherkin.model.Feature;
 import com.aventstack.extentreports.gherkin.model.Scenario;
 import com.testautomation.Listeners.ExtentReportListener;
-import com.testautomation.PageObjects.AppV6LoginPage;
-import com.testautomation.PageObjects.InspirePromotionPage;
-import com.testautomation.PageObjects.YoutubeSearchPage;
+import com.testautomation.PageObjects.InspireLoginPage;
 import com.testautomation.Utility.BrowserUtility;
 import com.testautomation.Utility.PropertiesFileReader;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
-import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.openqa.selenium.WebDriver;
 
 import java.util.Properties;
 
-public class AppV6LoginStepDef extends ExtentReportListener {
+public class InspireLoginStepDefs extends ExtentReportListener {
 
-    PropertiesFileReader obj= new PropertiesFileReader();
+    PropertiesFileReader obj = new PropertiesFileReader();
     private WebDriver driver;
     ExtentTest logInfo = null;
 
-    @Before
+    @Before("@Inspire")
     public void setUpDriver() throws Throwable {
         Properties properties = obj.getProperty();
         driver = BrowserUtility.getDriver(properties.getProperty("browser.name"), properties.getProperty("browser.baseURL"));
+        System.out.println("Inspire :" + properties.getProperty("browser.baseURL"));
     }
 
     @After
@@ -37,70 +35,54 @@ public class AppV6LoginStepDef extends ExtentReportListener {
         BrowserUtility.quitDriver();
     }
 
-    @Given("^Open Chrome browser with a URL$")
-    public void open_Chrome_browser_with_a_URL() throws Throwable
-    {
-        ExtentTest logInfo=null;
+    @Given("Open Chrome browser with a Inspire URL")
+    public void openChromeBrowserWithAInspireURL() {
         try {
             test = extent.createTest(Feature.class, "AppV6 Login validation");
-            test=test.createNode(Scenario.class, "AppV6 Login - Success validations");
-            logInfo=test.createNode(new GherkinKeyword("Given"), "open_Chrome_browser_with_URL");
-            Properties properties=obj.getProperty();
-            driver= BrowserUtility.getDriver();
-
+            test = test.createNode(Scenario.class, "AppV6 Login - Success validations");
+            logInfo = test.createNode(new GherkinKeyword("Given"), "open_Chrome_browser_with_URL");
+            Properties properties = obj.getProperty();
             logInfo.pass("Opened chrome browser and entered url");
             logInfo.addScreenCaptureFromPath(captureScreenShot(driver));
-
         } catch (AssertionError | Exception e) {
-            testStepHandle("FAIL",driver,logInfo,e);
+            testStepHandle("FAIL", driver, logInfo, e);
         }
     }
 
-    @When("Enter email address {string}")
-    public void enterEmailAddress(String emailaddress) {
-        ExtentTest logInfo=null;
+    @When("Enter user name as email address {string}")
+    public void enterUserNameAsEmailAddress(String emailaddress) {
         try {
-
-            logInfo=test.createNode(new GherkinKeyword("When"), "enter_email_address");
-            new AppV6LoginPage(driver).enterEmail(emailaddress);
+            logInfo = test.createNode(new GherkinKeyword("When"), "enter_email_address");
+            new InspireLoginPage(driver).enterEmail(emailaddress);
             logInfo.pass("Entering email address");
             logInfo.addScreenCaptureFromPath(captureScreenShot(driver));
-
         } catch (AssertionError | Exception e) {
-            testStepHandle("FAIL",driver,logInfo,e);
+            testStepHandle("FAIL", driver, logInfo, e);
         }
     }
 
-    @And("Enter password {string}")
-    public void enterPassword(String password) {
-        ExtentTest logInfo=null;
+    @And("Enter user password {string}")
+    public void enterUserPassword(String password) {
         try {
-
-            logInfo=test.createNode(new GherkinKeyword("And"), "enter_password");
-            new AppV6LoginPage(driver).enterPassword(password);
+            logInfo = test.createNode(new GherkinKeyword("And"), "enter_password");
+            new InspireLoginPage(driver).enterPassword(password);
             logInfo.pass("Entering password");
             logInfo.addScreenCaptureFromPath(captureScreenShot(driver));
-
         } catch (AssertionError | Exception e) {
-            testStepHandle("FAIL",driver,logInfo,e);
+            testStepHandle("FAIL", driver, logInfo, e);
         }
-
     }
 
-    @And("Click Login button")
-    public void clickLoginButton() {
-        ExtentTest logInfo=null;
+    @And("Click the Login button")
+    public void clickTheLoginButton() {
         try {
-
-            logInfo=test.createNode(new GherkinKeyword("And"), "Click_login_button");
-            new AppV6LoginPage(driver).ClickLoginBtn();
+            logInfo = test.createNode(new GherkinKeyword("And"), "Click_login_button");
+            new InspireLoginPage(driver).ClickLoginBtn();
+            Thread.sleep(7000);
             logInfo.pass("Clicking login");
             logInfo.addScreenCaptureFromPath(captureScreenShot(driver));
-
         } catch (AssertionError | Exception e) {
-            testStepHandle("FAIL",driver,logInfo,e);
+            testStepHandle("FAIL", driver, logInfo, e);
         }
     }
-
-
 }
