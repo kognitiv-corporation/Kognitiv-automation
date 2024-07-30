@@ -1,8 +1,8 @@
 @Pulse
-Feature: AppV6 login validation
+Feature: Pulse report validation
 
   @KPIs @Pulse
-  Scenario Outline: Pulse sanity validations
+  Scenario Outline: Pulse KPI-Report validations
     Given Open Chrome browser with a URL
     When Enter email address "<email>"
     And Enter password "<password>"
