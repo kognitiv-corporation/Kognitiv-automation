@@ -7,6 +7,7 @@ import com.testautomation.PageObjects.InspirePromotionPage;
 import com.testautomation.PageObjects.pulsePages.PulseLandingPage;
 import com.testautomation.Utility.BrowserUtility;
 import com.testautomation.Utility.PropertiesFileReader;
+import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
@@ -25,14 +26,15 @@ public class PulseLandingStepdefs extends ExtentReportListener {
    @Before("@Pulse")
     public void setUpDriver() throws Throwable {
         Properties properties = obj.getProperty();
-        driver = BrowserUtility.getDriver(properties.getProperty("browser.name"), properties.getProperty("browser.pulse_baseURL"));
+        //driver = BrowserUtility.getDriver(properties.getProperty("browser.name"), properties.getProperty("browser.pulse_baseURL"));
+        driver = BrowserUtility.getDriver();
         System.out.println("Pulse :" + properties.getProperty("browser.pulse_baseURL"));
     }
 
-/*    @After
+    @After("@Pulse")
     public void tearDown() {
         BrowserUtility.quitDriver();
-    }*/
+    }
 
 
 

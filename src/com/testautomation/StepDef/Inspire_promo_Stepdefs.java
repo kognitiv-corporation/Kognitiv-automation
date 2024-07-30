@@ -24,11 +24,11 @@ public class Inspire_promo_Stepdefs extends ExtentReportListener {
     @Before("@Inspire")
     public void setUpDriver() throws Throwable {
         Properties properties = obj.getProperty();
-        driver = BrowserUtility.getDriver(properties.getProperty("browser.name"), properties.getProperty("browser.baseURL"));
-        System.out.println("Inspire :" + properties.getProperty("browser.baseURL"));
+        //driver = BrowserUtility.getDriver(properties.getProperty("browser.name"), properties.getProperty("browser.baseURL"));
+        driver = BrowserUtility.getDriver();
     }
 
-    @After
+    @After("@Inspire")
     public void tearDown() {
         BrowserUtility.quitDriver();
     }

@@ -30,10 +30,10 @@ public class PulseLoginStepDef extends ExtentReportListener {
         System.out.println("Pulse :" + properties.getProperty("browser.pulse_baseURL"));
     }
 
-   @After
+/*   @After
     public void tearDown() {
         BrowserUtility.quitDriver();
-    }
+    }*/
 
     @Given("^Open Chrome browser with a URL$")
     public void open_Chrome_browser_with_a_URL() throws Throwable

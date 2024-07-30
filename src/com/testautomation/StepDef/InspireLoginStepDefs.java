@@ -30,7 +30,7 @@ public class InspireLoginStepDefs extends ExtentReportListener {
         System.out.println("Inspire :" + properties.getProperty("browser.baseURL"));
     }
 
-    @After
+    @After("@Inspire")
     public void tearDown() {
         BrowserUtility.quitDriver();
     }
