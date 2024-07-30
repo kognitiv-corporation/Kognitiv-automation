@@ -8,6 +8,7 @@ import com.testautomation.Listeners.ExtentReportListener;
 import com.testautomation.PageObjects.AppV6LoginPage;
 import com.testautomation.Utility.BrowserUtility;
 import com.testautomation.Utility.PropertiesFileReader;
+import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
@@ -29,10 +30,10 @@ public class PulseLoginStepDef extends ExtentReportListener {
         System.out.println("Pulse :" + properties.getProperty("browser.pulse_baseURL"));
     }
 
-/*    @After
+   @After
     public void tearDown() {
         BrowserUtility.quitDriver();
-    }*/
+    }
 
     @Given("^Open Chrome browser with a URL$")
     public void open_Chrome_browser_with_a_URL() throws Throwable
