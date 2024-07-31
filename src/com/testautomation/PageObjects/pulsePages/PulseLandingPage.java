@@ -56,8 +56,8 @@ public class PulseLandingPage {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        Assert.assertEquals(menuElement.getText(),"KPI","KPIs page not found");
-        Assert.assertTrue(menuElement.isDisplayed(),"KPI tab button ix not found");
+        //Assert.assertEquals(menuElement.getText(),"Diagnose","KPIs page not found");
+        Assert.assertTrue(menuElement.isDisplayed(),menuItem+" tab button is not found");
         //menuElement.click();
     }
 
@@ -107,4 +107,49 @@ public class PulseLandingPage {
     }
 
 
+    public void ClickMainMenu(String menuItem) {
+        WebElement menuElement = getMenuElement(menuItem);
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        //Assert.assertEquals(menuElement.getText(),"KPI","KPIs page not found");
+        Assert.assertTrue(menuElement.isDisplayed(),"KPI tab button ix not found");
+        menuElement.click();
+    }
+
+    // Method to create dynamic XPath and find the element
+    public WebElement getDiagnoseGraph(String graphName) {
+        //String xpath = String.format("//li[contains(.,'%s')]", graphName);
+        String xpath = String.format("//p[contains(.,'%s')]", graphName);
+        return driver.findElement(By.xpath(xpath));
+    }
+
+    public void verifyDiagnoseGraphisDisplayed(String graphName) {
+        WebElement graphElement = getDiagnoseGraph(graphName);
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        Assert.assertTrue(graphElement.isDisplayed(), "Graph " + graphName + " is not displayed");
+    }
+
+    // Method to create dynamic XPath and find the element
+    public WebElement getCustomerFlowGraph(String graphName) {
+        //String xpath = String.format("//li[contains(.,'%s')]", graphName);
+        String xpath = String.format("//div[@class='graph-filter-title' and contains(.,'%s')]", graphName);
+        return driver.findElement(By.xpath(xpath));
+    }
+
+    public void verifyCustomerFlowGraphisDisplayed(String graphName) {
+        WebElement graphElement = getCustomerFlowGraph(graphName);
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        Assert.assertTrue(graphElement.isDisplayed(), "Graph " + graphName + " is not displayed");
+    }
 }

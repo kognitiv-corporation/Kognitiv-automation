@@ -12,5 +12,6 @@ Scenario Outline: Pulse login validations
 	Examples:
 		|email|password|status|
 		|shammika.dahanayaka@kognitiv.com|Summer2023|false|
+		|invalidUser@kognitiv.com|Summer2023|false|
 		|shammika.dahanayaka@kognitiv.com|Shammi4144*|true|
 

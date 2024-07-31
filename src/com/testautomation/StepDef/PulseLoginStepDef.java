@@ -30,7 +30,7 @@ public class PulseLoginStepDef extends ExtentReportListener {
         System.out.println("Pulse :" + properties.getProperty("browser.pulse_baseURL"));
     }
 
-/*   @After
+/*   @After("@Pulse")
     public void tearDown() {
         BrowserUtility.quitDriver();
     }*/
@@ -39,8 +39,8 @@ public class PulseLoginStepDef extends ExtentReportListener {
     public void open_Chrome_browser_with_a_URL() throws Throwable {
         ExtentTest logInfo = null;
         try {
-            test = extent.createTest(Feature.class, "AppV6 Login validation");
-            test = test.createNode(Scenario.class, "AppV6 Login - Success validations");
+            test = extent.createTest(Feature.class, "Pulse feature Test");
+            test = test.createNode(Scenario.class, "Pulse success login");
             logInfo = test.createNode(new GherkinKeyword("Given"), "open_Chrome_browser_with_URL");
             Properties properties = obj.getProperty();
             //driver= BrowserUtility.getDriver(properties.getProperty("browser.name"), properties.getProperty("browser.pulse_baseURL"));

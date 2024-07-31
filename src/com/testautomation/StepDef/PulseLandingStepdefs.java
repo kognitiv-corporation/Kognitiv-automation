@@ -2,6 +2,7 @@ package com.testautomation.StepDef;
 
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.GherkinKeyword;
+import com.aventstack.extentreports.gherkin.model.Scenario;
 import com.testautomation.Listeners.ExtentReportListener;
 import com.testautomation.PageObjects.InspirePromotionPage;
 import com.testautomation.PageObjects.pulsePages.PulseLandingPage;
@@ -26,8 +27,8 @@ public class PulseLandingStepdefs extends ExtentReportListener {
    @Before("@Pulse")
     public void setUpDriver() throws Throwable {
         Properties properties = obj.getProperty();
-        //driver = BrowserUtility.getDriver(properties.getProperty("browser.name"), properties.getProperty("browser.pulse_baseURL"));
-        driver = BrowserUtility.getDriver();
+        driver = BrowserUtility.getDriver(properties.getProperty("browser.name"), properties.getProperty("browser.pulse_baseURL"));
+        //driver = BrowserUtility.getDriver();
         System.out.println("Pulse :" + properties.getProperty("browser.pulse_baseURL"));
     }
 
@@ -41,6 +42,7 @@ public class PulseLandingStepdefs extends ExtentReportListener {
     @Then("Validate report page name {string}")
     public void validateReportPageName(String pageName) {
         ExtentTest logInfo = null;
+        test = test.createNode(Scenario.class, "Validate report page name "+pageName);
         try {
 
             logInfo = test.createNode(new GherkinKeyword("And"), "Verifying expected " + pageName + " page is loaded");
@@ -129,7 +131,7 @@ public class PulseLandingStepdefs extends ExtentReportListener {
         }
     }
 
-    @And("Verify graph are displayed")
+    @Then("Verify graph are displayed")
     public void verifyGraphAreDisplayed(DataTable graphNames) {
         ExtentTest logInfo = null;
         try {
@@ -138,6 +140,57 @@ public class PulseLandingStepdefs extends ExtentReportListener {
             PulseLandingPage pulseLandingPage = new PulseLandingPage(driver);
             for (String graphName : graphs) {
                 pulseLandingPage.verifyGraphisDisplayed(graphName);
+                logInfo.pass("Graph " + graphName + " is displayed");
+            }
+            logInfo.addScreenCaptureFromPath(captureScreenShot(driver));
+        } catch (AssertionError | Exception e) {
+            testStepHandle("FAIL", driver, logInfo, e);
+        }
+    }
+
+    @Then("Click report tab name {string}")
+    public void clickReportTabName(String menuItem) {
+        ExtentTest logInfo = null;
+        test = test.createNode(Scenario.class, "Pulse Test report Validation "+menuItem);
+        try {
+
+            logInfo = test.createNode(new GherkinKeyword("And"), "Verifying expected " + menuItem + " page is loaded");
+            new PulseLandingPage(driver).ClickMainMenu(menuItem);
+            new PulseLandingPage(driver).getTitle();
+            logInfo.pass("Title : " + new InspirePromotionPage(driver).getTitle());
+            logInfo.addScreenCaptureFromPath(captureScreenShot(driver));
+
+        } catch (AssertionError | Exception e) {
+            testStepHandle("FAIL", driver, logInfo, e);
+        }
+    }
+
+    @Then("Verify Diagnose graph are displayed")
+    public void verifyDiagnoseGraphAreDisplayed(DataTable graphNames) {
+        ExtentTest logInfo = null;
+        try {
+            logInfo = test.createNode(new GherkinKeyword("And"), "Verify graphs are displayed");
+            List<String> graphs = graphNames.asList(String.class);
+            PulseLandingPage pulseLandingPage = new PulseLandingPage(driver);
+            for (String graphName : graphs) {
+                pulseLandingPage.verifyDiagnoseGraphisDisplayed(graphName);
+                logInfo.pass("Graph " + graphName + " is displayed");
+            }
+            logInfo.addScreenCaptureFromPath(captureScreenShot(driver));
+        } catch (AssertionError | Exception e) {
+            testStepHandle("FAIL", driver, logInfo, e);
+        }
+    }
+
+    @Then("Verify Customer Flows graph are displayed")
+    public void verifyCustomerFlowsGraphAreDisplayed(DataTable graphNames) {
+        ExtentTest logInfo = null;
+        try {
+            logInfo = test.createNode(new GherkinKeyword("Then"), "Verify graphs are displayed");
+            List<String> graphs = graphNames.asList(String.class);
+            PulseLandingPage pulseLandingPage = new PulseLandingPage(driver);
+            for (String graphName : graphs) {
+                pulseLandingPage.verifyCustomerFlowGraphisDisplayed(graphName);
                 logInfo.pass("Graph " + graphName + " is displayed");
             }
             logInfo.addScreenCaptureFromPath(captureScreenShot(driver));
