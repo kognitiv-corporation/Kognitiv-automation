@@ -30,8 +30,9 @@ Feature: Pulse report validation
       | email                            | password    | pagename | days    |
       | shammika.dahanayaka@kognitiv.com | Shammi4144* | KPI      | 91 days |
 
+
   @Diagnose @Pulse
-  Scenario Outline: Pulse KPI-Report validations
+  Scenario Outline: Pulse Diagnose-Report validations
     Given Open Chrome browser with a URL
     When Enter email address "<email>"
     And Enter password "<password>"

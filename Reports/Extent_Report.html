@@ -34,8 +34,7 @@
 		<!-- slideout menu -->
 		<ul id='slide-out' class='side-nav fixed hide-on-med-and-down'>
 			<li class='waves-effect active'><a href='#!' view='test-view' onclick="configureView(0);chartsView('test');"><i class='material-icons'>dashboard</i></a></li>
-						<li class='waves-effect'><a href='#!' view='exception-view' onclick="configureView(2)"><i class='material-icons'>bug_report</i></a></li>
-			<li class='waves-effect'><a href='#!' onclick="configureView(-1);chartsView('dashboard');" view='dashboard-view'><i class='material-icons'>track_changes</i></a></li>
+						<li class='waves-effect'><a href='#!' onclick="configureView(-1);chartsView('dashboard');" view='dashboard-view'><i class='material-icons'>track_changes</i></a></li>
 		</ul>
 		<!-- report name -->
 		<span class='report-name'>Automation Test Report</span>
@@ -44,7 +43,7 @@
 		<!-- nav-right -->
 		<ul id='nav-mobile' class='right hide-on-med-and-down nav-right'>
 			<a href='#!'>
-			<span class='label blue darken-3 suite-start-time'>Jul 31, 2024 08:34:38 AM</span>
+			<span class='label blue darken-3 suite-start-time'>Aug 3, 2024 12:28:40 PM</span>
 			</a>
 		</ul>
 	</div>
@@ -60,7 +59,6 @@
 				</a>
 				<ul id='tests-toggle' class='dropdown-content'>
 										<li status='pass'><a href='#!'>Pass <i class='material-icons green-text'>check_circle</i></a></li>
-					<li status='fail'><a href='#!'>Fail <i class='material-icons red-text'>cancel</i></a></li>
 					<li class='divider'></li>
 					<li status='clear' clear='true'><a href='#!'>Clear Filters <i class='material-icons'>clear</i></a></li>
 				</ul>
@@ -103,10 +101,10 @@
                     <canvas id='parent-analysis' width='90' height='70'></canvas>
                 </div>
                 <div class='block text-small'>
-                    <span class='tooltipped' data-position='top' data-tooltip='50%'><span class='strong'>1</span> feature(s) passed</span>
+                    <span class='tooltipped' data-position='top' data-tooltip='100%'><span class='strong'>2</span> feature(s) passed</span>
                 </div>
                 <div class='block text-small'>
-                    <span class='strong tooltipped' data-position='top' data-tooltip='50%'>1</span> feature(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> others
+                    <span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> feature(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> others
                 </div>
             </div>
         </div>
@@ -117,10 +115,10 @@
                     <canvas id='child-analysis' width='90' height='70'></canvas>
                 </div>
                 <div class='block text-small'>
-                    <span class='tooltipped' data-position='top' data-tooltip='50%'><span class='strong'>1</span> scenario(s) passed</span>
+                    <span class='tooltipped' data-position='top' data-tooltip='100%'><span class='strong'>2</span> scenario(s) passed</span>
                 </div>
                 <div class='block text-small'>
-                    <span class='strong tooltipped' data-position='top' data-tooltip='50%'>1</span> scenario(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> others
+                    <span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> scenario(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> others
                 </div>
             </div>
         </div>
@@ -131,10 +129,10 @@
                     <canvas id='grandchild-analysis' width='90' height='70'></canvas>
                 </div>
                 <div class='block text-small'>
-                    <span class='tooltipped' data-position='top' data-tooltip='91.304%'><span class='strong'>21</span> step(s) passed</span>
+                    <span class='tooltipped' data-position='top' data-tooltip='100%'><span class='strong'>28</span> step(s) passed</span>
                 </div>
                 <div class='block text-small'>
-                    <span class='strong tooltipped' data-position='top' data-tooltip='8.696%'>2</span> step(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> others
+                    <span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> step(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> others
                 </div>
             </div>
         </div>
@@ -152,200 +150,10 @@
 </div>	<div class='subview-left left'>
 		<div class='view-summary'>
 			<ul id='test-collection' class='test-collection'>
-				<li class='test displayed active has-leaf fail' status='fail' bdd='true' test-id='1'>
+				<li class='test displayed active has-leaf pass' status='pass' bdd='true' test-id='1'>
 					<div class='test-heading'>
 						<span class='test-name'>AppV6 Login validation</span>
-						<span class='test-time'>Jul 31, 2024 08:34:46 AM</span>
-						<span class='test-status right fail'>fail</span>
-					</div>
-					<div class='test-content hide'>
-<div class="sr-filters bdd-filters">
-    <a class="btn-floating waves-effect waves-light pass green" title="pass"><i class='material-icons'>check_circle</i></a>
-    <a class="btn-floating waves-effect waves-light fail red" title="fail"><i class='material-icons'>cancel</i></a>
-    <a class="btn-floating waves-effect waves-light skip blue" title="skip"><i class='material-icons'>redo</i></a>
-    <a class="btn-floating waves-effect waves-light clear grey" title="clear"><i class='material-icons'>clear</i></a>
-</div>
-<div class='scenario node' test-id='2' status='fail'>
-    <span class='duration right label'>0h 0m 0s+0ms</span>
-    <div class="bdd-test">
-        <div class="scenario-name"><span class='status fail' title='fail'><i class='material-icons'>cancel</i></span> Scenario: AppV6 Login - Success validations</div>
-    </div>
-    <ul class='steps'>
-        <li test-id='3' class='node given pass' status='pass'>
-            <div class="step-name"><span class='status pass' title='pass'><i class='material-icons'>check_circle</i></span>open_Chrome_browser_with_URL</div>
-            <ul class='screenshots right'>
-                <li><a data-featherlight="image" href="\screenshots\07312024083446717.png"><i class='material-icons'>panorama</i></a></li>
-            </ul>
-                <div class="node-step">Opened chrome browser and entered url</div>
-        </li>
-        <li test-id='4' class='node when pass' status='pass'>
-            <div class="step-name"><span class='status pass' title='pass'><i class='material-icons'>check_circle</i></span>enter_email_address</div>
-            <ul class='screenshots right'>
-                <li><a data-featherlight="image" href="\screenshots\07312024083447475.png"><i class='material-icons'>panorama</i></a></li>
-            </ul>
-                <div class="node-step">Entering email address</div>
-        </li>
-        <li test-id='5' class='node and pass' status='pass'>
-            <div class="step-name"><span class='status pass' title='pass'><i class='material-icons'>check_circle</i></span>enter_password</div>
-            <ul class='screenshots right'>
-                <li><a data-featherlight="image" href="\screenshots\07312024083448151.png"><i class='material-icons'>panorama</i></a></li>
-            </ul>
-                <div class="node-step">Entering password</div>
-        </li>
-        <li test-id='6' class='node and pass' status='pass'>
-            <div class="step-name"><span class='status pass' title='pass'><i class='material-icons'>check_circle</i></span>Click_login_button</div>
-            <ul class='screenshots right'>
-                <li><a data-featherlight="image" href="\screenshots\07312024083457235.png"><i class='material-icons'>panorama</i></a></li>
-            </ul>
-                <div class="node-step">Clicking login</div>
-        </li>
-        <li test-id='7' class='node and pass' status='pass'>
-            <div class="step-name"><span class='status pass' title='pass'><i class='material-icons'>check_circle</i></span>Verifying title</div>
-            <ul class='screenshots right'>
-                <li><a data-featherlight="image" href="\screenshots\07312024083459414.png"><i class='material-icons'>panorama</i></a></li>
-            </ul>
-                <div class="node-step">Title : Kognitiv Inspire</div>
-        </li>
-        <li test-id='8' class='node when pass' status='pass'>
-            <div class="step-name"><span class='status pass' title='pass'><i class='material-icons'>check_circle</i></span>Click_main_menu_item</div>
-            <ul class='screenshots right'>
-                <li><a data-featherlight="image" href="\screenshots\07312024083501532.png"><i class='material-icons'>panorama</i></a></li>
-            </ul>
-                <div class="node-step">Clicking main menu item Inspire</div>
-        </li>
-        <li test-id='9' class='node and pass' status='pass'>
-            <div class="step-name"><span class='status pass' title='pass'><i class='material-icons'>check_circle</i></span>Verifying title</div>
-            <ul class='screenshots right'>
-                <li><a data-featherlight="image" href="\screenshots\07312024083503708.png"><i class='material-icons'>panorama</i></a></li>
-            </ul>
-                <div class="node-step">Title : Kognitiv Inspire</div>
-        </li>
-        <li test-id='10' class='node when fail' status='fail'>
-            <div class="step-name"><span class='status fail' title='fail'><i class='material-icons'>cancel</i></span>Click_groups_tab_item</div>
-            <ul class='screenshots right'>
-                <li><a data-featherlight="image" href="\screenshots\07312024083504830.png"><i class='material-icons'>panorama</i></a></li>
-            </ul>
-                <div class="node-step"><span class='badge white-text red'>Test Case is Failed : </span></div>
-                <textarea disabled class="code-block">org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"xpath","selector":"//a[@class='ng-star-inserted']/child::span[contains(.,'Groups')]"}
-  (Session info: chrome=127.0.6533.73)
-For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
-Build info: version: '3.11.0', revision: 'e59cfb3', time: '2018-03-11T20:26:55.152Z'
-System info: host: 'DESKTOP-JBO1355', ip: '10.0.0.192', os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '20.0.1'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 127.0.6533.73, chrome: {chromedriverVersion: 126.0.6478.126 (d36ace6122e..., userDataDir: C:\Users\SHAMMI~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:56385}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 1e1aba3095dfb6d459ec6521a43332f3
-*** Element info: {Using=xpath, value=//a[@class='ng-star-inserted']/child::span[contains(.,'Groups')]}
-	at com.testautomation.Listeners.ExtentReportListener.testStepHandle(ExtentReportListener.java:49)
-	at com.testautomation.StepDef.Inspire_promo_Stepdefs.selectGroupsFromLeftSideMenu(Inspire_promo_Stepdefs.java:69)
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
-	at cucumber.runtime.Utils$1.call(Utils.java:26)
-	at cucumber.runtime.Timeout.timeout(Timeout.java:16)
-	at cucumber.runtime.Utils.invoke(Utils.java:20)
-	at cucumber.runtime.java.JavaStepDefinition.execute(JavaStepDefinition.java:49)
-	at cucumber.runner.PickleStepDefinitionMatch.runStep(PickleStepDefinitionMatch.java:50)
-	at cucumber.runner.TestStep.executeStep(TestStep.java:63)
-	at cucumber.runner.TestStep.run(TestStep.java:49)
-	at cucumber.runner.PickleStepTestStep.run(PickleStepTestStep.java:43)
-	at cucumber.runner.TestCase.run(TestCase.java:44)
-	at cucumber.runner.Runner.runPickle(Runner.java:40)
-	at cucumber.api.testng.TestNGCucumberRunner.runScenario(TestNGCucumberRunner.java:68)
-	at com.testautomation.TestRunner.TestRunner.feature(TestRunner.java:30)
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
-	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
-	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
-	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
-	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
-	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
-	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
-	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
-	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-	at org.testng.TestRunner.privateRun(TestRunner.java:794)
-	at org.testng.TestRunner.run(TestRunner.java:596)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:276)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
-	at org.testng.TestNG.runSuites(TestNG.java:1063)
-	at org.testng.TestNG.run(TestNG.java:1031)
-	at org.apache.maven.surefire.testng.TestNGExecutor.run(TestNGExecutor.java:283)
-	at org.apache.maven.surefire.testng.TestNGXmlTestSuite.execute(TestNGXmlTestSuite.java:75)
-	at org.apache.maven.surefire.testng.TestNGProvider.invoke(TestNGProvider.java:120)
-	at org.apache.maven.surefire.booter.ForkedBooter.invokeProviderInSameClassLoader(ForkedBooter.java:384)
-	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:345)
-	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:126)
-	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:418)
-</textarea>
-        </li>
-        <li test-id='11' class='node when fail' status='fail'>
-            <div class="step-name"><span class='status fail' title='fail'><i class='material-icons'>cancel</i></span>Click_create_products</div>
-                <div class="node-step"><span class='badge white-text red'>Test Case is Failed : </span></div>
-                <textarea disabled class="code-block">org.openqa.selenium.NoSuchSessionException: Session ID is null. Using WebDriver after calling quit()?
-Build info: version: '3.11.0', revision: 'e59cfb3', time: '2018-03-11T20:26:55.152Z'
-System info: host: 'DESKTOP-JBO1355', ip: '10.0.0.192', os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '20.0.1'
-Driver info: driver.version: unknown
-	at com.testautomation.Listeners.ExtentReportListener.testStepHandle(ExtentReportListener.java:49)
-	at com.testautomation.StepDef.Inspire_promo_Stepdefs.selectCreateProductGroup(Inspire_promo_Stepdefs.java:93)
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
-	at cucumber.runtime.Utils$1.call(Utils.java:26)
-	at cucumber.runtime.Timeout.timeout(Timeout.java:16)
-	at cucumber.runtime.Utils.invoke(Utils.java:20)
-	at cucumber.runtime.java.JavaStepDefinition.execute(JavaStepDefinition.java:49)
-	at cucumber.runner.PickleStepDefinitionMatch.runStep(PickleStepDefinitionMatch.java:50)
-	at cucumber.runner.TestStep.executeStep(TestStep.java:63)
-	at cucumber.runner.TestStep.run(TestStep.java:49)
-	at cucumber.runner.PickleStepTestStep.run(PickleStepTestStep.java:43)
-	at cucumber.runner.TestCase.run(TestCase.java:44)
-	at cucumber.runner.Runner.runPickle(Runner.java:40)
-	at cucumber.api.testng.TestNGCucumberRunner.runScenario(TestNGCucumberRunner.java:68)
-	at com.testautomation.TestRunner.TestRunner.feature(TestRunner.java:30)
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
-	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
-	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
-	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
-	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
-	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
-	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
-	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
-	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-	at org.testng.TestRunner.privateRun(TestRunner.java:794)
-	at org.testng.TestRunner.run(TestRunner.java:596)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:276)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
-	at org.testng.TestNG.runSuites(TestNG.java:1063)
-	at org.testng.TestNG.run(TestNG.java:1031)
-	at org.apache.maven.surefire.testng.TestNGExecutor.run(TestNGExecutor.java:283)
-	at org.apache.maven.surefire.testng.TestNGXmlTestSuite.execute(TestNGXmlTestSuite.java:75)
-	at org.apache.maven.surefire.testng.TestNGProvider.invoke(TestNGProvider.java:120)
-	at org.apache.maven.surefire.booter.ForkedBooter.invokeProviderInSameClassLoader(ForkedBooter.java:384)
-	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:345)
-	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:126)
-	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:418)
-</textarea>
-        </li>
-    </ul>
-</div>
-					</div>
-				</li>
-				<li class='test displayed active has-leaf pass' status='pass' bdd='true' test-id='12'>
-					<div class='test-heading'>
-						<span class='test-name'>AppV6 Login validation</span>
-						<span class='test-time'>Jul 31, 2024 08:35:14 AM</span>
+						<span class='test-time'>Aug 3, 2024 12:28:51 PM</span>
 						<span class='test-status right pass'>pass</span>
 					</div>
 					<div class='test-content hide'>
@@ -355,107 +163,228 @@ Driver info: driver.version: unknown
     <a class="btn-floating waves-effect waves-light skip blue" title="skip"><i class='material-icons'>redo</i></a>
     <a class="btn-floating waves-effect waves-light clear grey" title="clear"><i class='material-icons'>clear</i></a>
 </div>
-<div class='scenario node' test-id='13' status='pass'>
+<div class='scenario node' test-id='2' status='pass'>
     <span class='duration right label'>0h 0m 0s+0ms</span>
     <div class="bdd-test">
         <div class="scenario-name"><span class='status pass' title='pass'><i class='material-icons'>check_circle</i></span> Scenario: AppV6 Login - Success validations</div>
     </div>
     <ul class='steps'>
-        <li test-id='14' class='node given pass' status='pass'>
+        <li test-id='3' class='node given pass' status='pass'>
             <div class="step-name"><span class='status pass' title='pass'><i class='material-icons'>check_circle</i></span>open_Chrome_browser_with_URL</div>
             <ul class='screenshots right'>
-                <li><a data-featherlight="image" href="\screenshots\07312024083515361.png"><i class='material-icons'>panorama</i></a></li>
+                <li><a data-featherlight="image" href="\screenshots\08032024122852745.png"><i class='material-icons'>panorama</i></a></li>
             </ul>
                 <div class="node-step">Opened chrome browser and entered url</div>
         </li>
-        <li test-id='15' class='node when pass' status='pass'>
+        <li test-id='4' class='node when pass' status='pass'>
             <div class="step-name"><span class='status pass' title='pass'><i class='material-icons'>check_circle</i></span>enter_email_address</div>
             <ul class='screenshots right'>
-                <li><a data-featherlight="image" href="\screenshots\07312024083515865.png"><i class='material-icons'>panorama</i></a></li>
+                <li><a data-featherlight="image" href="\screenshots\08032024122853439.png"><i class='material-icons'>panorama</i></a></li>
             </ul>
                 <div class="node-step">Entering email address</div>
         </li>
-        <li test-id='16' class='node and pass' status='pass'>
+        <li test-id='5' class='node and pass' status='pass'>
             <div class="step-name"><span class='status pass' title='pass'><i class='material-icons'>check_circle</i></span>enter_password</div>
             <ul class='screenshots right'>
-                <li><a data-featherlight="image" href="\screenshots\07312024083516454.png"><i class='material-icons'>panorama</i></a></li>
+                <li><a data-featherlight="image" href="\screenshots\08032024122854279.png"><i class='material-icons'>panorama</i></a></li>
             </ul>
                 <div class="node-step">Entering password</div>
         </li>
-        <li test-id='17' class='node and pass' status='pass'>
+        <li test-id='6' class='node and pass' status='pass'>
             <div class="step-name"><span class='status pass' title='pass'><i class='material-icons'>check_circle</i></span>Click_login_button</div>
             <ul class='screenshots right'>
-                <li><a data-featherlight="image" href="\screenshots\07312024083529729.png"><i class='material-icons'>panorama</i></a></li>
+                <li><a data-featherlight="image" href="\screenshots\08032024122904671.png"><i class='material-icons'>panorama</i></a></li>
             </ul>
                 <div class="node-step">Clicking login</div>
         </li>
-        <li test-id='18' class='node and pass' status='pass'>
+        <li test-id='7' class='node and pass' status='pass'>
             <div class="step-name"><span class='status pass' title='pass'><i class='material-icons'>check_circle</i></span>Verifying title</div>
             <ul class='screenshots right'>
-                <li><a data-featherlight="image" href="\screenshots\07312024083531889.png"><i class='material-icons'>panorama</i></a></li>
+                <li><a data-featherlight="image" href="\screenshots\08032024122906876.png"><i class='material-icons'>panorama</i></a></li>
             </ul>
                 <div class="node-step">Title : Kognitiv Inspire</div>
         </li>
-        <li test-id='19' class='node when pass' status='pass'>
+        <li test-id='8' class='node when pass' status='pass'>
             <div class="step-name"><span class='status pass' title='pass'><i class='material-icons'>check_circle</i></span>Click_main_menu_item</div>
             <ul class='screenshots right'>
-                <li><a data-featherlight="image" href="\screenshots\07312024083534255.png"><i class='material-icons'>panorama</i></a></li>
+                <li><a data-featherlight="image" href="\screenshots\08032024122909803.png"><i class='material-icons'>panorama</i></a></li>
             </ul>
                 <div class="node-step">Clicking main menu item Inspire</div>
         </li>
-        <li test-id='20' class='node and pass' status='pass'>
+        <li test-id='9' class='node and pass' status='pass'>
             <div class="step-name"><span class='status pass' title='pass'><i class='material-icons'>check_circle</i></span>Verifying title</div>
             <ul class='screenshots right'>
-                <li><a data-featherlight="image" href="\screenshots\07312024083536457.png"><i class='material-icons'>panorama</i></a></li>
+                <li><a data-featherlight="image" href="\screenshots\08032024122912280.png"><i class='material-icons'>panorama</i></a></li>
             </ul>
                 <div class="node-step">Title : Kognitiv Inspire</div>
         </li>
-        <li test-id='21' class='node when pass' status='pass'>
+        <li test-id='10' class='node when pass' status='pass'>
             <div class="step-name"><span class='status pass' title='pass'><i class='material-icons'>check_circle</i></span>Click_groups_tab_item</div>
             <ul class='screenshots right'>
-                <li><a data-featherlight="image" href="\screenshots\07312024083537772.png"><i class='material-icons'>panorama</i></a></li>
+                <li><a data-featherlight="image" href="\screenshots\08032024122913672.png"><i class='material-icons'>panorama</i></a></li>
             </ul>
                 <div class="node-step">Clicking groups tab</div>
         </li>
-        <li test-id='22' class='node when pass' status='pass'>
+        <li test-id='11' class='node when pass' status='pass'>
             <div class="step-name"><span class='status pass' title='pass'><i class='material-icons'>check_circle</i></span>Click_create_products</div>
             <ul class='screenshots right'>
-                <li><a data-featherlight="image" href="\screenshots\07312024083538253.png"><i class='material-icons'>panorama</i></a></li>
+                <li><a data-featherlight="image" href="\screenshots\08032024122914164.png"><i class='material-icons'>panorama</i></a></li>
             </ul>
                 <div class="node-step">Clicking create products link</div>
         </li>
-        <li test-id='23' class='node when pass' status='pass'>
+        <li test-id='12' class='node when pass' status='pass'>
             <div class="step-name"><span class='status pass' title='pass'><i class='material-icons'>check_circle</i></span>enter_group_name</div>
             <ul class='screenshots right'>
-                <li><a data-featherlight="image" href="\screenshots\07312024083538530.png"><i class='material-icons'>panorama</i></a></li>
+                <li><a data-featherlight="image" href="\screenshots\08032024122914624.png"><i class='material-icons'>panorama</i></a></li>
             </ul>
                 <div class="node-step">Entering group name</div>
         </li>
-        <li test-id='24' class='node when pass' status='pass'>
+        <li test-id='13' class='node when pass' status='pass'>
             <div class="step-name"><span class='status pass' title='pass'><i class='material-icons'>check_circle</i></span>click_continue_button</div>
             <ul class='screenshots right'>
-                <li><a data-featherlight="image" href="\screenshots\07312024083538879.png"><i class='material-icons'>panorama</i></a></li>
+                <li><a data-featherlight="image" href="\screenshots\08032024122915174.png"><i class='material-icons'>panorama</i></a></li>
             </ul>
                 <div class="node-step">click continue button</div>
         </li>
-        <li test-id='25' class='node when pass' status='pass'>
+        <li test-id='14' class='node when pass' status='pass'>
             <div class="step-name"><span class='status pass' title='pass'><i class='material-icons'>check_circle</i></span>click_remove_rules</div>
             <ul class='screenshots right'>
-                <li><a data-featherlight="image" href="\screenshots\07312024083539165.png"><i class='material-icons'>panorama</i></a></li>
+                <li><a data-featherlight="image" href="\screenshots\08032024122915948.png"><i class='material-icons'>panorama</i></a></li>
             </ul>
                 <div class="node-step">click remove rules icon</div>
         </li>
-        <li test-id='26' class='node when pass' status='pass'>
+        <li test-id='15' class='node when pass' status='pass'>
             <div class="step-name"><span class='status pass' title='pass'><i class='material-icons'>check_circle</i></span>click_continue_button</div>
             <ul class='screenshots right'>
-                <li><a data-featherlight="image" href="\screenshots\07312024083539458.png"><i class='material-icons'>panorama</i></a></li>
+                <li><a data-featherlight="image" href="\screenshots\08032024122916359.png"><i class='material-icons'>panorama</i></a></li>
             </ul>
                 <div class="node-step">click continue button</div>
         </li>
-        <li test-id='27' class='node when pass' status='pass'>
+        <li test-id='16' class='node when pass' status='pass'>
             <div class="step-name"><span class='status pass' title='pass'><i class='material-icons'>check_circle</i></span>click_create_product_group_button</div>
             <ul class='screenshots right'>
-                <li><a data-featherlight="image" href="\screenshots\07312024083539699.png"><i class='material-icons'>panorama</i></a></li>
+                <li><a data-featherlight="image" href="\screenshots\08032024122916773.png"><i class='material-icons'>panorama</i></a></li>
+            </ul>
+                <div class="node-step">click create product group button</div>
+        </li>
+    </ul>
+</div>
+					</div>
+				</li>
+				<li class='test displayed active has-leaf pass' status='pass' bdd='true' test-id='17'>
+					<div class='test-heading'>
+						<span class='test-name'>AppV6 Login validation</span>
+						<span class='test-time'>Aug 3, 2024 12:29:28 PM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class="sr-filters bdd-filters">
+    <a class="btn-floating waves-effect waves-light pass green" title="pass"><i class='material-icons'>check_circle</i></a>
+    <a class="btn-floating waves-effect waves-light fail red" title="fail"><i class='material-icons'>cancel</i></a>
+    <a class="btn-floating waves-effect waves-light skip blue" title="skip"><i class='material-icons'>redo</i></a>
+    <a class="btn-floating waves-effect waves-light clear grey" title="clear"><i class='material-icons'>clear</i></a>
+</div>
+<div class='scenario node' test-id='18' status='pass'>
+    <span class='duration right label'>0h 0m 0s+0ms</span>
+    <div class="bdd-test">
+        <div class="scenario-name"><span class='status pass' title='pass'><i class='material-icons'>check_circle</i></span> Scenario: AppV6 Login - Success validations</div>
+    </div>
+    <ul class='steps'>
+        <li test-id='19' class='node given pass' status='pass'>
+            <div class="step-name"><span class='status pass' title='pass'><i class='material-icons'>check_circle</i></span>open_Chrome_browser_with_URL</div>
+            <ul class='screenshots right'>
+                <li><a data-featherlight="image" href="\screenshots\08032024122928551.png"><i class='material-icons'>panorama</i></a></li>
+            </ul>
+                <div class="node-step">Opened chrome browser and entered url</div>
+        </li>
+        <li test-id='20' class='node when pass' status='pass'>
+            <div class="step-name"><span class='status pass' title='pass'><i class='material-icons'>check_circle</i></span>enter_email_address</div>
+            <ul class='screenshots right'>
+                <li><a data-featherlight="image" href="\screenshots\08032024122929323.png"><i class='material-icons'>panorama</i></a></li>
+            </ul>
+                <div class="node-step">Entering email address</div>
+        </li>
+        <li test-id='21' class='node and pass' status='pass'>
+            <div class="step-name"><span class='status pass' title='pass'><i class='material-icons'>check_circle</i></span>enter_password</div>
+            <ul class='screenshots right'>
+                <li><a data-featherlight="image" href="\screenshots\08032024122930153.png"><i class='material-icons'>panorama</i></a></li>
+            </ul>
+                <div class="node-step">Entering password</div>
+        </li>
+        <li test-id='22' class='node and pass' status='pass'>
+            <div class="step-name"><span class='status pass' title='pass'><i class='material-icons'>check_circle</i></span>Click_login_button</div>
+            <ul class='screenshots right'>
+                <li><a data-featherlight="image" href="\screenshots\08032024122940380.png"><i class='material-icons'>panorama</i></a></li>
+            </ul>
+                <div class="node-step">Clicking login</div>
+        </li>
+        <li test-id='23' class='node and pass' status='pass'>
+            <div class="step-name"><span class='status pass' title='pass'><i class='material-icons'>check_circle</i></span>Verifying title</div>
+            <ul class='screenshots right'>
+                <li><a data-featherlight="image" href="\screenshots\08032024122942690.png"><i class='material-icons'>panorama</i></a></li>
+            </ul>
+                <div class="node-step">Title : Kognitiv Inspire</div>
+        </li>
+        <li test-id='24' class='node when pass' status='pass'>
+            <div class="step-name"><span class='status pass' title='pass'><i class='material-icons'>check_circle</i></span>Click_main_menu_item</div>
+            <ul class='screenshots right'>
+                <li><a data-featherlight="image" href="\screenshots\08032024122945079.png"><i class='material-icons'>panorama</i></a></li>
+            </ul>
+                <div class="node-step">Clicking main menu item Inspire</div>
+        </li>
+        <li test-id='25' class='node and pass' status='pass'>
+            <div class="step-name"><span class='status pass' title='pass'><i class='material-icons'>check_circle</i></span>Verifying title</div>
+            <ul class='screenshots right'>
+                <li><a data-featherlight="image" href="\screenshots\08032024122947307.png"><i class='material-icons'>panorama</i></a></li>
+            </ul>
+                <div class="node-step">Title : Kognitiv Inspire</div>
+        </li>
+        <li test-id='26' class='node when pass' status='pass'>
+            <div class="step-name"><span class='status pass' title='pass'><i class='material-icons'>check_circle</i></span>Click_groups_tab_item</div>
+            <ul class='screenshots right'>
+                <li><a data-featherlight="image" href="\screenshots\08032024122948668.png"><i class='material-icons'>panorama</i></a></li>
+            </ul>
+                <div class="node-step">Clicking groups tab</div>
+        </li>
+        <li test-id='27' class='node when pass' status='pass'>
+            <div class="step-name"><span class='status pass' title='pass'><i class='material-icons'>check_circle</i></span>Click_create_products</div>
+            <ul class='screenshots right'>
+                <li><a data-featherlight="image" href="\screenshots\08032024122949438.png"><i class='material-icons'>panorama</i></a></li>
+            </ul>
+                <div class="node-step">Clicking create products link</div>
+        </li>
+        <li test-id='28' class='node when pass' status='pass'>
+            <div class="step-name"><span class='status pass' title='pass'><i class='material-icons'>check_circle</i></span>enter_group_name</div>
+            <ul class='screenshots right'>
+                <li><a data-featherlight="image" href="\screenshots\08032024122949973.png"><i class='material-icons'>panorama</i></a></li>
+            </ul>
+                <div class="node-step">Entering group name</div>
+        </li>
+        <li test-id='29' class='node when pass' status='pass'>
+            <div class="step-name"><span class='status pass' title='pass'><i class='material-icons'>check_circle</i></span>click_continue_button</div>
+            <ul class='screenshots right'>
+                <li><a data-featherlight="image" href="\screenshots\08032024122950467.png"><i class='material-icons'>panorama</i></a></li>
+            </ul>
+                <div class="node-step">click continue button</div>
+        </li>
+        <li test-id='30' class='node when pass' status='pass'>
+            <div class="step-name"><span class='status pass' title='pass'><i class='material-icons'>check_circle</i></span>click_remove_rules</div>
+            <ul class='screenshots right'>
+                <li><a data-featherlight="image" href="\screenshots\08032024122950788.png"><i class='material-icons'>panorama</i></a></li>
+            </ul>
+                <div class="node-step">click remove rules icon</div>
+        </li>
+        <li test-id='31' class='node when pass' status='pass'>
+            <div class="step-name"><span class='status pass' title='pass'><i class='material-icons'>check_circle</i></span>click_continue_button</div>
+            <ul class='screenshots right'>
+                <li><a data-featherlight="image" href="\screenshots\08032024122951058.png"><i class='material-icons'>panorama</i></a></li>
+            </ul>
+                <div class="node-step">click continue button</div>
+        </li>
+        <li test-id='32' class='node when pass' status='pass'>
+            <div class="step-name"><span class='status pass' title='pass'><i class='material-icons'>check_circle</i></span>click_create_product_group_button</div>
+            <ul class='screenshots right'>
+                <li><a data-featherlight="image" href="\screenshots\08032024122951333.png"><i class='material-icons'>panorama</i></a></li>
             </ul>
                 <div class="node-step">click create product group button</div>
         </li>
@@ -483,195 +412,7 @@ Driver info: driver.version: unknown
 	</div>
 	<!-- subview right -->
 </div>
-<!-- test view --><!-- category view --><div id='exception-view' class='view hide'>
-	<section id='controls'>
-		<div class='controls grey lighten-4'>
-			<!-- search -->
-			<div class='chip transparent' alt='Search Tests' title='Search Tests'>
-				<a href="#" class='search-div'>
-				<i class='material-icons'>search</i> Search
-				</a>
-				<div class='input-field left hide'>
-					<input id='search-tests' type='text' class='validate browser-default' placeholder='Search Tests...'>
-				</div>
-			</div>
-			<!-- search -->
-		</div>
-	</section>
-	<div class='subview-left left'>
-		<div class='view-summary'>
-			<ul id='exception-collection' class='exception-collection'>
-				<li class='exception displayed active'>
-					<div class='exception-heading'>
-						<span class='exception-name'>org.openqa.selenium.NoSuchElementException</span>
-						<span class='exception-count right'><span class='label red lighten-1 white-text'>1</span></span>
-					</div>
-					<div class='exception-content hide'>
-						<div class='exception-tests'>
-							<table class='bordered table-results'>
-								<thead>
-									<tr>
-										<th>Timestamp</th>
-										<th>TestName</th>
-										<th>Status</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>Jul 31, 2024 08:35:03 AM</td>
-										<td class='linked' test-id='10'>AppV6 Login validation.AppV6 Login - Success validations.Click_groups_tab_item</td>
-										<td>
-											<textarea disabled class="code-block">org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"xpath","selector":"//a[@class='ng-star-inserted']/child::span[contains(.,'Groups')]"}
-  (Session info: chrome=127.0.6533.73)
-For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
-Build info: version: '3.11.0', revision: 'e59cfb3', time: '2018-03-11T20:26:55.152Z'
-System info: host: 'DESKTOP-JBO1355', ip: '10.0.0.192', os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '20.0.1'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 127.0.6533.73, chrome: {chromedriverVersion: 126.0.6478.126 (d36ace6122e..., userDataDir: C:\Users\SHAMMI~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:56385}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 1e1aba3095dfb6d459ec6521a43332f3
-*** Element info: {Using=xpath, value=//a[@class='ng-star-inserted']/child::span[contains(.,'Groups')]}
-	at com.testautomation.Listeners.ExtentReportListener.testStepHandle(ExtentReportListener.java:49)
-	at com.testautomation.StepDef.Inspire_promo_Stepdefs.selectGroupsFromLeftSideMenu(Inspire_promo_Stepdefs.java:69)
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
-	at cucumber.runtime.Utils$1.call(Utils.java:26)
-	at cucumber.runtime.Timeout.timeout(Timeout.java:16)
-	at cucumber.runtime.Utils.invoke(Utils.java:20)
-	at cucumber.runtime.java.JavaStepDefinition.execute(JavaStepDefinition.java:49)
-	at cucumber.runner.PickleStepDefinitionMatch.runStep(PickleStepDefinitionMatch.java:50)
-	at cucumber.runner.TestStep.executeStep(TestStep.java:63)
-	at cucumber.runner.TestStep.run(TestStep.java:49)
-	at cucumber.runner.PickleStepTestStep.run(PickleStepTestStep.java:43)
-	at cucumber.runner.TestCase.run(TestCase.java:44)
-	at cucumber.runner.Runner.runPickle(Runner.java:40)
-	at cucumber.api.testng.TestNGCucumberRunner.runScenario(TestNGCucumberRunner.java:68)
-	at com.testautomation.TestRunner.TestRunner.feature(TestRunner.java:30)
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
-	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
-	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
-	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
-	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
-	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
-	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
-	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
-	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-	at org.testng.TestRunner.privateRun(TestRunner.java:794)
-	at org.testng.TestRunner.run(TestRunner.java:596)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:276)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
-	at org.testng.TestNG.runSuites(TestNG.java:1063)
-	at org.testng.TestNG.run(TestNG.java:1031)
-	at org.apache.maven.surefire.testng.TestNGExecutor.run(TestNGExecutor.java:283)
-	at org.apache.maven.surefire.testng.TestNGXmlTestSuite.execute(TestNGXmlTestSuite.java:75)
-	at org.apache.maven.surefire.testng.TestNGProvider.invoke(TestNGProvider.java:120)
-	at org.apache.maven.surefire.booter.ForkedBooter.invokeProviderInSameClassLoader(ForkedBooter.java:384)
-	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:345)
-	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:126)
-	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:418)
-</textarea>
-										</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</div>
-				</li>
-				<li class='exception displayed active'>
-					<div class='exception-heading'>
-						<span class='exception-name'>org.openqa.selenium.NoSuchSessionException</span>
-						<span class='exception-count right'><span class='label red lighten-1 white-text'>1</span></span>
-					</div>
-					<div class='exception-content hide'>
-						<div class='exception-tests'>
-							<table class='bordered table-results'>
-								<thead>
-									<tr>
-										<th>Timestamp</th>
-										<th>TestName</th>
-										<th>Status</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>Jul 31, 2024 08:35:05 AM</td>
-										<td class='linked' test-id='11'>AppV6 Login validation.AppV6 Login - Success validations.Click_create_products</td>
-										<td>
-											<textarea disabled class="code-block">org.openqa.selenium.NoSuchSessionException: Session ID is null. Using WebDriver after calling quit()?
-Build info: version: '3.11.0', revision: 'e59cfb3', time: '2018-03-11T20:26:55.152Z'
-System info: host: 'DESKTOP-JBO1355', ip: '10.0.0.192', os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '20.0.1'
-Driver info: driver.version: unknown
-	at com.testautomation.Listeners.ExtentReportListener.testStepHandle(ExtentReportListener.java:49)
-	at com.testautomation.StepDef.Inspire_promo_Stepdefs.selectCreateProductGroup(Inspire_promo_Stepdefs.java:93)
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
-	at cucumber.runtime.Utils$1.call(Utils.java:26)
-	at cucumber.runtime.Timeout.timeout(Timeout.java:16)
-	at cucumber.runtime.Utils.invoke(Utils.java:20)
-	at cucumber.runtime.java.JavaStepDefinition.execute(JavaStepDefinition.java:49)
-	at cucumber.runner.PickleStepDefinitionMatch.runStep(PickleStepDefinitionMatch.java:50)
-	at cucumber.runner.TestStep.executeStep(TestStep.java:63)
-	at cucumber.runner.TestStep.run(TestStep.java:49)
-	at cucumber.runner.PickleStepTestStep.run(PickleStepTestStep.java:43)
-	at cucumber.runner.TestCase.run(TestCase.java:44)
-	at cucumber.runner.Runner.runPickle(Runner.java:40)
-	at cucumber.api.testng.TestNGCucumberRunner.runScenario(TestNGCucumberRunner.java:68)
-	at com.testautomation.TestRunner.TestRunner.feature(TestRunner.java:30)
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
-	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
-	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
-	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
-	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
-	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
-	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
-	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
-	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-	at org.testng.TestRunner.privateRun(TestRunner.java:794)
-	at org.testng.TestRunner.run(TestRunner.java:596)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:276)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
-	at org.testng.TestNG.runSuites(TestNG.java:1063)
-	at org.testng.TestNG.run(TestNG.java:1031)
-	at org.apache.maven.surefire.testng.TestNGExecutor.run(TestNGExecutor.java:283)
-	at org.apache.maven.surefire.testng.TestNGXmlTestSuite.execute(TestNGXmlTestSuite.java:75)
-	at org.apache.maven.surefire.testng.TestNGProvider.invoke(TestNGProvider.java:120)
-	at org.apache.maven.surefire.booter.ForkedBooter.invokeProviderInSameClassLoader(ForkedBooter.java:384)
-	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:345)
-	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:126)
-	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:418)
-</textarea>
-										</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</div>
-				</li>
-			</ul>
-		</div>
-	</div>
-	<div class='subview-right left'>
-		<div class='view-summary'>
-			<h5 class='exception-name'></h5>
-		</div>
-	</div>
-</div>
-<!-- exception view --><div id='dashboard-view' class='view hide'>
+<!-- test view --><!-- category view --><!-- exception view --><div id='dashboard-view' class='view hide'>
 	<div class='card-panel transparent np-v'>
 		<h5>Dashboard</h5>
 
@@ -691,25 +432,25 @@ Driver info: driver.version: unknown
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Steps
-					<div class='panel-lead'>23</div>
+					<div class='panel-lead'>28</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Start
-					<div class='panel-lead'>Jul 31, 2024 08:34:38 AM</div>
+					<div class='panel-lead'>Aug 3, 2024 12:28:40 PM</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 			 		End
-			 		<div class='panel-lead'>Jul 31, 2024 08:35:40 AM</div>
+			 		<div class='panel-lead'>Aug 3, 2024 12:29:52 PM</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Time Taken
-					<div class='panel-lead'>0h 1m 2s+440ms</div>
+					<div class='panel-lead'>0h 1m 12s+322ms</div>
 				</div>
 			</div>
 			<div class='col s4'>
@@ -745,33 +486,33 @@ Driver info: driver.version: unknown
 		<script>
 			var statusGroup = {
                 parentCount: 2,
-				passParent: 1,
-				failParent: 1,
+				passParent: 2,
+				failParent: 0,
 				fatalParent: 0,
 				errorParent: 0,
 				warningParent: 0,
 				skipParent: 0,
-				exceptionsParent: 1,
+				exceptionsParent: 0,
 				childCount: 2,
-				passChild: 1,
-				failChild: 1,
+				passChild: 2,
+				failChild: 0,
 				fatalChild: 0,
 				errorChild: 0,
 				warningChild: 0,
 				skipChild: 0,
 				infoChild: 0,
 				debugChild: 0,
-				exceptionsChild: 1,
-				grandChildCount: 23,
-				passGrandChild: 21,
-				failGrandChild: 2,
+				exceptionsChild: 0,
+				grandChildCount: 28,
+				passGrandChild: 28,
+				failGrandChild: 0,
 				fatalGrandChild: 0,
 				errorGrandChild: 0,
 				warningGrandChild: 0,
 				skipGrandChild: 0,
 				infoGrandChild: 0,
 				debugGrandChild: 0,
-				exceptionsGrandChild: 2,
+				exceptionsGrandChild: 0,
 			};
 		</script>
 		<script>
