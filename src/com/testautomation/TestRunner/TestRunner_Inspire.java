@@ -16,7 +16,7 @@ import cucumber.api.testng.*;
         ,plugin = {"pretty", "json:target/cucumber-reports/Cucumber.json"}
         ,tags = {"@Promotion"}
         ,monochrome = true)
-public class TestRunner {
+public class TestRunner_Inspire {
     private TestNGCucumberRunner testNGCucumberRunner;
     
     @BeforeClass(alwaysRun = true)

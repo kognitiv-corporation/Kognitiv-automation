@@ -31,7 +31,7 @@ public class AppV6LoginPage {
     @FindBy(how= How.XPATH,using="//button[@id='next']")
     public WebElement loginBtn;
 
-    @FindBy(how= How.XPATH,using="//p[contains(.,'Your password is incorrect')]")
+    @FindBy(how= How.XPATH,using="//div[@role='alert' and @class='error itemLevel']")
     public static WebElement errorMessage;
 
 

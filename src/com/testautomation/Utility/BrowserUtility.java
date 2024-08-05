@@ -16,7 +16,7 @@ public class BrowserUtility {
 	}
 
 	public static WebDriver getDriver(String browserName, String url) throws InterruptedException {
-		if (driver == null) {
+
 			if (browserName.equalsIgnoreCase("Chrome")) {
 				System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver");
 				//System.setProperty("webdriver.chrome.driver", "resources/drivers/chromedriver.exe");
@@ -49,14 +49,15 @@ public class BrowserUtility {
 				driver.manage().window().maximize();
 				driver.get(url);
 			}
-		}
+
 		return driver;
 	}
 
 	public static void quitDriver() {
-		if (driver != null) {
+		{
+			driver.close();
 			driver.quit();
-			driver = null;
+
 		}
 	}
 

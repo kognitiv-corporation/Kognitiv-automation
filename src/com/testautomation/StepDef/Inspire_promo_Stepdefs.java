@@ -21,16 +21,8 @@ public class Inspire_promo_Stepdefs extends ExtentReportListener {
     private WebDriver driver;
     ExtentTest logInfo = null;
 
-    @Before("@Inspire")
-    public void setUpDriver() throws Throwable {
-        Properties properties = obj.getProperty();
-        //driver = BrowserUtility.getDriver(properties.getProperty("browser.name"), properties.getProperty("browser.baseURL"));
-        driver = BrowserUtility.getDriver();
-    }
-
-    @After("@Inspire")
-    public void tearDown() {
-        BrowserUtility.quitDriver();
+    public Inspire_promo_Stepdefs(BaseTest baseTest) throws Throwable {
+        this.driver = baseTest.getDriver();
     }
 
     @Then("Validate application name")

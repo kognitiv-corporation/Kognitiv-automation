@@ -35,8 +35,9 @@ public class TestRunner_pulse {
     	 return testNGCucumberRunner.provideScenarios();
     }
     
+/*
     @AfterClass(alwaysRun = true)
     public void tearDownClass() throws Exception {    	
         testNGCucumberRunner.finish();        
-    }
+    }*/
 }

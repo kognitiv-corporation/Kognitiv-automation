@@ -18,22 +18,13 @@ import org.openqa.selenium.WebDriver;
 import java.util.Properties;
 
 public class PulseLoginStepDef extends ExtentReportListener {
-
-    PropertiesFileReader obj = new PropertiesFileReader();
-    private WebDriver driver;
     ExtentTest logInfo = null;
+    WebDriver driver;
 
-    @Before("@Pulse")
-    public void setUpDriver() throws Throwable {
-        Properties properties = obj.getProperty();
-        driver = BrowserUtility.getDriver(properties.getProperty("browser.name"), properties.getProperty("browser.pulse_baseURL"));
-        System.out.println("Pulse :" + properties.getProperty("browser.pulse_baseURL"));
+    public PulseLoginStepDef(BaseTest baseTest) throws Throwable {
+        this.driver = baseTest.getDriver();
+
     }
-
-/*   @After("@Pulse")
-    public void tearDown() {
-        BrowserUtility.quitDriver();
-    }*/
 
     @Given("^Open Chrome browser with a URL$")
     public void open_Chrome_browser_with_a_URL() throws Throwable {
@@ -42,7 +33,7 @@ public class PulseLoginStepDef extends ExtentReportListener {
             test = extent.createTest(Feature.class, "Pulse feature Test");
             test = test.createNode(Scenario.class, "Pulse success login");
             logInfo = test.createNode(new GherkinKeyword("Given"), "open_Chrome_browser_with_URL");
-            Properties properties = obj.getProperty();
+            //Properties properties = obj.getProperty();
             //driver= BrowserUtility.getDriver(properties.getProperty("browser.name"), properties.getProperty("browser.pulse_baseURL"));
 
             logInfo.pass("Opened chrome browser and entered url");

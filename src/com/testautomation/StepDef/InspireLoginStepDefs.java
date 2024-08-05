@@ -20,20 +20,14 @@ import java.util.Properties;
 public class InspireLoginStepDefs extends ExtentReportListener {
 
     PropertiesFileReader obj = new PropertiesFileReader();
-    private WebDriver driver;
+    WebDriver driver;
     ExtentTest logInfo = null;
 
-    @Before("@Inspire")
-    public void setUpDriver() throws Throwable {
-        Properties properties = obj.getProperty();
-        driver = BrowserUtility.getDriver(properties.getProperty("browser.name"), properties.getProperty("browser.baseURL"));
-        System.out.println("Inspire :" + properties.getProperty("browser.baseURL"));
+    public InspireLoginStepDefs(BaseTest baseTest) throws Throwable {
+        this.driver = baseTest.getDriver();
     }
 
-    @After("@Inspire")
-    public void tearDown() {
-        BrowserUtility.quitDriver();
-    }
+
 
     @Given("Open Chrome browser with a Inspire URL")
     public void openChromeBrowserWithAInspireURL() {

@@ -21,10 +21,16 @@ import java.util.Properties;
 public class PulseLandingStepdefs extends ExtentReportListener {
 
     PropertiesFileReader obj = new PropertiesFileReader();
-    private WebDriver driver;
+    WebDriver driver;
     ExtentTest logInfo = null;
 
-   @Before("@Pulse")
+
+    public PulseLandingStepdefs(BaseTest baseTest) throws Throwable {
+        this.driver = baseTest.getDriver();
+
+    }
+
+/*   @Before("@Pulse")
     public void setUpDriver() throws Throwable {
         Properties properties = obj.getProperty();
         driver = BrowserUtility.getDriver(properties.getProperty("browser.name"), properties.getProperty("browser.pulse_baseURL"));
@@ -35,7 +41,7 @@ public class PulseLandingStepdefs extends ExtentReportListener {
     @After("@Pulse")
     public void tearDown() {
         BrowserUtility.quitDriver();
-    }
+    }*/
 
 
 
