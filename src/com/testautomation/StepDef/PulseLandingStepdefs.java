@@ -4,19 +4,15 @@ import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.GherkinKeyword;
 import com.aventstack.extentreports.gherkin.model.Scenario;
 import com.testautomation.Listeners.ExtentReportListener;
-import com.testautomation.PageObjects.InspirePromotionPage;
+import com.testautomation.PageObjects.inspirePages.InspirePromotionPage;
 import com.testautomation.PageObjects.pulsePages.PulseLandingPage;
-import com.testautomation.Utility.BrowserUtility;
 import com.testautomation.Utility.PropertiesFileReader;
-import cucumber.api.java.After;
-import cucumber.api.java.Before;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import io.cucumber.datatable.DataTable;
 import org.openqa.selenium.WebDriver;
 
 import java.util.List;
-import java.util.Properties;
 
 public class PulseLandingStepdefs extends ExtentReportListener {
 

@@ -5,17 +5,11 @@ import com.aventstack.extentreports.GherkinKeyword;
 import com.aventstack.extentreports.gherkin.model.Feature;
 import com.aventstack.extentreports.gherkin.model.Scenario;
 import com.testautomation.Listeners.ExtentReportListener;
-import com.testautomation.PageObjects.AppV6LoginPage;
-import com.testautomation.Utility.BrowserUtility;
-import com.testautomation.Utility.PropertiesFileReader;
-import cucumber.api.java.After;
-import cucumber.api.java.Before;
+import com.testautomation.PageObjects.pulsePages.PulseLoginPage;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.When;
 import org.openqa.selenium.WebDriver;
-
-import java.util.Properties;
 
 public class PulseLoginStepDef extends ExtentReportListener {
     ExtentTest logInfo = null;
@@ -50,7 +44,7 @@ public class PulseLoginStepDef extends ExtentReportListener {
         try {
 
             logInfo = test.createNode(new GherkinKeyword("When"), "enter_email_address");
-            new AppV6LoginPage(driver).enterEmail(emailaddress);
+            new PulseLoginPage(driver).enterEmail(emailaddress);
             logInfo.pass("Entering email address");
             logInfo.addScreenCaptureFromPath(captureScreenShot(driver));
 
@@ -65,7 +59,7 @@ public class PulseLoginStepDef extends ExtentReportListener {
         try {
 
             logInfo = test.createNode(new GherkinKeyword("And"), "enter_password");
-            new AppV6LoginPage(driver).enterPassword(password);
+            new PulseLoginPage(driver).enterPassword(password);
             logInfo.pass("Entering password");
             logInfo.addScreenCaptureFromPath(captureScreenShot(driver));
 
@@ -81,7 +75,7 @@ public class PulseLoginStepDef extends ExtentReportListener {
         try {
 
             logInfo = test.createNode(new GherkinKeyword("And"), "Click_login_button");
-            new AppV6LoginPage(driver).ClickLoginBtn();
+            new PulseLoginPage(driver).ClickLoginBtn();
             Thread.sleep(7000);
             logInfo.pass("Clicking login");
             logInfo.addScreenCaptureFromPath(captureScreenShot(driver));
@@ -96,7 +90,7 @@ public class PulseLoginStepDef extends ExtentReportListener {
     public void validateLoginMessage(String status) {
 
         ExtentTest logInfo = null;
-        AppV6LoginPage loginPage = new AppV6LoginPage(driver); // Correctly instantiate the login page object
+        PulseLoginPage loginPage = new PulseLoginPage(driver); // Correctly instantiate the login page object
 
         try {
             logInfo = test.createNode(new GherkinKeyword("And"), "Verifying login scenario");

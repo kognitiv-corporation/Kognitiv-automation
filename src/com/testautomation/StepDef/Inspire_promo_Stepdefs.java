@@ -3,17 +3,12 @@ package com.testautomation.StepDef;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.GherkinKeyword;
 import com.testautomation.Listeners.ExtentReportListener;
-import com.testautomation.PageObjects.InspirePromotionPage;
-import com.testautomation.Utility.BrowserUtility;
+import com.testautomation.PageObjects.inspirePages.InspirePromotionPage;
 import com.testautomation.Utility.PropertiesFileReader;
-import cucumber.api.java.After;
-import cucumber.api.java.Before;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.openqa.selenium.WebDriver;
-
-import java.util.Properties;
 
 public class Inspire_promo_Stepdefs extends ExtentReportListener {
 

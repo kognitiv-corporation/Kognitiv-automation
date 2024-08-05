@@ -55,7 +55,8 @@ public class ExtentReportListener {
 				}
 			
 			if (driver != null) {
-				driver.quit();
+				System.out.println("Driver is not null after test step fail");
+				//driver.quit();
 			}		
 		break;
 		

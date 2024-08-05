@@ -1,4 +1,4 @@
-package com.testautomation.PageObjects;
+package com.testautomation.PageObjects.inspirePages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;

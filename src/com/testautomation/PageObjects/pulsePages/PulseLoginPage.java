@@ -1,6 +1,5 @@
-package com.testautomation.PageObjects;
+package com.testautomation.PageObjects.pulsePages;
 
-import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -10,12 +9,12 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
-public class AppV6LoginPage {
+public class PulseLoginPage {
 
     WebDriver driver;
     WebDriverWait wait;
 
-    public AppV6LoginPage(WebDriver driver)
+    public PulseLoginPage(WebDriver driver)
     {
         this.driver=driver;
         PageFactory.initElements(driver, this);
@@ -31,7 +30,7 @@ public class AppV6LoginPage {
     @FindBy(how= How.XPATH,using="//button[@id='next']")
     public WebElement loginBtn;
 
-    @FindBy(how= How.XPATH,using="//div[@role='alert' and @class='error itemLevel']")
+    @FindBy(how= How.XPATH,using="//div[@role='alert' and @class='error pageLevel']")
     public static WebElement errorMessage;
 
 
