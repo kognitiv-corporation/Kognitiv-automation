@@ -11,16 +11,6 @@ variables:
 steps:
 
 - script: |
-    # Verify Google Chrome installation
-    if (Test-Path "C:\Program Files\Google\Chrome\Application\chrome.exe") {
-      Write-Host "Google Chrome is already installed."
-    } else {
-      Write-Host "Google Chrome not found. Installing..."
-      choco install googlechrome -y
-    }
-  displayName: 'Verify Google Chrome Installation'
-
-- script: |
     # Verify ChromeDriver installation
     if (Test-Path "C:\tools\chromedriver\chromedriver.exe") {
       Write-Host "ChromeDriver is already installed."
