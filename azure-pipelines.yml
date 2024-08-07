@@ -9,11 +9,6 @@ variables:
   JDK_VERSION: '11'
 
 steps:
-- task: Maven@3
-  inputs:
-    mavenVersionOption: 'Default'
-    mavenAuthenticateFeed: false
-
 - script: |
     # Check if Java JDK is already installed
     if ! java -version 2>&1 | grep -q 'openjdk version "11'; then
@@ -42,9 +37,11 @@ steps:
     sudo chmod +x /usr/local/bin/chromedriver
   displayName: 'Install ChromeDriver'
 
-- script: |
-    echo "Running Maven clean test with suite file"
-    mvn clean test -DSuiteXmlFile=suitefiles/PulseSuite.xml
+- task: Maven@3
+  inputs:
+    mavenVersionOption: 'Default'
+    mavenAuthenticateFeed: false
+    options: 'clean test -DSuiteXmlFile=suitefiles/PulseSuite.xml'
   displayName: 'Run Maven Tests'
 
 - task: PublishBuildArtifacts@1
