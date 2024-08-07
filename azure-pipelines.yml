@@ -7,14 +7,7 @@ pool:
 variables:
   MAVEN_OPTS: '-Xmx1024m'
   JDK_VERSION: '11'
-
-#steps:
-#- script: |
-    # Install Java JDK
-    #sudo apt-get update
-    #sudo apt-get install -y openjdk-11-jdk wget unzip
-  #displayName: 'Install Java JDK'
-
+  
 - script: |
     # Install Google Chrome
     if [ ! -f /usr/bin/google-chrome ]; then
