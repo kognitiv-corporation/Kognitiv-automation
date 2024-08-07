@@ -2,7 +2,7 @@ trigger:
 - main
 
 pool:
-  vmImage: 'ubuntu-latest'
+  vmImage: 'windows-latest'
 
 variables:
   MAVEN_OPTS: '-Xmx1024m'
@@ -11,44 +11,41 @@ variables:
 steps:
 - script: |
     # Check if Java JDK is already installed
-    if ! java -version 2>&1 | grep -q 'openjdk version "11'; then
-      echo "Java JDK 11 not found. Installing..."
-      sudo apt-get update
-      sudo apt-get install -y openjdk-11-jdk wget unzip
-    else
-      echo "Java JDK 11 is already installed."
-    fi
+    if (-not (Get-Command "java" -ErrorAction SilentlyContinue)) {
+        Write-Output "Java JDK 11 not found. Installing..."
+        choco install -y openjdk11
+    } else {
+        Write-Output "Java JDK 11 is already installed."
+    }
   displayName: 'Check and Install Java JDK'
 
 - script: |
     # Install Google Chrome if not already installed
-    if [ ! -f /usr/bin/google-chrome ]; then
-      wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-      sudo apt-get update
-      sudo apt-get install -y ./google-chrome-stable_current_amd64.deb
-    else
-      echo "Google Chrome is already installed."
-    fi
+    if (-not (Get-Command "chrome" -ErrorAction SilentlyContinue)) {
+        Write-Output "Google Chrome not found. Installing..."
+        choco install -y googlechrome
+    } else {
+        Write-Output "Google Chrome is already installed."
+    }
   displayName: 'Install Google Chrome'
 
 - script: |
-    # Download and install ChromeDriver for Chrome version 127 if not already installed
-    if [ ! -f /usr/local/bin/chromedriver ]; then
-      echo "ChromeDriver not found. Installing..."
-      wget https://storage.googleapis.com/chrome-for-testing-public/127.0.6533.99/linux64/chromedriver-linux64.zip
-      unzip chromedriver-linux64.zip
-      sudo mv -f chromedriver-linux64/chromedriver /usr/local/bin/chromedriver
-      sudo chmod +x /usr/local/bin/chromedriver
-    else
-      echo "ChromeDriver is already installed."
-    fi
-  displayName: 'Install ChromeDriver'
+    # Verify ChromeDriver installation
+    $chromeDriverPath = "C:\tools\chromedriver\chromedriver.exe"
+    if (Test-Path $chromeDriverPath) {
+        Write-Output "ChromeDriver is already installed at $chromeDriverPath"
+    } else {
+        Write-Output "ChromeDriver not found. Please check the installation."
+        exit 1
+    }
+  displayName: 'Verify ChromeDriver Installation'
 
 - script: |
-    # Run a simple curl command to test network connectivity
-    echo "Testing network connectivity..."
-    curl -I https://www.google.com
-  displayName: 'Test Network Connectivity'
+    # Run a simple test to ensure Java, Chrome, and ChromeDriver are installed correctly
+    java -version
+    chrome --version
+    & C:\tools\chromedriver\chromedriver.exe --version
+  displayName: 'Verify Installations'
 
 - task: Maven@3
   inputs:
@@ -56,13 +53,6 @@ steps:
     mavenAuthenticateFeed: false
     options: 'clean test -DSuiteXmlFile=suitefiles/PulseSuite.xml'
   displayName: 'Run Maven Tests'
-
-- script: |
-    if [ ! -d 'target/cucumber-reports' ]; then
-      echo "Cucumber reports directory not found. Exiting..."
-      exit 1
-    fi
-  displayName: 'Check Cucumber Reports Directory'
 
 - task: PublishBuildArtifacts@1
   inputs:
