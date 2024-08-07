@@ -29,6 +29,7 @@ public class BrowserUtility {
             options.addArguments("--disable-dev-shm-usage"); // Overcome limited resource problems
             options.addArguments("--remote-debugging-port=9222"); // Enable remote debugging
             options.addArguments("--disable-gpu"); // Disable GPU hardware acceleration
+            options.setHeadless(false); // Disable headless mode
 
             // Initialize the ChromeDriver with the specified options
             driver = new ChromeDriver(options);
