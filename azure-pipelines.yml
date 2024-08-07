@@ -13,13 +13,9 @@ steps:
     mavenVersionOption: 'Default'
     mavenAuthenticateFeed: false
 
-- task: MavenAuthenticate@0
-  inputs:
-    artifactsFeeds: ' '
-
-- task: DownloadSecureFile@1
-  inputs:
-    secureFile: ' '
+- script: |
+    sudo apt-get update
+    sudo apt-get install -y openjdk-11-jdk wget unzip
 
 - script: |
     # Install Google Chrome
@@ -40,13 +36,20 @@ steps:
 - task: Maven@3
   inputs:
     mavenPomFile: 'pom.xml'
-    goals: 'clean test'
+    goals: 'clean test -DSuiteXmlFile=suitefiles/PulseSuite.xml'
     options: '-DskipTests=false'
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     javaHomeOption: 'JDKVersion'
-    jdkVersionOption: '1.8'
+    jdkVersionOption: '1.11'
     mavenVersionOption: 'Default'
     mavenAuthenticateFeed: false
     mavenOptions: '-Xmx3072m'
   displayName: 'Run Tests'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    pathToPublish: 'target/cucumber-reports/Cucumber.json'
+    artifactName: 'cucumber-reports'
+    publishLocation: 'Container'
+  displayName: 'Publish Cucumber Reports'
