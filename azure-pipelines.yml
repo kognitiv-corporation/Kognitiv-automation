@@ -8,7 +8,7 @@ variables:
   MAVEN_OPTS: '-Xmx1024m'
 
 steps:
-- task: UseMaven@1
+- task: Maven@3
   inputs:
     mavenVersionOption: 'Default'
     mavenAuthenticateFeed: false
@@ -31,25 +31,4 @@ steps:
     unzip chromedriver_linux64.zip
     sudo mv -f chromedriver /usr/local/bin/chromedriver
     sudo chmod +x /usr/local/bin/chromedriver
-  displayName: 'Install ChromeDriver'
-
-- task: Maven@3
-  inputs:
-    mavenPomFile: 'pom.xml'
-    goals: 'clean test -DSuiteXmlFile=suitefiles/PulseSuite.xml'
-    options: '-DskipTests=false'
-    publishJUnitResults: true
-    testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    javaHomeOption: 'JDKVersion'
-    jdkVersionOption: '1.11'
-    mavenVersionOption: 'Default'
-    mavenAuthenticateFeed: false
-    mavenOptions: '-Xmx3072m'
-  displayName: 'Run Tests'
-
-- task: PublishBuildArtifacts@1
-  inputs:
-    pathToPublish: 'target/cucumber-reports/Cucumber.json'
-    artifactName: 'cucumber-reports'
-    publishLocation: 'Container'
-  displayName: 'Publish Cucumber Reports'
+  displayName: 
