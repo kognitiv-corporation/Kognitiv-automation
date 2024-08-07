@@ -8,27 +8,6 @@ variables:
   MAVEN_OPTS: '-Xmx1024m'
   JDK_VERSION: '11'
 
-steps:
-- script: |
-    # Check if Java JDK is already installed
-    if (-not (Get-Command "java" -ErrorAction SilentlyContinue)) {
-        Write-Output "Java JDK 11 not found. Installing..."
-        choco install -y openjdk11
-    } else {
-        Write-Output "Java JDK 11 is already installed."
-    }
-  displayName: 'Check and Install Java JDK'
-
-- script: |
-    # Install Google Chrome if not already installed
-    if (-not (Get-Command "chrome" -ErrorAction SilentlyContinue)) {
-        Write-Output "Google Chrome not found. Installing..."
-        choco install -y googlechrome
-    } else {
-        Write-Output "Google Chrome is already installed."
-    }
-  displayName: 'Install Google Chrome'
-
 - script: |
     # Verify ChromeDriver installation
     $chromeDriverPath = "C:\tools\chromedriver\chromedriver.exe"
