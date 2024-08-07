@@ -21,21 +21,27 @@ steps:
   displayName: 'Check and Install Java JDK'
 
 - script: |
-    # Install Google Chrome
+    # Install Google Chrome if not already installed
     if [ ! -f /usr/bin/google-chrome ]; then
       wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
       sudo apt-get update
       sudo apt-get install -y ./google-chrome-stable_current_amd64.deb
+    else
+      echo "Google Chrome is already installed."
     fi
   displayName: 'Install Google Chrome'
 
 - script: |
-    # Download and install ChromeDriver for Chrome version 127
-    wget https://storage.googleapis.com/chrome-for-testing-public/127.0.6533.99/linux64/chromedriver-linux64.zip
-    unzip chromedriver-linux64.zip
-    ls -l chromedriver-linux64/  # List contents to verify the correct path
-    sudo mv -f chromedriver-linux64/chromedriver /usr/local/bin/chromedriver
-    sudo chmod +x /usr/local/bin/chromedriver
+    # Download and install ChromeDriver for Chrome version 127 if not already installed
+    if [ ! -f /usr/local/bin/chromedriver ]; then
+      echo "ChromeDriver not found. Installing..."
+      wget https://storage.googleapis.com/chrome-for-testing-public/127.0.6533.99/linux64/chromedriver-linux64.zip
+      unzip chromedriver-linux64.zip
+      sudo mv -f chromedriver-linux64/chromedriver /usr/local/bin/chromedriver
+      sudo chmod +x /usr/local/bin/chromedriver
+    else
+      echo "ChromeDriver is already installed."
+    fi
   displayName: 'Install ChromeDriver'
 
 - task: Maven@3
@@ -45,9 +51,20 @@ steps:
     options: 'clean test -DSuiteXmlFile=suitefiles/PulseSuite.xml'
   displayName: 'Run Maven Tests'
 
+- script: |
+    # Publish Cucumber Reports
+    if [ -d 'target/cucumber-reports' ]; then
+      echo "Publishing Cucumber reports..."
+    else
+      echo "No Cucumber reports found to publish."
+      exit 1
+    fi
+  displayName: 'Check and Publish Cucumber Reports'
+
 - task: PublishBuildArtifacts@1
   inputs:
-    pathToPublish: 'target/cucumber-reports'
+    pathToPublish: 'target/cucumber-reports'  # Ensure this path is correct for your Cucumber reports
     artifactName: 'cucumber-reports'
     publishLocation: 'Container'
   displayName: 'Publish Cucumber Reports'
+  condition: and(succeeded(), exists('target/cucumber-reports'))
