@@ -9,11 +9,6 @@ variables:
   JDK_VERSION: '11'
 
 steps:
-- task: Maven@3
-  inputs:
-    mavenVersionOption: 'Default'
-    mavenAuthenticateFeed: false
-
 - script: |
     sudo apt-get update
     sudo apt-get install -y openjdk-11-jdk wget unzip
@@ -41,9 +36,11 @@ steps:
     sudo chmod +x /usr/local/bin/chromedriver
   displayName: 'Remove old ChromeDriver and Install New ChromeDriver'
 
-- script: |
-    echo "Running Maven clean test with suite file"
-    mvn clean test -DSuiteXmlFile=suitefiles/PulseSuite.xml
+- task: Maven@3
+  inputs:
+    mavenVersionOption: 'Default'
+    mavenAuthenticateFeed: false
+    options: 'clean test -DSuiteXmlFile=suitefiles/PulseSuite.xml'
   displayName: 'Run Maven Tests'
 
 - task: PublishBuildArtifacts@1
