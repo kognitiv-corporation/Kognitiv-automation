@@ -13,7 +13,7 @@ import org.testng.annotations.Test;
         features = "./features/"
         ,glue = {"com.testautomation.StepDef"}
         ,plugin = {"pretty", "json:target/cucumber-reports/Cucumber.json"}
-        ,tags = {"@Login"}
+        ,tags = {"@Pulse"}
         ,monochrome = true)
 public class TestRunner_pulse {
     private TestNGCucumberRunner testNGCucumberRunner;

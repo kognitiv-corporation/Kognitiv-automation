@@ -44,20 +44,21 @@ public class BrowserUtility {
             Thread.sleep(5000);*/
 
 
-				System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver");
-				//System.setProperty("webdriver.chrome.driver", "resources/drivers/new/chromedriver.exe");
-				//System.setProperty("webdriver.chrome.driver", "C:\\tools\\chromedriver\\chromedriver.exe");
-				ChromeOptions options = new ChromeOptions();
-				options.addArguments("--headless");
-				options.addArguments("--no-sandbox");
-				options.addArguments("--disable-dev-shm-usage");
-				options.addArguments("--remote-debugging-port=9222");
+            System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver");
+            //System.setProperty("webdriver.chrome.driver", "resources/drivers/new/chromedriver.exe");
+            //System.setProperty("webdriver.chrome.driver", "C:\\tools\\chromedriver\\chromedriver.exe");
+            ChromeOptions options = new ChromeOptions();
+            options.addArguments("--headless");
+            options.addArguments("--no-sandbox");
+            options.addArguments("--disable-dev-shm-usage");
+            options.addArguments("--remote-debugging-port=9222");
+            options.addArguments("--disable-gpu"); // Disable GPU hardware acceleration
 
-				driver = new ChromeDriver(options);
-				//driver = new ChromeDriver();
-				driver.manage().window().maximize();
-				driver.get(url);
-				Thread.sleep(5000);
+            driver = new ChromeDriver(options);
+            //driver = new ChromeDriver();
+            driver.manage().window().maximize();
+            driver.get(url);
+            Thread.sleep(5000);
         } else if (browserName.equalsIgnoreCase("IE")) {
             System.setProperty("webdriver.ie.driver", "L:\\TestAutomationFramework\\CucumberJarFiles\\chromedriver_win32_2.37\\chromedriver.exe");
             DesiredCapabilities capabilities = new DesiredCapabilities();
