@@ -7,7 +7,7 @@ pool:
 variables:
   MAVEN_OPTS: '-Xmx1024m'
   JDK_VERSION: '11'
-  CHROME_VERSION: '114.0.5735.90'  # Specify the version compatible with your ChromeDriver
+  CHROME_VERSION: '114.0.5735.90'  # Update to the version compatible with your driver
 
 steps:
 - script: |
@@ -23,14 +23,13 @@ steps:
 
 - script: |
     # Remove any existing Google Chrome installation
-    sudo apt-get remove -y google-chrome-stable
+    sudo apt-get remove -y google-chrome-stable || true
     
     # Install specific version of Google Chrome
-    wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+    wget https://example.com/path/to/google-chrome-stable_current_amd64.deb  # Replace with actual URL
     sudo apt-get update
     sudo apt-get install -y ./google-chrome-stable_current_amd64.deb
-    sudo apt-get install -y --allow-downgrades google-chrome-stable=${CHROME_VERSION}-1
-  displayName: 'Downgrade Google Chrome'
+  displayName: 'Install Specific Version of Google Chrome'
 
 - script: |
     # Remove old ChromeDriver if it exists
