@@ -7,7 +7,19 @@ pool:
 variables:
   MAVEN_OPTS: '-Xmx1024m'
   JDK_VERSION: '11'
-  
+
+steps:
+- script: |
+    # Check if Java JDK is already installed
+    if ! java -version 2>&1 | grep -q 'openjdk version "11'; then
+      echo "Java JDK 11 not found. Installing..."
+      sudo apt-get update
+      sudo apt-get install -y openjdk-11-jdk wget unzip
+    else
+      echo "Java JDK 11 is already installed."
+    fi
+  displayName: 'Check and Install Java JDK'
+
 - script: |
     # Install Google Chrome
     if [ ! -f /usr/bin/google-chrome ]; then
