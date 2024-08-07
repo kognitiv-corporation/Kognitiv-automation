@@ -7,7 +7,7 @@ pool:
 variables:
   MAVEN_OPTS: '-Xmx1024m'
   JDK_VERSION: '11'
-  CHROME_VERSION: '114.0.5735.90'  # Update to the version compatible with your driver
+  CHROME_VERSION: '127.0.6533.99'  # Updated to match the version of Chrome installed
 
 steps:
 - script: |
@@ -26,10 +26,10 @@ steps:
     sudo apt-get remove -y google-chrome-stable || true
     
     # Install specific version of Google Chrome
-    wget https://example.com/path/to/google-chrome-stable_current_amd64.deb  # Replace with actual URL
+    wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
     sudo apt-get update
     sudo apt-get install -y ./google-chrome-stable_current_amd64.deb
-  displayName: 'Install Specific Version of Google Chrome'
+  displayName: 'Install Google Chrome'
 
 - script: |
     # Remove old ChromeDriver if it exists
@@ -37,10 +37,9 @@ steps:
       sudo rm /usr/local/bin/chromedriver
     fi
 
-    # Download and install the correct ChromeDriver for Chrome version 114
-    CHROME_DRIVER_VERSION="114.0.5735.90"  # Replace this with the exact version if necessary
-    wget -N https://chromedriver.storage.googleapis.com/${CHROME_DRIVER_VERSION}/chromedriver_linux64.zip
-    unzip chromedriver_linux64.zip
+    # Download and install the correct ChromeDriver for Chrome version 127
+    wget https://storage.googleapis.com/chrome-for-testing-public/127.0.6533.99/linux64/chrome-linux64.zip
+    unzip chrome-linux64.zip
     sudo mv -f chromedriver /usr/local/bin/chromedriver
     sudo chmod +x /usr/local/bin/chromedriver
   displayName: 'Install ChromeDriver'
