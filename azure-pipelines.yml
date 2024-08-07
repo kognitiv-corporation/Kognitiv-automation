@@ -7,7 +7,6 @@ pool:
 variables:
   MAVEN_OPTS: '-Xmx1024m'
   JDK_VERSION: '11'
-  CHROME_DRIVER_VERSION: 'latest' # Default to 'latest'
 
 steps:
 - script: |
@@ -31,10 +30,16 @@ steps:
       sudo rm /usr/local/bin/chromedriver
     fi
 
-    # Fetch the latest ChromeDriver version
-    CHROME_DRIVER_VERSION=$(curl -sS https://chromedriver.storage.googleapis.com/LATEST_RELEASE)
+    # Fetch the latest ChromeDriver version that matches the installed Chrome version
+    CHROME_VERSION=$(google-chrome --version | grep -oP '\d+\.\d+')
+    CHROME_DRIVER_VERSION=$(curl -sS "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_${CHROME_VERSION}")
 
-    # Download and install ChromeDriver
+    if [ -z "$CHROME_DRIVER_VERSION" ]; then
+      echo "Could not find ChromeDriver version for Chrome version ${CHROME_VERSION}"
+      exit 1
+    fi
+
+    # Download and install the correct ChromeDriver
     wget -N https://chromedriver.storage.googleapis.com/$CHROME_DRIVER_VERSION/chromedriver_linux64.zip
     unzip chromedriver_linux64.zip
     sudo mv -f chromedriver /usr/local/bin/chromedriver
