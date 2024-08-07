@@ -9,15 +9,6 @@ variables:
   JDK_VERSION: '11'
 
 steps:
-- script: |
-    # Check if Java JDK is already installed
-    if (!(java -version 2>&1 | Select-String -Pattern 'openjdk version "11')) {
-      Write-Host "Java JDK 11 not found. Installing..."
-      choco install openjdk11 -y
-    } else {
-      Write-Host "Java JDK 11 is already installed."
-    }
-  displayName: 'Check and Install Java JDK'
 
 - script: |
     # Verify Google Chrome installation
