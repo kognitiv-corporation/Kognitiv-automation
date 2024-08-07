@@ -4,7 +4,6 @@ import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.GherkinKeyword;
 import com.aventstack.extentreports.gherkin.model.Scenario;
 import com.testautomation.Listeners.ExtentReportListener;
-import com.testautomation.PageObjects.inspirePages.InspirePromotionPage;
 import com.testautomation.PageObjects.pulsePages.PulseLandingPage;
 import com.testautomation.Utility.PropertiesFileReader;
 import cucumber.api.java.en.And;
@@ -50,7 +49,7 @@ public class PulseLandingStepdefs extends ExtentReportListener {
             logInfo = test.createNode(new GherkinKeyword("And"), "Verifying expected " + pageName + " page is loaded");
             new PulseLandingPage(driver).validatePageIsLoading(pageName);
             new PulseLandingPage(driver).getTitle();
-            logInfo.pass("Title : " + new InspirePromotionPage(driver).getTitle());
+            logInfo.pass("Title : " + new PulseLandingPage(driver).getTitle());
             logInfo.addScreenCaptureFromPath(captureScreenShot(driver));
 
         } catch (AssertionError | Exception e) {
@@ -159,7 +158,7 @@ public class PulseLandingStepdefs extends ExtentReportListener {
             logInfo = test.createNode(new GherkinKeyword("And"), "Verifying expected " + menuItem + " page is loaded");
             new PulseLandingPage(driver).ClickMainMenu(menuItem);
             new PulseLandingPage(driver).getTitle();
-            logInfo.pass("Title : " + new InspirePromotionPage(driver).getTitle());
+            logInfo.pass("Title : " + new PulseLandingPage(driver).getTitle());
             logInfo.addScreenCaptureFromPath(captureScreenShot(driver));
 
         } catch (AssertionError | Exception e) {
