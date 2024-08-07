@@ -10,9 +10,15 @@ variables:
 
 steps:
 - script: |
-    sudo apt-get update
-    sudo apt-get install -y openjdk-11-jdk wget unzip
-  displayName: 'Install Java JDK'
+    # Check if Java JDK is already installed
+    if ! java -version 2>&1 | grep -q 'openjdk version "11'; then
+      echo "Java JDK 11 not found. Installing..."
+      sudo apt-get update
+      sudo apt-get install -y openjdk-11-jdk wget unzip
+    else
+      echo "Java JDK 11 is already installed."
+    fi
+  displayName: 'Check and Install Java JDK'
 
 - script: |
     # Install Google Chrome
@@ -24,17 +30,12 @@ steps:
   displayName: 'Install Google Chrome'
 
 - script: |
-    # Remove old ChromeDriver if it exists
-    if [ -f /usr/local/bin/chromedriver ]; then
-      sudo rm -f /usr/local/bin/chromedriver
-    fi
-
     # Install ChromeDriver for Chrome version 127
-    wget https://storage.googleapis.com/chrome-for-testing-public/127.0.6533.99/linux64/chromedriver_linux64.zip
-    unzip chromedriver_linux64.zip
+    wget https://storage.googleapis.com/chrome-for-testing-public/127.0.6533.99/linux64/chrome-linux64.zip
+    unzip chrome-linux64.zip
     sudo mv -f chromedriver /usr/local/bin/chromedriver
     sudo chmod +x /usr/local/bin/chromedriver
-  displayName: 'Remove old ChromeDriver and Install New ChromeDriver'
+  displayName: 'Install ChromeDriver'
 
 - task: Maven@3
   inputs:
