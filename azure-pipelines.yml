@@ -1,0 +1,52 @@
+trigger:
+- main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  MAVEN_OPTS: '-Xmx1024m'
+
+steps:
+- task: UseMaven@1
+  inputs:
+    mavenVersionOption: 'Default'
+    mavenAuthenticateFeed: false
+
+- task: MavenAuthenticate@0
+  inputs:
+    artifactsFeeds: ' '
+
+- task: DownloadSecureFile@1
+  inputs:
+    secureFile: ' '
+
+- script: |
+    # Install Google Chrome
+    wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+    sudo apt-get update
+    sudo apt-get install -y ./google-chrome-stable_current_amd64.deb
+  displayName: 'Install Google Chrome'
+
+- script: |
+    # Install ChromeDriver
+    CHROME_DRIVER_VERSION=$(curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE)
+    wget -N https://chromedriver.storage.googleapis.com/$CHROME_DRIVER_VERSION/chromedriver_linux64.zip
+    unzip chromedriver_linux64.zip
+    sudo mv -f chromedriver /usr/local/bin/chromedriver
+    sudo chmod +x /usr/local/bin/chromedriver
+  displayName: 'Install ChromeDriver'
+
+- task: Maven@3
+  inputs:
+    mavenPomFile: 'pom.xml'
+    goals: 'clean test'
+    options: '-DskipTests=false'
+    publishJUnitResults: true
+    testResultsFiles: '**/surefire-reports/TEST-*.xml'
+    javaHomeOption: 'JDKVersion'
+    jdkVersionOption: '1.8'
+    mavenVersionOption: 'Default'
+    mavenAuthenticateFeed: false
+    mavenOptions: '-Xmx3072m'
+  displayName: 'Run Tests'
