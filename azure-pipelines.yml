@@ -7,6 +7,7 @@ pool:
 variables:
   MAVEN_OPTS: '-Xmx1024m'
   JDK_VERSION: '11'
+  CHROME_VERSION: '114.0.5735.90'  # Specify the version compatible with your ChromeDriver
 
 steps:
 - script: |
@@ -21,13 +22,15 @@ steps:
   displayName: 'Check and Install Java JDK'
 
 - script: |
-    # Install Google Chrome
-    if [ ! -f /usr/bin/google-chrome ]; then
-      wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-      sudo apt-get update
-      sudo apt-get install -y ./google-chrome-stable_current_amd64.deb
-    fi
-  displayName: 'Install Google Chrome'
+    # Remove any existing Google Chrome installation
+    sudo apt-get remove -y google-chrome-stable
+    
+    # Install specific version of Google Chrome
+    wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+    sudo apt-get update
+    sudo apt-get install -y ./google-chrome-stable_current_amd64.deb
+    sudo apt-get install -y --allow-downgrades google-chrome-stable=${CHROME_VERSION}-1
+  displayName: 'Downgrade Google Chrome'
 
 - script: |
     # Remove old ChromeDriver if it exists
@@ -35,25 +38,13 @@ steps:
       sudo rm /usr/local/bin/chromedriver
     fi
 
-    # Fetch the installed Chrome version (major version only)
-    CHROME_VERSION=$(google-chrome --version | grep -oP '\d+\.\d+')
-
-    # Fetch the appropriate ChromeDriver version for the installed Chrome version
-    CHROME_DRIVER_VERSION=$(curl -sS "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_${CHROME_VERSION}")
-
-    if [ -z "$CHROME_DRIVER_VERSION" ]; then
-      echo "Could not find ChromeDriver version for Chrome version ${CHROME_VERSION}"
-      exit 1
-    fi
-
-    echo "ChromeDriver version ${CHROME_DRIVER_VERSION} found for Chrome version ${CHROME_VERSION}."
-
-    # Download and install the correct ChromeDriver
+    # Download and install the correct ChromeDriver for Chrome version 114
+    CHROME_DRIVER_VERSION="114.0.5735.90"  # Replace this with the exact version if necessary
     wget -N https://chromedriver.storage.googleapis.com/${CHROME_DRIVER_VERSION}/chromedriver_linux64.zip
     unzip chromedriver_linux64.zip
     sudo mv -f chromedriver /usr/local/bin/chromedriver
     sudo chmod +x /usr/local/bin/chromedriver
-  displayName: 'Remove old ChromeDriver and Install New ChromeDriver'
+  displayName: 'Install ChromeDriver'
 
 - task: Maven@3
   inputs:
