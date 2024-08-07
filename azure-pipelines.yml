@@ -10,12 +10,6 @@ variables:
 
 steps:
 
-- script: |
-    # Run a simple ping command to test network connectivity
-    Write-Host "Testing network connectivity..."
-    ping www.google.com
-  displayName: 'Test Network Connectivity'
-
 - task: Maven@3
   inputs:
     mavenVersionOption: 'Default'
