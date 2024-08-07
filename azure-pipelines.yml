@@ -52,19 +52,14 @@ steps:
   displayName: 'Run Maven Tests'
 
 - script: |
-    # Publish Cucumber Reports
-    if [ -d 'target/cucumber-reports' ]; then
-      echo "Publishing Cucumber reports..."
-    else
-      echo "No Cucumber reports found to publish."
+    if [ ! -d 'target/cucumber-reports' ]; then
+      echo "Cucumber reports directory not found. Exiting..."
       exit 1
     fi
-  displayName: 'Check and Publish Cucumber Reports'
+  displayName: 'Check Cucumber Reports Directory'
 
 - task: PublishBuildArtifacts@1
   inputs:
     pathToPublish: 'target/cucumber-reports'  # Ensure this path is correct for your Cucumber reports
     artifactName: 'cucumber-reports'
-    publishLocation: 'Container'
-  displayName: 'Publish Cucumber Reports'
-  condition: and(succeeded(), exists('target/cucumber-reports'))
+    publishLocation: 
