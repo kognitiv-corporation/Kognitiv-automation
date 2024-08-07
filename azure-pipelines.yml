@@ -32,8 +32,8 @@ steps:
 - script: |
     # Install ChromeDriver for Chrome version 127
     wget https://storage.googleapis.com/chrome-for-testing-public/127.0.6533.99/linux64/chrome-linux64.zip
-    unzip chrome-linux64.zip
-    sudo mv -f chromedriver /usr/local/bin/chromedriver
+    unzip chrome-linux64.zip -d chrome-linux64
+    sudo mv -f chrome-linux64/chromedriver /usr/local/bin/chromedriver
     sudo chmod +x /usr/local/bin/chromedriver
   displayName: 'Install ChromeDriver'
 
