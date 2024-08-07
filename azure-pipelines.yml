@@ -2,29 +2,50 @@ trigger:
 - main
 
 pool:
-  vmImage: 'windows-latest'
+  vmImage: 'windows-2019'
 
 variables:
   MAVEN_OPTS: '-Xmx1024m'
   JDK_VERSION: '11'
 
+steps:
+- script: |
+    # Check if Java JDK is already installed
+    if (!(java -version 2>&1 | Select-String -Pattern 'openjdk version "11')) {
+      Write-Host "Java JDK 11 not found. Installing..."
+      choco install openjdk11 -y
+    } else {
+      Write-Host "Java JDK 11 is already installed."
+    }
+  displayName: 'Check and Install Java JDK'
+
+- script: |
+    # Verify Google Chrome installation
+    if (Test-Path "C:\Program Files\Google\Chrome\Application\chrome.exe") {
+      Write-Host "Google Chrome is already installed."
+    } else {
+      Write-Host "Google Chrome not found. Installing..."
+      choco install googlechrome -y
+    }
+  displayName: 'Verify Google Chrome Installation'
+
 - script: |
     # Verify ChromeDriver installation
-    $chromeDriverPath = "C:\tools\chromedriver\chromedriver.exe"
-    if (Test-Path $chromeDriverPath) {
-        Write-Output "ChromeDriver is already installed at $chromeDriverPath"
+    if (Test-Path "C:\tools\chromedriver\chromedriver.exe") {
+      Write-Host "ChromeDriver is already installed."
     } else {
-        Write-Output "ChromeDriver not found. Please check the installation."
-        exit 1
+      Write-Host "ChromeDriver not found. Installing..."
+      New-Item -ItemType Directory -Force -Path "C:\tools\chromedriver"
+      Invoke-WebRequest -Uri https://storage.googleapis.com/chrome-for-testing-public/127.0.6533.99/win64/chromedriver-win64.zip -OutFile chromedriver-win64.zip
+      Expand-Archive -Path chromedriver-win64.zip -DestinationPath "C:\tools\chromedriver"
     }
   displayName: 'Verify ChromeDriver Installation'
 
 - script: |
-    # Run a simple test to ensure Java, Chrome, and ChromeDriver are installed correctly
-    java -version
-    chrome --version
-    & C:\tools\chromedriver\chromedriver.exe --version
-  displayName: 'Verify Installations'
+    # Run a simple ping command to test network connectivity
+    Write-Host "Testing network connectivity..."
+    ping www.google.com
+  displayName: 'Test Network Connectivity'
 
 - task: Maven@3
   inputs:
@@ -33,9 +54,16 @@ variables:
     options: 'clean test -DSuiteXmlFile=suitefiles/PulseSuite.xml'
   displayName: 'Run Maven Tests'
 
+- script: |
+    if (!(Test-Path 'target\cucumber-reports')) {
+      Write-Host "Cucumber reports directory not found. Exiting..."
+      exit 1
+    }
+  displayName: 'Check Cucumber Reports Directory'
+
 - task: PublishBuildArtifacts@1
   inputs:
-    pathToPublish: 'target/cucumber-reports'  # Ensure this path is correct for your Cucumber reports
+    pathToPublish: 'target\cucumber-reports'  # Ensure this path is correct for your Cucumber reports
     artifactName: 'cucumber-reports'
     publishLocation: 'Container'
   displayName: 'Publish Cucumber Reports'
