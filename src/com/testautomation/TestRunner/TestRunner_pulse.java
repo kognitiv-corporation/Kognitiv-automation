@@ -13,7 +13,7 @@ import org.testng.annotations.Test;
         features = "./features/"
         ,glue = {"com.testautomation.StepDef"}
         ,plugin = {"pretty", "json:target/cucumber-reports/Cucumber.json"}
-        ,tags = {"@Pulse"}
+        ,tags = {"@Login"}
         ,monochrome = true)
 public class TestRunner_pulse {
     private TestNGCucumberRunner testNGCucumberRunner;
@@ -35,9 +35,9 @@ public class TestRunner_pulse {
     	 return testNGCucumberRunner.provideScenarios();
     }
     
-/*
+
     @AfterClass(alwaysRun = true)
     public void tearDownClass() throws Exception {    	
         testNGCucumberRunner.finish();        
-    }*/
+    }
 }
