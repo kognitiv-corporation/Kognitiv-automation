@@ -7,48 +7,43 @@ pool:
 variables:
   MAVEN_OPTS: '-Xmx1024m'
   JDK_VERSION: '11'
-  CHROME_VERSION: '127.0.6533.99'  # Updated to match the version of Chrome installed
 
 steps:
-- script: |
-    # Check if Java JDK is already installed
-    if ! java -version 2>&1 | grep -q 'openjdk version "11'; then
-      echo "Java JDK 11 not found. Installing..."
-      sudo apt-get update
-      sudo apt-get install -y openjdk-11-jdk wget unzip
-    else
-      echo "Java JDK 11 is already installed."
-    fi
-  displayName: 'Check and Install Java JDK'
+- task: Maven@3
+  inputs:
+    mavenVersionOption: 'Default'
+    mavenAuthenticateFeed: false
 
 - script: |
-    # Remove any existing Google Chrome installation
-    sudo apt-get remove -y google-chrome-stable || true
-    
-    # Install specific version of Google Chrome
-    wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
     sudo apt-get update
-    sudo apt-get install -y ./google-chrome-stable_current_amd64.deb
+    sudo apt-get install -y openjdk-11-jdk wget unzip
+  displayName: 'Install Java JDK'
+
+- script: |
+    # Install Google Chrome
+    if [ ! -f /usr/bin/google-chrome ]; then
+      wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+      sudo apt-get update
+      sudo apt-get install -y ./google-chrome-stable_current_amd64.deb
+    fi
   displayName: 'Install Google Chrome'
 
 - script: |
     # Remove old ChromeDriver if it exists
     if [ -f /usr/local/bin/chromedriver ]; then
-      sudo rm /usr/local/bin/chromedriver
+      sudo rm -f /usr/local/bin/chromedriver
     fi
 
-    # Download and install the correct ChromeDriver for Chrome version 127
-    wget https://storage.googleapis.com/chrome-for-testing-public/127.0.6533.99/linux64/chrome-linux64.zip
-    unzip chrome-linux64.zip
+    # Install ChromeDriver for Chrome version 127
+    wget https://storage.googleapis.com/chrome-for-testing-public/127.0.6533.99/linux64/chromedriver_linux64.zip
+    unzip chromedriver_linux64.zip
     sudo mv -f chromedriver /usr/local/bin/chromedriver
     sudo chmod +x /usr/local/bin/chromedriver
-  displayName: 'Install ChromeDriver'
+  displayName: 'Remove old ChromeDriver and Install New ChromeDriver'
 
-- task: Maven@3
-  inputs:
-    mavenVersionOption: 'Default'
-    mavenAuthenticateFeed: false
-    options: 'clean test -DSuiteXmlFile=suitefiles/PulseSuite.xml'
+- script: |
+    echo "Running Maven clean test with suite file"
+    mvn clean test -DSuiteXmlFile=suitefiles/PulseSuite.xml
   displayName: 'Run Maven Tests'
 
 - task: PublishBuildArtifacts@1
