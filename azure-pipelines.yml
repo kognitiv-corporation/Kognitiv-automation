@@ -6,6 +6,7 @@ pool:
 
 variables:
   MAVEN_OPTS: '-Xmx1024m'
+  JDK_VERSION: '11'
 
 steps:
 - task: Maven@3
@@ -16,19 +17,36 @@ steps:
 - script: |
     sudo apt-get update
     sudo apt-get install -y openjdk-11-jdk wget unzip
+  displayName: 'Install Java JDK'
 
 - script: |
     # Install Google Chrome
-    wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-    sudo apt-get update
-    sudo apt-get install -y ./google-chrome-stable_current_amd64.deb
+    if [ ! -f /usr/bin/google-chrome ]; then
+      wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+      sudo apt-get update
+      sudo apt-get install -y ./google-chrome-stable_current_amd64.deb
+    fi
   displayName: 'Install Google Chrome'
 
 - script: |
     # Install ChromeDriver
-    CHROME_DRIVER_VERSION=$(curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE)
-    wget -N https://chromedriver.storage.googleapis.com/$CHROME_DRIVER_VERSION/chromedriver_linux64.zip
-    unzip chromedriver_linux64.zip
-    sudo mv -f chromedriver /usr/local/bin/chromedriver
-    sudo chmod +x /usr/local/bin/chromedriver
-  displayName: 
+    if [ ! -f /usr/local/bin/chromedriver ]; then
+      CHROME_DRIVER_VERSION=$(curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE)
+      wget -N https://chromedriver.storage.googleapis.com/$CHROME_DRIVER_VERSION/chromedriver_linux64.zip
+      unzip chromedriver_linux64.zip
+      sudo mv -f chromedriver /usr/local/bin/chromedriver
+      sudo chmod +x /usr/local/bin/chromedriver
+    fi
+  displayName: 'Install ChromeDriver'
+
+- script: |
+    echo "Running Maven clean test with suite file"
+    mvn clean test -DSuiteXmlFile=suitefiles/PulseSuite.xml
+  displayName: 'Run Maven Tests'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    pathToPublish: 'target/cucumber-reports'
+    artifactName: 'cucumber-reports'
+    publishLocation: 'Container'
+  displayName: 'Publish Cucumber Reports'
