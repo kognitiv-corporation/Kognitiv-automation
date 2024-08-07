@@ -19,7 +19,7 @@ public class BrowserUtility {
 
         if (browserName.equalsIgnoreCase("Chrome")) {
 
-            // Set the path to the ChromeDriver executable
+/*            // Set the path to the ChromeDriver executable
             System.setProperty("webdriver.chrome.driver", "resources/drivers/new/chromedriver.exe");
 
             // Set Chrome options for headless mode
@@ -29,7 +29,7 @@ public class BrowserUtility {
             options.addArguments("--disable-dev-shm-usage"); // Overcome limited resource problems
             options.addArguments("--remote-debugging-port=9222"); // Enable remote debugging
             options.addArguments("--disable-gpu"); // Disable GPU hardware acceleration
-            options.setHeadless(false); // Disable headless mode
+            //options.setHeadless(false); // Disable headless mode
 
             // Initialize the ChromeDriver with the specified options
             driver = new ChromeDriver(options);
@@ -41,11 +41,11 @@ public class BrowserUtility {
             driver.get(url);
 
             // Pause for 5 seconds to allow the page to load
-            Thread.sleep(5000);
+            Thread.sleep(5000);*/
 
 
-/*				//System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver");
-				System.setProperty("webdriver.chrome.driver", "resources/drivers/new/chromedriver.exe");
+				System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver");
+				//System.setProperty("webdriver.chrome.driver", "resources/drivers/new/chromedriver.exe");
 				//System.setProperty("webdriver.chrome.driver", "C:\\tools\\chromedriver\\chromedriver.exe");
 				ChromeOptions options = new ChromeOptions();
 				options.addArguments("--headless");
@@ -57,7 +57,7 @@ public class BrowserUtility {
 				//driver = new ChromeDriver();
 				driver.manage().window().maximize();
 				driver.get(url);
-				Thread.sleep(5000);*/
+				Thread.sleep(5000);
         } else if (browserName.equalsIgnoreCase("IE")) {
             System.setProperty("webdriver.ie.driver", "L:\\TestAutomationFramework\\CucumberJarFiles\\chromedriver_win32_2.37\\chromedriver.exe");
             DesiredCapabilities capabilities = new DesiredCapabilities();
