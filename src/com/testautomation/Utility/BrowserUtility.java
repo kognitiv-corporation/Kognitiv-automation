@@ -26,8 +26,8 @@ public class BrowserUtility {
 				options.addArguments("--disable-dev-shm-usage");
 				options.addArguments("--remote-debugging-port=9222");
 
-				driver = new ChromeDriver(options);
-				//driver = new ChromeDriver();
+				//driver = new ChromeDriver(options);
+				driver = new ChromeDriver();
 				driver.manage().window().maximize();
 				driver.get(url);
 				Thread.sleep(5000);
