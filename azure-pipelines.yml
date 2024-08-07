@@ -46,6 +46,8 @@ steps:
       exit 1
     fi
 
+    echo "ChromeDriver version ${CHROME_DRIVER_VERSION} found for Chrome version ${CHROME_VERSION}."
+
     # Download and install the correct ChromeDriver
     wget -N https://chromedriver.storage.googleapis.com/${CHROME_DRIVER_VERSION}/chromedriver_linux64.zip
     unzip chromedriver_linux64.zip
