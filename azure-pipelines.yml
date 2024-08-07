@@ -25,15 +25,18 @@ steps:
   displayName: 'Install Google Chrome'
 
 - script: |
-    # Install ChromeDriver
-    if [ ! -f /usr/local/bin/chromedriver ]; then
-      CHROME_DRIVER_VERSION=$(curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE)
-      wget -N https://chromedriver.storage.googleapis.com/$CHROME_DRIVER_VERSION/chromedriver_linux64.zip
-      unzip chromedriver_linux64.zip
-      sudo mv -f chromedriver /usr/local/bin/chromedriver
-      sudo chmod +x /usr/local/bin/chromedriver
+    # Remove old ChromeDriver if it exists
+    if [ -f /usr/local/bin/chromedriver ]; then
+      sudo rm /usr/local/bin/chromedriver
     fi
-  displayName: 'Install ChromeDriver'
+
+    # Install ChromeDriver
+    CHROME_DRIVER_VERSION=$(curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE_127) # Update this to your Chrome major version
+    wget -N https://chromedriver.storage.googleapis.com/$CHROME_DRIVER_VERSION/chromedriver_linux64.zip
+    unzip chromedriver_linux64.zip
+    sudo mv -f chromedriver /usr/local/bin/chromedriver
+    sudo chmod +x /usr/local/bin/chromedriver
+  displayName: 'Remove old ChromeDriver and Install New ChromeDriver'
 
 - task: Maven@3
   inputs:
