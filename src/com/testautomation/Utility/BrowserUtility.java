@@ -19,7 +19,7 @@ public class BrowserUtility {
 
 			if (browserName.equalsIgnoreCase("Chrome")) {
 				//System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver");
-				System.setProperty("webdriver.chrome.driver", "resources/drivers/chromedriver.exe");
+				System.setProperty("webdriver.chrome.driver", "resources/drivers/new/chromedriver.exe");
 				//System.setProperty("webdriver.chrome.driver", "C:\\tools\\chromedriver\\chromedriver.exe");
 				ChromeOptions options = new ChromeOptions();
 				options.addArguments("--headless");
