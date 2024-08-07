@@ -11,18 +11,6 @@ variables:
 steps:
 
 - script: |
-    # Verify ChromeDriver installation
-    if (Test-Path "C:\tools\chromedriver\chromedriver.exe") {
-      Write-Host "ChromeDriver is already installed."
-    } else {
-      Write-Host "ChromeDriver not found. Installing..."
-      New-Item -ItemType Directory -Force -Path "C:\tools\chromedriver"
-      Invoke-WebRequest -Uri https://storage.googleapis.com/chrome-for-testing-public/127.0.6533.99/win64/chromedriver-win64.zip -OutFile chromedriver-win64.zip
-      Expand-Archive -Path chromedriver-win64.zip -DestinationPath "C:\tools\chromedriver"
-    }
-  displayName: 'Verify ChromeDriver Installation'
-
-- script: |
     # Run a simple ping command to test network connectivity
     Write-Host "Testing network connectivity..."
     ping www.google.com
