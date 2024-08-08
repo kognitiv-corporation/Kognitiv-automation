@@ -50,7 +50,7 @@ public class BrowserUtility {
 
             // Set the path to the ChromeDriver executable dynamically
             //System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver");
-            System.setProperty("webdriver.chrome.driver", userDir + "resources/drivers/linux64/chromedriver");
+            System.setProperty("webdriver.chrome.driver", userDir + "/resources/drivers/linux64/chromedriver");
 
             //Win
             //System.setProperty("webdriver.chrome.driver", "resources/drivers/win64_2/chromedriver.exe");
