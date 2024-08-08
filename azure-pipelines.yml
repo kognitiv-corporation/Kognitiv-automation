@@ -7,8 +7,6 @@ pool:
 variables:
   MAVEN_OPTS: '-Xmx1024m'
   JDK_VERSION: '11'
-  CHROME_VERSION: '113.0.5672.126'
-  CHROMEDRIVER_VERSION: '113.0.5672.126'
 
 steps:
 - script: |
@@ -23,41 +21,26 @@ steps:
   displayName: 'Check and Install Java JDK'
 
 - script: |
-    # Uninstall existing Google Chrome and ChromeDriver
-    if [ -f /usr/bin/google-chrome ]; then
-      echo "Removing existing Google Chrome..."
-      sudo apt-get remove -y google-chrome-stable
-    fi
-    if [ -f /usr/local/bin/chromedriver ]; then
-      echo "Removing existing ChromeDriver..."
-      sudo rm -f /usr/local/bin/chromedriver
-    fi
-  displayName: 'Uninstall Existing Google Chrome and ChromeDriver'
+    # Install Google Chrome version 112
+    echo "Installing Google Chrome version 112..."
+    wget https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_112.0.5615.49-1_amd64.deb
+    sudo dpkg -i google-chrome-stable_112.0.5615.49-1_amd64.deb
+    sudo apt-get -f install -y
+  displayName: 'Install Google Chrome Version 112'
 
 - script: |
-    # Install Google Chrome version 113
-    echo "Installing Google Chrome version 113..."
-    wget https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_113.0.5672.126-1_amd64.deb
-    sudo apt-get update
-    sudo apt-get install -y ./google-chrome-stable_113.0.5672.126-1_amd64.deb
-  displayName: 'Install Google Chrome Version 113'
-
-- script: |
-    # Install ChromeDriver version 113
-    echo "Installing ChromeDriver version 113..."
-    wget https://chromedriver.storage.googleapis.com/113.0.5672.126/chromedriver_linux64.zip
+    # Install ChromeDriver version 112
+    echo "Installing ChromeDriver version 112..."
+    wget https://chromedriver.storage.googleapis.com/112.0.5615.49/chromedriver_linux64.zip
     unzip chromedriver_linux64.zip
-    sudo mv -f chromedriver /usr/local/bin/chromedriver
+    sudo mv chromedriver /usr/local/bin/chromedriver
     sudo chmod +x /usr/local/bin/chromedriver
-    rm chromedriver_linux64.zip
-  displayName: 'Install ChromeDriver Version 113'
+  displayName: 'Install ChromeDriver Version 112'
 
 - script: |
-    # Print versions of Google Chrome and ChromeDriver
-    echo "Google Chrome version:"
-    google-chrome --version
-    echo "ChromeDriver version:"
-    chromedriver --version
+    # Print Google Chrome and ChromeDriver versions
+    echo "Google Chrome version: $(google-chrome --version)"
+    echo "ChromeDriver version: $(chromedriver --version)"
   displayName: 'Print Google Chrome and ChromeDriver Versions'
 
 - script: |
@@ -82,7 +65,7 @@ steps:
 
 - task: PublishBuildArtifacts@1
   inputs:
-    pathToPublish: 'target/cucumber-reports'  # Ensure this path is correct for your Cucumber reports
+    pathToPublish: 'target/cucumber-reports'
     artifactName: 'cucumber-reports'
     publishLocation: 'Container'
   displayName: 'Publish Cucumber Reports'
