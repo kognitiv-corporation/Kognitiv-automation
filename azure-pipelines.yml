@@ -7,8 +7,8 @@ pool:
 variables:
   MAVEN_OPTS: '-Xmx1024m'
   JDK_VERSION: '11'
-  CHROME_VERSION: 'latest'  # Use 'latest' for the most recent stable version
-  CHROMEDRIVER_VERSION: 'latest'  # Corresponding version for the latest Chrome
+  CHROME_VERSION: '113.0.5672.126'
+  CHROMEDRIVER_VERSION: '113.0.5672.126'
 
 steps:
 - script: |
@@ -23,31 +23,34 @@ steps:
   displayName: 'Check and Install Java JDK'
 
 - script: |
-    # Uninstall existing Google Chrome
+    # Uninstall existing Google Chrome and ChromeDriver
     if [ -f /usr/bin/google-chrome ]; then
       echo "Removing existing Google Chrome..."
       sudo apt-get remove -y google-chrome-stable
     fi
-  displayName: 'Uninstall Existing Google Chrome'
+    if [ -f /usr/local/bin/chromedriver ]; then
+      echo "Removing existing ChromeDriver..."
+      sudo rm -f /usr/local/bin/chromedriver
+    fi
+  displayName: 'Uninstall Existing Google Chrome and ChromeDriver'
 
 - script: |
-    # Install the latest stable version of Google Chrome
-    echo "Installing the latest stable version of Google Chrome..."
-    wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+    # Install Google Chrome version 113
+    echo "Installing Google Chrome version 113..."
+    wget https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_113.0.5672.126-1_amd64.deb
     sudo apt-get update
-    sudo apt-get install -y ./google-chrome-stable_current_amd64.deb
-  displayName: 'Install Latest Google Chrome'
+    sudo apt-get install -y ./google-chrome-stable_113.0.5672.126-1_amd64.deb
+  displayName: 'Install Google Chrome Version 113'
 
 - script: |
-    # Install the latest compatible version of ChromeDriver
-    echo "Installing the latest compatible version of ChromeDriver..."
-    LATEST_CHROMEDRIVER_VERSION=$(curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE)
-    wget https://chromedriver.storage.googleapis.com/${LATEST_CHROMEDRIVER_VERSION}/chromedriver_linux64.zip
+    # Install ChromeDriver version 113
+    echo "Installing ChromeDriver version 113..."
+    wget https://chromedriver.storage.googleapis.com/113.0.5672.126/chromedriver_linux64.zip
     unzip chromedriver_linux64.zip
     sudo mv -f chromedriver /usr/local/bin/chromedriver
     sudo chmod +x /usr/local/bin/chromedriver
     rm chromedriver_linux64.zip
-  displayName: 'Install Latest ChromeDriver'
+  displayName: 'Install ChromeDriver Version 113'
 
 - script: |
     # Print versions of Google Chrome and ChromeDriver
