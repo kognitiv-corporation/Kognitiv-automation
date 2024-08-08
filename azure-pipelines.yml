@@ -32,21 +32,17 @@ steps:
   displayName: 'Install Google Chrome'
 
 - script: |
-    # Remove existing ChromeDriver if present
-    if [ -f /usr/local/bin/chromedriver ]; then
-      echo "Removing existing ChromeDriver..."
-      sudo rm -f /usr/local/bin/chromedriver
+    # Download and install ChromeDriver for Chrome version 127 if not already installed
+    if [ ! -f /usr/local/bin/chromedriver ]; then
+      echo "ChromeDriver not found. Installing..."
+      wget https://storage.googleapis.com/chrome-for-testing-public/127.0.6533.99/linux64/chromedriver-linux64.zip
+      unzip chromedriver-linux64.zip
+      sudo mv -f chromedriver-linux64/chromedriver /usr/local/bin/chromedriver
+      sudo chmod +x /usr/local/bin/chromedriver
     else
-      echo "No existing ChromeDriver found."
+      echo "ChromeDriver is already installed."
     fi
-
-    # Download and install ChromeDriver for Chrome version 127
-    echo "Installing ChromeDriver for Chrome 127..."
-    wget https://storage.googleapis.com/chrome-for-testing-public/127.0.6533.99/linux64/chromedriver-linux64.zip
-    unzip chromedriver-linux64.zip
-    sudo mv chromedriver-linux64/chromedriver /usr/local/bin/chromedriver
-    sudo chmod +x /usr/local/bin/chromedriver
-  displayName: 'Install ChromeDriver for Chrome 127'
+  displayName: 'Install ChromeDriver'
 
 - script: |
     # Run a simple curl command to test network connectivity
