@@ -7,8 +7,8 @@ pool:
 variables:
   MAVEN_OPTS: '-Xmx1024m'
   JDK_VERSION: '11'
-  CHROME_VERSION: '113.0.5672.126-1'  # Set your desired Chrome version here
-  CHROMEDRIVER_VERSION: '113.0.5672.63'  # Set your desired ChromeDriver version here
+  CHROME_VERSION: '113.0.5672.126'  # Specify your desired Chrome version
+  CHROMEDRIVER_VERSION: '113.0.5672.63'  # Specify your desired ChromeDriver version
 
 steps:
 - script: |
@@ -23,25 +23,28 @@ steps:
   displayName: 'Check and Install Java JDK'
 
 - script: |
-    # Install specific version of Google Chrome
-    if ! google-chrome --version | grep -q 'Google Chrome ${CHROME_VERSION%%-*}'; then
+    # Install specific version of Google Chrome if not already installed
+    if ! google-chrome --version | grep -q 'Google Chrome ${CHROME_VERSION}'; then
       echo "Installing Google Chrome version $CHROME_VERSION..."
-      wget https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_${CHROME_VERSION}_amd64.deb
       sudo apt-get update
-      sudo apt-get install -y ./google-chrome-stable_${CHROME_VERSION}_amd64.deb
+      sudo apt-get install -y wget
+      wget https://www.slimjet.com/chrome/download-chrome.php?file=files%2F$CHROME_VERSION%2Fgoogle-chrome-stable_current_amd64.deb -O google-chrome-stable_current_amd64.deb
+      sudo apt-get install -y ./google-chrome-stable_current_amd64.deb
+      rm google-chrome-stable_current_amd64.deb
     else
       echo "Google Chrome $CHROME_VERSION is already installed."
     fi
   displayName: 'Install Specific Version of Google Chrome'
 
 - script: |
-    # Download and install specific version of ChromeDriver
+    # Download and install specific version of ChromeDriver if not already installed
     if ! chromedriver --version | grep -q 'ChromeDriver $CHROMEDRIVER_VERSION'; then
       echo "Installing ChromeDriver version $CHROMEDRIVER_VERSION..."
       wget https://chromedriver.storage.googleapis.com/$CHROMEDRIVER_VERSION/chromedriver_linux64.zip
       unzip chromedriver_linux64.zip
       sudo mv -f chromedriver /usr/local/bin/chromedriver
       sudo chmod +x /usr/local/bin/chromedriver
+      rm chromedriver_linux64.zip
     else
       echo "ChromeDriver $CHROMEDRIVER_VERSION is already installed."
     fi
