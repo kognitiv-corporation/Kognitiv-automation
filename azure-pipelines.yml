@@ -26,11 +26,9 @@ steps:
     # Install specific version of Google Chrome if not already installed
     if ! google-chrome --version | grep -q 'Google Chrome ${CHROME_VERSION}'; then
       echo "Installing Google Chrome version $CHROME_VERSION..."
-      sudo apt-get update
-      sudo apt-get install -y wget
-      wget https://www.slimjet.com/chrome/download-chrome.php?file=files%2F$CHROME_VERSION%2Fgoogle-chrome-stable_current_amd64.deb -O google-chrome-stable_current_amd64.deb
-      sudo apt-get install -y ./google-chrome-stable_current_amd64.deb
-      rm google-chrome-stable_current_amd64.deb
+      wget https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_${CHROME_VERSION}_amd64.deb
+      sudo apt-get install -y ./google-chrome-stable_${CHROME_VERSION}_amd64.deb
+      rm google-chrome-stable_${CHROME_VERSION}_amd64.deb
     else
       echo "Google Chrome $CHROME_VERSION is already installed."
     fi
