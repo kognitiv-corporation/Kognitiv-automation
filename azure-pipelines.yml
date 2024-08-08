@@ -21,21 +21,21 @@ steps:
   displayName: 'Check and Install Java JDK'
 
 - script: |
-    # Install Google Chrome version 112
-    echo "Installing Google Chrome version 112..."
-    wget https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_112.0.5615.49-1_amd64.deb
-    sudo dpkg -i google-chrome-stable_112.0.5615.49-1_amd64.deb
+    # Install Google Chrome version 104
+    echo "Installing Google Chrome version 104..."
+    wget https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_104.0.5112.102-1_amd64.deb
+    sudo dpkg -i google-chrome-stable_104.0.5112.102-1_amd64.deb
     sudo apt-get -f install -y
-  displayName: 'Install Google Chrome Version 112'
+  displayName: 'Install Google Chrome Version 104'
 
 - script: |
-    # Install ChromeDriver version 112
-    echo "Installing ChromeDriver version 112..."
-    wget https://chromedriver.storage.googleapis.com/112.0.5615.49/chromedriver_linux64.zip
+    # Install ChromeDriver version 104
+    echo "Installing ChromeDriver version 104..."
+    wget https://chromedriver.storage.googleapis.com/104.0.5112.79/chromedriver_linux64.zip
     unzip chromedriver_linux64.zip
     sudo mv chromedriver /usr/local/bin/chromedriver
     sudo chmod +x /usr/local/bin/chromedriver
-  displayName: 'Install ChromeDriver Version 112'
+  displayName: 'Install ChromeDriver Version 104'
 
 - script: |
     # Print Google Chrome and ChromeDriver versions
