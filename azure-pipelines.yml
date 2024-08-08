@@ -23,16 +23,10 @@ steps:
   displayName: 'Check and Install Java JDK'
 
 - script: |
-    # Install specific version of Google Chrome if not already installed
-    if ! google-chrome --version | grep -q 'Google Chrome ${CHROME_VERSION}'; then
-      echo "Installing Google Chrome version $CHROME_VERSION..."
-      wget https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_${CHROME_VERSION}_amd64.deb
-      sudo apt-get install -y ./google-chrome-stable_${CHROME_VERSION}_amd64.deb
-      rm google-chrome-stable_${CHROME_VERSION}_amd64.deb
-    else
-      echo "Google Chrome $CHROME_VERSION is already installed."
-    fi
-  displayName: 'Install Specific Version of Google Chrome'
+    # Install Chromium if not already installed
+    sudo apt-get update
+    sudo apt-get install -y chromium-browser
+  displayName: 'Install Chromium'
 
 - script: |
     # Download and install specific version of ChromeDriver if not already installed
@@ -49,12 +43,12 @@ steps:
   displayName: 'Install Specific Version of ChromeDriver'
 
 - script: |
-    # Print versions of Chrome and ChromeDriver
-    echo "Google Chrome version:"
-    google-chrome --version
+    # Print versions of Chromium and ChromeDriver
+    echo "Chromium version:"
+    chromium-browser --version
     echo "ChromeDriver version:"
     chromedriver --version
-  displayName: 'Print Chrome and ChromeDriver Versions'
+  displayName: 'Print Chromium and ChromeDriver Versions'
 
 - script: |
     # Run a simple curl command to test network connectivity
