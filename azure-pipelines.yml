@@ -7,8 +7,8 @@ pool:
 variables:
   MAVEN_OPTS: '-Xmx1024m'
   JDK_VERSION: '11'
-  CHROME_VERSION: '113.0.5672.126'  # Specify your desired Chrome version
-  CHROMEDRIVER_VERSION: '113.0.5672.63'  # Specify your desired ChromeDriver version
+  CHROME_VERSION: '113.0.5672.126'  # Desired Chrome version
+  CHROMEDRIVER_VERSION: '113.0.5672.63'  # Corresponding ChromeDriver version
 
 steps:
 - script: |
@@ -33,9 +33,9 @@ steps:
 - script: |
     # Install specific version of Google Chrome
     echo "Installing Google Chrome version $CHROME_VERSION..."
-    # Attempt to install from Google's main repo
-    wget https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_$CHROME_VERSION_amd64.deb || echo "Version not found on Google repo"
-    # Install from an alternative source if available
+    # Try downloading from Google’s archive
+    wget https://www.slimjet.com/chrome/download-chrome.php?file=files%2F$CHROME_VERSION%2Fgoogle-chrome-stable_$CHROME_VERSION_amd64.deb || echo "Version not found on Slimjet archive"
+    # If not found, use a fallback or more recent version
     if [ -f google-chrome-stable_$CHROME_VERSION_amd64.deb ]; then
       sudo apt-get update
       sudo apt-get install -y ./google-chrome-stable_$CHROME_VERSION_amd64.deb
