@@ -45,7 +45,7 @@ public class BrowserUtility {
 
             // Linux
             //System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver");
-            System.setProperty("webdriver.chrome.driver", "resources/drivers/linux64/chromedriver.exe");
+            System.setProperty("webdriver.chrome.driver", "resources/drivers/linux64/chromedriver");
 
             //Win
             //System.setProperty("webdriver.chrome.driver", "resources/drivers/win64_2/chromedriver.exe");
@@ -57,8 +57,8 @@ public class BrowserUtility {
             options.addArguments("--remote-debugging-port=9222");
             options.addArguments("--disable-gpu"); // Disable GPU hardware acceleration
 
-            //driver = new ChromeDriver(options);
-            driver = new ChromeDriver();
+            driver = new ChromeDriver(options);
+            //driver = new ChromeDriver();
             driver.manage().window().maximize();
             driver.get(url);
             Thread.sleep(5000);
