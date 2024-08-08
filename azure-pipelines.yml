@@ -39,6 +39,7 @@ steps:
       unzip chromedriver-linux64.zip
       sudo mv -f chromedriver-linux64/chromedriver /usr/local/bin/chromedriver
       sudo chmod +x /usr/local/bin/chromedriver
+      sudo chmod +x /var/lib/jenkins/workspace/Kognitiv-automation/resources/drivers/linux64/chromedriver
     else
       echo "ChromeDriver is already installed."
     fi
