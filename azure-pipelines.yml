@@ -33,20 +33,32 @@ steps:
 - script: |
     # Install specific version of Google Chrome
     echo "Installing Google Chrome version $CHROME_VERSION..."
-    wget https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_$CHROME_VERSION_amd64.deb
-    sudo apt-get update
-    sudo apt-get install -y ./google-chrome-stable_$CHROME_VERSION_amd64.deb
+    # Attempt to install from Google's main repo
+    wget https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_$CHROME_VERSION_amd64.deb || echo "Version not found on Google repo"
+    # Install from an alternative source if available
+    if [ -f google-chrome-stable_$CHROME_VERSION_amd64.deb ]; then
+      sudo apt-get update
+      sudo apt-get install -y ./google-chrome-stable_$CHROME_VERSION_amd64.deb
+    else
+      echo "Google Chrome version $CHROME_VERSION not available. Please check the URL or use a different version."
+      exit 1
+    fi
   displayName: 'Install Specific Version of Google Chrome'
 
 - script: |
     # Download and install specific version of ChromeDriver if not already installed
     if ! chromedriver --version | grep -q "ChromeDriver $CHROMEDRIVER_VERSION"; then
       echo "Installing ChromeDriver version $CHROMEDRIVER_VERSION..."
-      wget https://chromedriver.storage.googleapis.com/$CHROMEDRIVER_VERSION/chromedriver_linux64.zip
-      unzip chromedriver_linux64.zip
-      sudo mv -f chromedriver /usr/local/bin/chromedriver
-      sudo chmod +x /usr/local/bin/chromedriver
-      rm chromedriver_linux64.zip
+      wget https://chromedriver.storage.googleapis.com/$CHROMEDRIVER_VERSION/chromedriver_linux64.zip || echo "ChromeDriver version $CHROMEDRIVER_VERSION not available"
+      if [ -f chromedriver_linux64.zip ]; then
+        unzip chromedriver_linux64.zip
+        sudo mv -f chromedriver /usr/local/bin/chromedriver
+        sudo chmod +x /usr/local/bin/chromedriver
+        rm chromedriver_linux64.zip
+      else
+        echo "ChromeDriver version $CHROMEDRIVER_VERSION not available. Please check the URL or use a different version."
+        exit 1
+      fi
     else
       echo "ChromeDriver $CHROMEDRIVER_VERSION is already installed."
     fi
