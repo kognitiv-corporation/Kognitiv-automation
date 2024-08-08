@@ -45,7 +45,7 @@ public class BrowserUtility {
 
             // Linux
             //System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver");
-            System.setProperty("webdriver.chrome.driver", "resources/drivers/linux64/chromedriver");
+            System.setProperty("webdriver.chrome.driver", "resources/drivers/linux64/chromedriver.exe");
 
             //Win
             //System.setProperty("webdriver.chrome.driver", "resources/drivers/win64_2/chromedriver.exe");
