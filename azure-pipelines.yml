@@ -7,8 +7,8 @@ pool:
 variables:
   MAVEN_OPTS: '-Xmx1024m'
   JDK_VERSION: '11'
-  CHROME_VERSION: '113.0.5672.126'  # Desired Chrome version
-  CHROMEDRIVER_VERSION: '113.0.5672.63'  # Corresponding ChromeDriver version
+  CHROME_VERSION: 'latest'  # Use 'latest' for the most recent stable version
+  CHROMEDRIVER_VERSION: 'latest'  # Corresponding version for the latest Chrome
 
 steps:
 - script: |
@@ -31,38 +31,23 @@ steps:
   displayName: 'Uninstall Existing Google Chrome'
 
 - script: |
-    # Install specific version of Google Chrome
-    echo "Installing Google Chrome version $CHROME_VERSION..."
-    # Try downloading from Google’s archive
-    wget https://www.slimjet.com/chrome/download-chrome.php?file=files%2F$CHROME_VERSION%2Fgoogle-chrome-stable_$CHROME_VERSION_amd64.deb || echo "Version not found on Slimjet archive"
-    # If not found, use a fallback or more recent version
-    if [ -f google-chrome-stable_$CHROME_VERSION_amd64.deb ]; then
-      sudo apt-get update
-      sudo apt-get install -y ./google-chrome-stable_$CHROME_VERSION_amd64.deb
-    else
-      echo "Google Chrome version $CHROME_VERSION not available. Please check the URL or use a different version."
-      exit 1
-    fi
-  displayName: 'Install Specific Version of Google Chrome'
+    # Install the latest stable version of Google Chrome
+    echo "Installing the latest stable version of Google Chrome..."
+    wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+    sudo apt-get update
+    sudo apt-get install -y ./google-chrome-stable_current_amd64.deb
+  displayName: 'Install Latest Google Chrome'
 
 - script: |
-    # Download and install specific version of ChromeDriver if not already installed
-    if ! chromedriver --version | grep -q "ChromeDriver $CHROMEDRIVER_VERSION"; then
-      echo "Installing ChromeDriver version $CHROMEDRIVER_VERSION..."
-      wget https://chromedriver.storage.googleapis.com/$CHROMEDRIVER_VERSION/chromedriver_linux64.zip || echo "ChromeDriver version $CHROMEDRIVER_VERSION not available"
-      if [ -f chromedriver_linux64.zip ]; then
-        unzip chromedriver_linux64.zip
-        sudo mv -f chromedriver /usr/local/bin/chromedriver
-        sudo chmod +x /usr/local/bin/chromedriver
-        rm chromedriver_linux64.zip
-      else
-        echo "ChromeDriver version $CHROMEDRIVER_VERSION not available. Please check the URL or use a different version."
-        exit 1
-      fi
-    else
-      echo "ChromeDriver $CHROMEDRIVER_VERSION is already installed."
-    fi
-  displayName: 'Install Specific Version of ChromeDriver'
+    # Install the latest compatible version of ChromeDriver
+    echo "Installing the latest compatible version of ChromeDriver..."
+    LATEST_CHROMEDRIVER_VERSION=$(curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE)
+    wget https://chromedriver.storage.googleapis.com/${LATEST_CHROMEDRIVER_VERSION}/chromedriver_linux64.zip
+    unzip chromedriver_linux64.zip
+    sudo mv -f chromedriver /usr/local/bin/chromedriver
+    sudo chmod +x /usr/local/bin/chromedriver
+    rm chromedriver_linux64.zip
+  displayName: 'Install Latest ChromeDriver'
 
 - script: |
     # Print versions of Google Chrome and ChromeDriver
