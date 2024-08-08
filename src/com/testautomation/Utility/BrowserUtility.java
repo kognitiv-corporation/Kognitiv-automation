@@ -3,7 +3,10 @@ package com.testautomation.Utility;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.remote.CapabilityType;
+import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
@@ -19,11 +22,8 @@ public class BrowserUtility {
     public static WebDriver getDriver(String browserName, String url) throws InterruptedException {
 
         if (browserName.equalsIgnoreCase("Chrome")) {
-            System.out.println("Setting up ChromeDriver for Ubuntu...");
 
-            // Commented out your original ChromeDriver setup for reference
-            /*
-            // Set the path to the ChromeDriver executable
+/*            // Set the path to the ChromeDriver executable
             System.setProperty("webdriver.chrome.driver", "resources/drivers/new/chromedriver.exe");
 
             // Set Chrome options for headless mode
@@ -45,22 +45,16 @@ public class BrowserUtility {
             driver.get(url);
 
             // Pause for 5 seconds to allow the page to load
-            Thread.sleep(5000);
-            */
+            Thread.sleep(5000);*/
 
             // Linux
-            // Get the user directory (the current working directory)
             String userDir = System.getProperty("user.dir");
-
-            // Set the path to the ChromeDriver executable dynamically
-            System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver");
+            //System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver");
             //System.setProperty("webdriver.chrome.driver", userDir + "/resources/drivers/linux64/chromedriver");
 
             //Win
-            //System.setProperty("webdriver.chrome.driver", "resources/drivers/win64_2/chromedriver.exe");
+            System.setProperty("webdriver.chrome.driver", "resources/drivers/chromedriver.exe");
             //System.setProperty("webdriver.chrome.driver", "C:\\tools\\chromedriver\\chromedriver.exe");
-
-            // New ChromeOptions for headless mode on Ubuntu
             ChromeOptions options = new ChromeOptions();
             options.addArguments("--headless");
             options.addArguments("--no-sandbox");
@@ -68,22 +62,23 @@ public class BrowserUtility {
             options.addArguments("--remote-debugging-port=9222");
             options.addArguments("--disable-gpu"); // Disable GPU hardware acceleration
 
-            driver = new ChromeDriver(options);
+            //driver = new ChromeDriver(options);
+            driver = new ChromeDriver();
             driver.manage().window().maximize();
 
             // Check network connectivity
-            if (!isUrlReachable(url)) {
+/*            if (!isUrlReachable(url)) {
                 System.out.println("The URL " + url + " is not reachable. Please check the network settings.");
-                driver.quit();
+               // driver.quit();
                 return null;
-            }
+            }*/
+
+            driver.get(url);
 
             System.out.println("Navigating to URL: " + url);
-            driver.get(url);
+
             Thread.sleep(5000);
         } else if (browserName.equalsIgnoreCase("IE")) {
-            // Commented out your original IE setup for reference
-            /*
             System.setProperty("webdriver.ie.driver", "L:\\TestAutomationFramework\\CucumberJarFiles\\chromedriver_win32_2.37\\chromedriver.exe");
             DesiredCapabilities capabilities = new DesiredCapabilities();
             capabilities.setCapability(CapabilityType.UNEXPECTED_ALERT_BEHAVIOUR, "accept");
@@ -95,18 +90,22 @@ public class BrowserUtility {
             driver = new InternetExplorerDriver(capabilities);
             driver.manage().window().maximize();
             driver.get(url);
-            */
         } else if (browserName.equalsIgnoreCase("Firefox")) {
-            // Commented out your original Firefox setup for reference
-            /*
             System.setProperty("webdriver.gecko.driver", "L:\\TestAutomationFramework\\CucumberJarFiles\\chromedriver_win32_2.37\\chromedriver.exe");
             driver = new FirefoxDriver();
             driver.manage().window().maximize();
             driver.get(url);
-            */
         }
 
         return driver;
+    }
+
+    public static void quitDriver() {
+        {
+            driver.close();
+            //driver.quit();
+
+        }
     }
 
     private static boolean isUrlReachable(String url) {
@@ -121,10 +120,4 @@ public class BrowserUtility {
         }
     }
 
-    public static void quitDriver() {
-        if (driver != null) {
-            driver.close();
-            driver.quit();
-        }
-    }
 }
