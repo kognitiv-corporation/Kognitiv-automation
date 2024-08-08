@@ -45,6 +45,16 @@ steps:
   displayName: 'Install ChromeDriver'
 
 - script: |
+    # Print Google Chrome version
+    echo "Google Chrome version:"
+    google-chrome --version
+
+    # Print ChromeDriver version
+    echo "ChromeDriver version:"
+    chromedriver --version
+  displayName: 'Print Chrome and ChromeDriver Version'
+
+- script: |
     # Run a simple curl command to test network connectivity
     echo "Testing network connectivity..."
     curl -I https://www.google.com
