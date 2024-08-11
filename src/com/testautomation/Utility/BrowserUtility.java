@@ -7,6 +7,8 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
@@ -23,29 +25,6 @@ public class BrowserUtility {
 
         if (browserName.equalsIgnoreCase("Chrome")) {
 
-/*            // Set the path to the ChromeDriver executable
-            System.setProperty("webdriver.chrome.driver", "resources/drivers/new/chromedriver.exe");
-
-            // Set Chrome options for headless mode
-            ChromeOptions options = new ChromeOptions();
-            options.addArguments("--headless"); // Run in headless mode
-            options.addArguments("--no-sandbox"); // Bypass OS security model
-            options.addArguments("--disable-dev-shm-usage"); // Overcome limited resource problems
-            options.addArguments("--remote-debugging-port=9222"); // Enable remote debugging
-            options.addArguments("--disable-gpu"); // Disable GPU hardware acceleration
-            //options.setHeadless(false); // Disable headless mode
-
-            // Initialize the ChromeDriver with the specified options
-            driver = new ChromeDriver(options);
-
-            // Maximize the browser window
-            driver.manage().window().maximize();
-
-            // Open the specified URL
-            driver.get(url);
-
-            // Pause for 5 seconds to allow the page to load
-            Thread.sleep(5000);*/
 
             // Linux
             String userDir = System.getProperty("user.dir");
@@ -54,7 +33,6 @@ public class BrowserUtility {
 
             //Win
             //System.setProperty("webdriver.chrome.driver", "resources/drivers/chromedriver.exe");
-            //System.setProperty("webdriver.chrome.driver", "C:\\tools\\chromedriver\\chromedriver.exe");
             ChromeOptions options = new ChromeOptions();
             options.addArguments("--headless");
             options.addArguments("--no-sandbox");
@@ -91,10 +69,29 @@ public class BrowserUtility {
             driver.manage().window().maximize();
             driver.get(url);
         } else if (browserName.equalsIgnoreCase("Firefox")) {
-            System.setProperty("webdriver.gecko.driver", "L:\\TestAutomationFramework\\CucumberJarFiles\\chromedriver_win32_2.37\\chromedriver.exe");
-            driver = new FirefoxDriver();
+            String userDir = System.getProperty("user.dir");
+            System.setProperty("webdriver.gecko.driver", "/usr/local/bin/geckodriver");
+
+            FirefoxOptions options = new FirefoxOptions();
+            options.addArguments("--headless");
+            options.addArguments("--no-sandbox");
+            options.addArguments("--disable-dev-shm-usage");
+            options.addArguments("--remote-debugging-port=9222");
+            options.addArguments("--disable-gpu"); // Disable GPU hardware acceleration
+
+            //WebDriver driver = new FirefoxDriver(options);
+            WebDriver driver = new FirefoxDriver();
             driver.manage().window().maximize();
+
             driver.get(url);
+
+            System.out.println("Navigating to URL: " + url);
+
+            try {
+                Thread.sleep(5000); // Let the user actually see something!
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
 
         return driver;
