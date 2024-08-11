@@ -105,7 +105,7 @@ steps:
   displayName: 'Run Maven Tests'
 
 - script: |
-    if [ ! -d 'target/cucumber-reports' ]; then
+    if [ ! -d 'target/cucumber-reports/advanced-reports' ]; then
       echo "Cucumber reports directory not found. Exiting..."
       exit 1
     fi
@@ -113,8 +113,14 @@ steps:
 
 - task: PublishBuildArtifacts@1
   inputs:
-    pathToPublish: 'target/cucumber-reports'  # Ensure this path is correct for your Cucumber reports
+    pathToPublish: 'target/cucumber-reports/advanced-reports'  # Ensure this path is correct for your Cucumber reports
     artifactName: 'cucumber-reports'
     publishLocation: 'Container'
   displayName: 'Publish Cucumber Reports'
   condition: succeeded()
+
+- script: |
+    echo "## Viewing Cucumber Reports"
+    echo "You can view the Cucumber reports at:"
+    echo "[$(Build.ArtifactStagingDirectory)/cucumber-reports/advanced-reports](https://dev.azure.com/$(Build.ProjectName)/$(Build.DefinitionName)/_build/results?buildId=$(Build.BuildId)&view=artifacts&pathAsName=true&artifactId=cucumber-reports)"
+  displayName: 'Print Report URL'
