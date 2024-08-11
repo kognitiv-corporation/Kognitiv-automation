@@ -13,6 +13,7 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Map;
 
 public class BrowserUtility {
     private static WebDriver driver;
@@ -69,14 +70,30 @@ public class BrowserUtility {
             driver.manage().window().maximize();
             driver.get(url);
         } else if (browserName.equalsIgnoreCase("Firefox")) {
+            // Set GeckoDriver path
             System.setProperty("webdriver.gecko.driver", "/usr/local/bin/geckodriver");
+
+            // Set environment variables for Firefox
+            Map<String, String> env = System.getenv();
+            env.put("MOZ_HEADLESS", "1");
+            env.put("MOZ_CRASHREPORTER_DISABLE", "1");
+            env.put("MOZ_CRASHREPORTER_NO_REPORT", "1");
+            env.put("MOZ_REMOTE_SETTINGS_DEVTOOLS", "1");
+
+            // Set Firefox options
             FirefoxOptions options = new FirefoxOptions();
-            options.addArguments("--headless"); // Run in headless mode
-            driver = new FirefoxDriver(options);
+            options.addArguments("--headless");
+            options.addArguments("--no-sandbox");
+            options.addArguments("--disable-dev-shm-usage");
+            options.addArguments("--remote-debugging-port=9222");
+            options.addArguments("--disable-gpu"); // Disable GPU hardware acceleration
+
+            // Initialize WebDriver with options
+            WebDriver driver = new FirefoxDriver(options);
             driver.manage().window().maximize();
 
+            // Navigate to the URL
             driver.get(url);
-
             System.out.println("Navigating to URL: " + url);
 
             try {
