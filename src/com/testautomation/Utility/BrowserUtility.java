@@ -75,7 +75,7 @@ public class BrowserUtility {
             driver = new FirefoxDriver(options);
             driver.manage().window().maximize();
 
-            driver.get("https://azure-qa.kognitivloyalty.com");
+            driver.get(url);
 
             System.out.println("Navigating to URL: " + url);
 
