@@ -45,6 +45,31 @@ steps:
   displayName: 'Install ChromeDriver'
 
 - script: |
+    # Install Firefox if not already installed
+    if ! command -v firefox &> /dev/null; then
+      echo "Firefox not found. Installing..."
+      sudo apt-get update
+      sudo apt-get install -y firefox
+    else
+      echo "Firefox is already installed."
+    fi
+  displayName: 'Install Firefox'
+
+- script: |
+    # Install GeckoDriver if not already installed
+    if [ ! -f /usr/local/bin/geckodriver ]; then
+      echo "GeckoDriver not found. Installing..."
+      GECKODRIVER_VERSION=$(curl -sS https://api.github.com/repos/mozilla/geckodriver/releases/latest | grep 'tag_name' | cut -d\" -f4)
+      wget "https://github.com/mozilla/geckodriver/releases/download/${GECKODRIVER_VERSION}/geckodriver-${GECKODRIVER_VERSION}-linux64.tar.gz"
+      tar -xzf geckodriver-*-linux64.tar.gz
+      sudo mv geckodriver /usr/local/bin/geckodriver
+      sudo chmod +x /usr/local/bin/geckodriver
+    else
+      echo "GeckoDriver is already installed."
+    fi
+  displayName: 'Install GeckoDriver'
+
+- script: |
     # Print Google Chrome version
     echo "Google Chrome version:"
     google-chrome --version
@@ -52,7 +77,19 @@ steps:
     # Print ChromeDriver version
     echo "ChromeDriver version:"
     chromedriver --version
-  displayName: 'Print Chrome and ChromeDriver Version'
+
+    # Print Firefox version
+    echo "Firefox version:"
+    firefox --version
+
+    # Print GeckoDriver version
+    echo "GeckoDriver version:"
+    geckodriver --version
+
+    # Print GeckoDriver location
+    echo "GeckoDriver location:"
+    which geckodriver
+  displayName: 'Print Browser and Driver Versions'
 
 - script: |
     # Run a simple curl command to test network connectivity
