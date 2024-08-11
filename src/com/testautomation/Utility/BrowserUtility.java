@@ -69,18 +69,10 @@ public class BrowserUtility {
             driver.manage().window().maximize();
             driver.get(url);
         } else if (browserName.equalsIgnoreCase("Firefox")) {
-            String userDir = System.getProperty("user.dir");
             System.setProperty("webdriver.gecko.driver", "/usr/local/bin/geckodriver");
-
             FirefoxOptions options = new FirefoxOptions();
-            options.addArguments("--headless");
-            options.addArguments("--no-sandbox");
-            options.addArguments("--disable-dev-shm-usage");
-            options.addArguments("--remote-debugging-port=9222");
-            options.addArguments("--disable-gpu"); // Disable GPU hardware acceleration
-
-            //WebDriver driver = new FirefoxDriver(options);
-            WebDriver driver = new FirefoxDriver();
+            options.addArguments("--headless"); // Run in headless mode
+            driver = new FirefoxDriver(options);
             driver.manage().window().maximize();
 
             driver.get(url);
