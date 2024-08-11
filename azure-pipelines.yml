@@ -117,29 +117,3 @@ steps:
     echo "Path to target folder:"
     ls -la target
   displayName: 'Print Working Directory and Target Folder Path'
-
-- script: |
-    # Check if the cucumber.json file exists in the cucumber-reports directory
-    if [ ! -f 'target/cucumber-reports/cucumber.json' ]; then
-      echo "Cucumber reports directory not found or cucumber.json not found. Exiting..."
-      exit 1
-    else
-      echo "Cucumber reports directory and cucumber.json found."
-      echo "Contents of target/cucumber-reports:"
-      ls -la target/cucumber-reports
-    fi
-  displayName: 'Check Cucumber Reports Directory'
-
-- task: PublishBuildArtifacts@1
-  inputs:
-    pathToPublish: 'target/cucumber-reports'  # Ensure this path is correct for your Cucumber reports
-    artifactName: 'cucumber-reports'
-    publishLocation: 'Container'
-  displayName: 'Publish Cucumber Reports'
-  condition: succeeded()
-
-- script: |
-    echo "## Viewing Cucumber Reports"
-    echo "You can view the Cucumber reports at:"
-    echo "[$(Build.ArtifactStagingDirectory)/cucumber-reports](https://dev.azure.com/$(Build.ProjectName)/$(Build.DefinitionName)/_build/results?buildId=$(Build.BuildId)&view=artifacts&pathAsName=true&artifactId=cucumber-reports)"
-  displayName: 'Print Report URL'
