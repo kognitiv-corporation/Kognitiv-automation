@@ -59,9 +59,12 @@ steps:
     # Install GeckoDriver if not already installed
     if [ ! -f /usr/local/bin/geckodriver ]; then
       echo "GeckoDriver not found. Installing..."
+      # Get the latest GeckoDriver version
       GECKODRIVER_VERSION=$(curl -sS https://api.github.com/repos/mozilla/geckodriver/releases/latest | grep 'tag_name' | cut -d\" -f4)
       echo "Downloading GeckoDriver version ${GECKODRIVER_VERSION}..."
-      wget "https://github.com/mozilla/geckodriver/releases/download/${GECKODRIVER_VERSION}/geckodriver-${GECKODRIVER_VERSION}-linux64.tar.gz"
+      # Construct the correct download URL
+      DOWNLOAD_URL="https://github.com/mozilla/geckodriver/releases/download/${GECKODRIVER_VERSION}/geckodriver-${GECKODRIVER_VERSION}-linux64.tar.gz"
+      wget "$DOWNLOAD_URL"
       tar -xzf geckodriver-${GECKODRIVER_VERSION}-linux64.tar.gz
       sudo mv geckodriver /usr/local/bin/geckodriver
       sudo chmod +x /usr/local/bin/geckodriver
