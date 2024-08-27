@@ -5,7 +5,10 @@ import com.aventstack.extentreports.GherkinKeyword;
 import com.aventstack.extentreports.gherkin.model.Feature;
 import com.aventstack.extentreports.gherkin.model.Scenario;
 import com.testautomation.Listeners.ExtentReportListener;
+import com.testautomation.PageObjects.inspirePages.BlueMenuBar;
 import com.testautomation.PageObjects.inspirePages.InspireLoginPage;
+import com.testautomation.PageObjects.inspirePages.InspirePromotionPage;
+import com.testautomation.PageObjects.inspirePages.LoginsPage;
 import com.testautomation.Utility.PropertiesFileReader;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
@@ -44,7 +47,12 @@ public class InspireLoginStepDefs extends ExtentReportListener {
     public void enterUserNameAsEmailAddress(String emailaddress) {
         try {
             logInfo = test.createNode(new GherkinKeyword("When"), "enter_email_address");
-            new InspireLoginPage(driver).enterEmail(emailaddress);
+            String loginsEmail = LoginsPage.email;
+            if (emailaddress.equalsIgnoreCase("CreatedUser")) {
+                new InspireLoginPage(driver).enterEmail(loginsEmail);
+            } else {
+                new InspireLoginPage(driver).enterEmail(emailaddress);
+            }
             logInfo.pass("Entering email address");
             logInfo.addScreenCaptureFromPath(captureScreenShot(driver));
         } catch (AssertionError | Exception e) {
@@ -56,7 +64,11 @@ public class InspireLoginStepDefs extends ExtentReportListener {
     public void enterUserPassword(String password) {
         try {
             logInfo = test.createNode(new GherkinKeyword("And"), "enter_password");
-            new InspireLoginPage(driver).enterPassword(password);
+            if (password.equalsIgnoreCase("123456")) {
+                new InspireLoginPage(driver).enterPassword("123456");
+            } else {
+                new InspireLoginPage(driver).enterPassword(password);
+            }
             logInfo.pass("Entering password");
             logInfo.addScreenCaptureFromPath(captureScreenShot(driver));
         } catch (AssertionError | Exception e) {
@@ -76,4 +88,118 @@ public class InspireLoginStepDefs extends ExtentReportListener {
             testStepHandle("FAIL", driver, logInfo, e);
         }
     }
+
+
+    @And("Click {string} button from top blue main menu")
+    public void clickButton(String menuOption) {
+        try {
+            logInfo = test.createNode(new GherkinKeyword("When"), "Click main menu item");
+            new BlueMenuBar(driver).ClicktabMenuBlueBar(menuOption);
+            logInfo.pass("Clicking main menu item " + menuOption);
+            logInfo.addScreenCaptureFromPath(captureScreenShot(driver));
+            Thread.sleep(2000);
+        } catch (AssertionError | Exception e) {
+            testStepHandle("FAIL", driver, logInfo, e);
+        }
+    }
+
+
+    @And("Click {string} from dropdown")
+    public void clickFromDropdown(String dp) {
+
+        try {
+            logInfo = test.createNode(new GherkinKeyword("When"), "Click drop down " + dp + " menuitem");
+            new InspirePromotionPage(driver).clickLoginsDropdown();
+            logInfo.pass("Clicking main menu item " + dp);
+            logInfo.addScreenCaptureFromPath(captureScreenShot(driver));
+        } catch (AssertionError | Exception e) {
+            testStepHandle("FAIL", driver, logInfo, e);
+        }
+    }
+
+    @And("Click Add login button")
+    public void clickAddLoginButton() {
+        ExtentTest logInfo = null;
+        try {
+
+            logInfo = test.createNode(new GherkinKeyword("And"), "Clicking add user button");
+            new LoginsPage(driver).ClickAdduser();
+            logInfo.addScreenCaptureFromPath(captureScreenShot(driver));
+
+        } catch (AssertionError | Exception e) {
+            testStepHandle("FAIL", driver, logInfo, e);
+        }
+
+    }
+
+    @And("Enter name")
+    public void enterName() {
+        ExtentTest logInfo = null;
+        try {
+
+            logInfo = test.createNode(new GherkinKeyword("And"), "Entering name");
+            new LoginsPage(driver).enterName();
+            logInfo.addScreenCaptureFromPath(captureScreenShot(driver));
+
+        } catch (AssertionError | Exception e) {
+            testStepHandle("FAIL", driver, logInfo, e);
+        }
+    }
+
+    @And("Enter Local Login Email random generated")
+    public void enterLocalLoginEmailRandomGenerated() {
+        ExtentTest logInfo = null;
+        try {
+
+            logInfo = test.createNode(new GherkinKeyword("And"), "Entering email");
+            new LoginsPage(driver).enterEmail();
+            logInfo.addScreenCaptureFromPath(captureScreenShot(driver));
+
+        } catch (AssertionError | Exception e) {
+            testStepHandle("FAIL", driver, logInfo, e);
+        }
+    }
+
+    @And("Enter Password random generated")
+    public void enterPasswordRandomGenerated() {
+        ExtentTest logInfo = null;
+        try {
+
+            logInfo = test.createNode(new GherkinKeyword("And"), "Entering password");
+            new LoginsPage(driver).enterPassword();
+            logInfo.addScreenCaptureFromPath(captureScreenShot(driver));
+
+        } catch (AssertionError | Exception e) {
+            testStepHandle("FAIL", driver, logInfo, e);
+        }
+    }
+
+    @And("Enter Password Confirm")
+    public void enterPasswordConfirm() {
+        ExtentTest logInfo = null;
+        try {
+
+            logInfo = test.createNode(new GherkinKeyword("And"), "Entering confirm password");
+            new LoginsPage(driver).enterConfirmPassword();
+            logInfo.addScreenCaptureFromPath(captureScreenShot(driver));
+
+        } catch (AssertionError | Exception e) {
+            testStepHandle("FAIL", driver, logInfo, e);
+        }
+    }
+
+    @And("Click save user login button")
+    public void clickSaveUserLoginButton() {
+        ExtentTest logInfo = null;
+        try {
+
+            logInfo = test.createNode(new GherkinKeyword("And"), "Click save button");
+            new LoginsPage(driver).clickSaveBtn();
+            logInfo.addScreenCaptureFromPath(captureScreenShot(driver));
+
+        } catch (AssertionError | Exception e) {
+            testStepHandle("FAIL", driver, logInfo, e);
+        }
+    }
+
 }

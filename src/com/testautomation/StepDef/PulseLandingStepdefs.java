@@ -4,6 +4,9 @@ import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.GherkinKeyword;
 import com.aventstack.extentreports.gherkin.model.Scenario;
 import com.testautomation.Listeners.ExtentReportListener;
+import com.testautomation.PageObjects.inspirePages.BlueMenuBar;
+import com.testautomation.PageObjects.inspirePages.InspirePromotionPage;
+import com.testautomation.PageObjects.inspirePages.LoginsPage;
 import com.testautomation.PageObjects.pulsePages.PulseLandingPage;
 import com.testautomation.Utility.PropertiesFileReader;
 import cucumber.api.java.en.And;
@@ -199,4 +202,5 @@ public class PulseLandingStepdefs extends ExtentReportListener {
             testStepHandle("FAIL", driver, logInfo, e);
         }
     }
+
 }

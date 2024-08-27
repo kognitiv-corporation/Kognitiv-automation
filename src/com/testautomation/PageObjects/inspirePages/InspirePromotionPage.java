@@ -39,6 +39,9 @@ public class InspirePromotionPage {
     @FindBy(how= How.XPATH,using="//button[contains(.,'Create Product Group')]")
     public WebElement createProductGroupBtn;
 
+    @FindBy(how = How.XPATH,using = "//td[contains(.,'Logins')]")
+    public WebElement ddLogins;
+
     public String getTitle() throws Exception
     {
         Thread.sleep(2000);
@@ -87,4 +90,7 @@ public class InspirePromotionPage {
         createProductGroupBtn.click();
     }
 
+    public void clickLoginsDropdown() {
+        ddLogins.click();
+    }
 }

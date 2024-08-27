@@ -1,7 +1,7 @@
 @Pulse
 Feature: Pulse report validation
 
-  @KPIs @Pulse
+  @KPIs @Pulse @Regression
   Scenario Outline: Pulse KPI-Report validations
     Given Open Chrome browser with a URL
     When Enter email address "<email>"
@@ -31,6 +31,7 @@ Feature: Pulse report validation
       | shammika.dahanayaka@kognitiv.com | Shammi4144* | KPI      | 91 days |
 
 
+
   @Diagnose @Pulse
   Scenario Outline: Pulse Diagnose-Report validations
     Given Open Chrome browser with a URL
@@ -50,7 +51,7 @@ Feature: Pulse report validation
       | email                            | password    | reportMenu | pagename |
       | shammika.dahanayaka@kognitiv.com | Shammi4144* | Diagnose   | Diagnose |
 
-  @CustomerFlows @Pulse
+  @CustomerFlows @Pulse @Regression
   Scenario Outline: Pulse KPI-Report validations
     Given Open Chrome browser with a URL
     When Enter email address "<email>"

@@ -37,6 +37,8 @@ public class PulseLandingPage {
     public WebElement ddAvg;
 
 
+
+
     public String getTitle() throws Exception {
         Thread.sleep(2000);
         return driver.getTitle();
@@ -77,6 +79,7 @@ public class PulseLandingPage {
     public void clickConfigureBtn() {
         btnConfig.click();
     }
+
 
     public void selectDays(String days) {
         periodDropDown.click();

@@ -35,7 +35,7 @@ public class Inspire_promo_Stepdefs extends ExtentReportListener {
     @When("I click {string} from tab menu")
     public void iClickFromTabMenu(String menuItem) {
         try {
-            logInfo = test.createNode(new GherkinKeyword("When"), "Click_main_menu_item");
+            logInfo = test.createNode(new GherkinKeyword("When"), "Click main menuitem");
             new InspirePromotionPage(driver).ClickMenuItem(menuItem);
             logInfo.pass("Clicking main menu item " + menuItem);
             logInfo.addScreenCaptureFromPath(captureScreenShot(driver));
@@ -128,4 +128,5 @@ public class Inspire_promo_Stepdefs extends ExtentReportListener {
             testStepHandle("FAIL", driver, logInfo, e);
         }
     }
+
 }
