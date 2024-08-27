@@ -7,14 +7,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
-import java.util.Random;
-
-import static com.sun.org.apache.xalan.internal.xsltc.compiler.Constants.CHARACTERS;
-
 public class InspireRewardPage {
     WebDriver driver;
-    public static String rewardname;
-    private static final int USERNAME_LENGTH = 8;
 
     public InspireRewardPage(WebDriver driver)
     {
@@ -22,72 +16,49 @@ public class InspireRewardPage {
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(how= How.ID,using="ctl00_ContentPlaceHolder1_txtRewardType")
-    public WebElement txtRewardName;
+    @FindBy(how= How.XPATH,using = "//span[text()='Create Reward']")
+    public WebElement btnCreateReward;
 
-    @FindBy(how= How.ID,using="ctl00_ContentPlaceHolder1_txtDescription")
-    public WebElement txtDescription;
+    @FindBy(how= How.XPATH,using="//div[@class='ng-star-inserted']/a/descendant::span[contains(.,'Rewards')]")
+    public WebElement RewardtabMenuLeftSide;
 
-    @FindBy(how= How.ID,using="ctl00_ContentPlaceHolder1_txtRetail")
-    public WebElement txtRetailValue;
+    @FindBy(how = How.XPATH,using="//span[text()='Confirm Selection']")
+    public WebElement btnConfirmSelection;
 
-    @FindBy(how= How.ID,using="ctl00_ContentPlaceHolder1_txtPoint")
-    public WebElement txtPiointLevel;
-
-    @FindBy(how= How.ID,using="ctl00_ContentPlaceHolder1_txtCost")
-    public WebElement txtCost;
-
-    @FindBy(how= How.ID,using="ctl00_ContentPlaceHolder1_ControlStripBottom_lnkSave")
-    public WebElement btnSave;
+    @FindBy(how =How.XPATH,using = "//p-card[@styleclass='flex-1']/descendant::span[contains(.,'Recurring Reward')]")
+    public WebElement btnSelectionType;
 
     // Method to create dynamic XPath and find the element
     public WebElement getMenuElement(String menuItem) {
-        String xpath = String.format("//*[text()='%s']/ancestor::td[1]/preceding-sibling::td[1]/input[@type='checkbox']", menuItem);
-        //System.out.println("xpath :" +xpath);
+        String xpath = String.format("//div[@class='ng-star-inserted']/a/descendant::span[contains(.,'%s')]", menuItem);
         return driver.findElement(By.xpath(xpath));
     }
 
     // Method to click the dynamic element
-    public void tickClub(String menuItem) {
+    public void ClickMenuItem(String menuItem) {
         WebElement menuElement = getMenuElement(menuItem);
         menuElement.click();
     }
 
-    public void enterName(String name) {
-        txtRewardName.sendKeys(generateUsername(name));
+    public void clickCreateReward(){
+        btnCreateReward.click();
     }
 
-    public static String generateUsername(String name) {
-        rewardname = name+generateRandomString(USERNAME_LENGTH);
-        return rewardname;
+    public void clickConfirmSelectionbutton(){
+        btnConfirmSelection.click();
     }
 
-    private static String generateRandomString(int length) {
-        Random random = new Random();
-        StringBuilder sb = new StringBuilder(length);
-        for (int i = 0; i < length; i++) {
-            sb.append(CHARACTERS.charAt(random.nextInt(CHARACTERS.length())));
-        }
-        return sb.toString();
+
+
+    // Method to create dynamic XPath and find the element
+    public WebElement getRewardTypeElement(String menuItem) {
+        String xpath = String.format("//p-card[@styleclass='flex-1']/descendant::span[contains(.,'%s')]", menuItem);
+        return driver.findElement(By.xpath(xpath));
     }
 
-    public void enterDescription() {
-        txtDescription.sendKeys(txtRewardName +"Description");
-    }
-
-    public void enterReatilValue() {
-        txtRetailValue.sendKeys("10");
-    }
-
-    public void enterPointValue() {
-        txtPiointLevel.sendKeys("2");
-    }
-
-    public void enterCostValue() {
-        txtCost.sendKeys("4");
-    }
-
-    public void clickRewardSaveButton() {
-        btnSave.click();
+    // Method to click the dynamic element
+    public void clickRewardType(String menuItem) {
+        WebElement menuElement = getMenuElement(menuItem);
+        menuElement.click();
     }
 }

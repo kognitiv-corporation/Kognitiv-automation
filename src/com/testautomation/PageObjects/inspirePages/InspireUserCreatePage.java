@@ -79,6 +79,7 @@ public class InspireUserCreatePage {
     public void clickDropdown(String menuItem) {
         WebElement menuElement = getMenuElement(menuItem);
         menuElement.click();
+        //menuElement.submit();
     }
 
     public void enterName(String name) {

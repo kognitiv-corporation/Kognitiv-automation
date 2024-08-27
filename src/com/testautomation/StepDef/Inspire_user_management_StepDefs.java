@@ -237,8 +237,8 @@ public class Inspire_user_management_StepDefs extends ExtentReportListener {
         try {
 
             logInfo = test.createNode(new GherkinKeyword("And"), "Entering name");
-            new InspireRewardPage(driver).enterName(name);
-            logInfo = test.createNode(new GherkinKeyword("And"), "Rewardname "+InspireRewardPage.rewardname);
+            new InspireForceRewardPage(driver).enterName(name);
+            logInfo = test.createNode(new GherkinKeyword("And"), "Rewardname "+ InspireForceRewardPage.rewardname);
             logInfo.addScreenCaptureFromPath(captureScreenShot(driver));
 
         } catch (AssertionError | Exception e) {
@@ -252,7 +252,7 @@ public class Inspire_user_management_StepDefs extends ExtentReportListener {
         try {
 
             logInfo = test.createNode(new GherkinKeyword("And"), "Entering name");
-            new InspireRewardPage(driver).enterDescription();
+            new InspireForceRewardPage(driver).enterDescription();
             logInfo.addScreenCaptureFromPath(captureScreenShot(driver));
 
         } catch (AssertionError | Exception e) {
@@ -260,13 +260,13 @@ public class Inspire_user_management_StepDefs extends ExtentReportListener {
         }
     }
 
-    @And("Enter retail value")
-    public void enterRetailValue() {
+    @And("Enter retail value {string}")
+    public void enterRetailValue(String value) {
         ExtentTest logInfo = null;
         try {
 
             logInfo = test.createNode(new GherkinKeyword("And"), "Entering Retail value");
-            new InspireRewardPage(driver).enterReatilValue();
+            new InspireForceRewardPage(driver).enterReatilValue(value);
             logInfo.addScreenCaptureFromPath(captureScreenShot(driver));
 
         } catch (AssertionError | Exception e) {
@@ -274,13 +274,13 @@ public class Inspire_user_management_StepDefs extends ExtentReportListener {
         }
     }
 
-    @And("Enter point level value")
-    public void enterPointLevelValue() {
+    @And("Enter point level value {string}")
+    public void enterPointLevelValue(String value) {
         ExtentTest logInfo = null;
         try {
 
             logInfo = test.createNode(new GherkinKeyword("And"), "Entering point value");
-            new InspireRewardPage(driver).enterPointValue();
+            new InspireForceRewardPage(driver).enterPointValue(value);
             logInfo.addScreenCaptureFromPath(captureScreenShot(driver));
 
         } catch (AssertionError | Exception e) {
@@ -288,13 +288,13 @@ public class Inspire_user_management_StepDefs extends ExtentReportListener {
         }
     }
 
-    @And("Enter your cost value")
-    public void enterYourCostValue() {
+    @And("Enter your cost value {string}")
+    public void enterYourCostValue(String value) {
         ExtentTest logInfo = null;
         try {
 
             logInfo = test.createNode(new GherkinKeyword("And"), "Entering cost");
-            new InspireRewardPage(driver).enterCostValue();
+            new InspireForceRewardPage(driver).enterCostValue(value);
             logInfo.addScreenCaptureFromPath(captureScreenShot(driver));
 
         } catch (AssertionError | Exception e) {
@@ -308,7 +308,7 @@ public class Inspire_user_management_StepDefs extends ExtentReportListener {
         try {
 
             logInfo = test.createNode(new GherkinKeyword("And"), "Selecting club");
-            new InspireRewardPage(driver).tickClub(InspireClubCreatePage.clubName);
+            new InspireForceRewardPage(driver).tickClub(InspireClubCreatePage.clubName);
             logInfo.addScreenCaptureFromPath(captureScreenShot(driver));
 
         } catch (AssertionError | Exception e) {
@@ -322,7 +322,64 @@ public class Inspire_user_management_StepDefs extends ExtentReportListener {
         try {
 
             logInfo = test.createNode(new GherkinKeyword("And"), "Click save button");
-            new InspireRewardPage(driver).clickRewardSaveButton();
+            new InspireForceRewardPage(driver).clickRewardSaveButton();
+            logInfo.addScreenCaptureFromPath(captureScreenShot(driver));
+
+        } catch (AssertionError | Exception e) {
+            testStepHandle("FAIL", driver, logInfo, e);
+        }
+    }
+
+    @And("Enter Starts At value {string}")
+    public void enterStartsAtValue(String value) {
+        ExtentTest logInfo = null;
+        try {
+
+            logInfo = test.createNode(new GherkinKeyword("And"), "Entering cost");
+            new InspireForceRewardPage(driver).enterStartAt(value);
+            logInfo.addScreenCaptureFromPath(captureScreenShot(driver));
+
+        } catch (AssertionError | Exception e) {
+            testStepHandle("FAIL", driver, logInfo, e);
+        }
+    }
+
+    @And("Enter Interval - Recur every value {string}")
+    public void enterIntervalRecurEveryValue(String value) {
+        ExtentTest logInfo = null;
+        try {
+
+            logInfo = test.createNode(new GherkinKeyword("And"), "Entering cost");
+            new InspireForceRewardPage(driver).enterIntervalRecurEveryValue(value);
+            logInfo.addScreenCaptureFromPath(captureScreenShot(driver));
+
+        } catch (AssertionError | Exception e) {
+            testStepHandle("FAIL", driver, logInfo, e);
+        }
+    }
+
+    @And("Enter Member Issue Limits {string}")
+    public void enterMemberIssueLimits(String value) {
+        ExtentTest logInfo = null;
+        try {
+
+            logInfo = test.createNode(new GherkinKeyword("And"), "Entering cost");
+            new InspireForceRewardPage(driver).enterMemberIssueLimits(value);
+            logInfo.addScreenCaptureFromPath(captureScreenShot(driver));
+
+        } catch (AssertionError | Exception e) {
+            testStepHandle("FAIL", driver, logInfo, e);
+        }
+    }
+
+    @And("Enter Survey Set Name name {string}")
+    public void enterSurveySetNameName(String name) {
+        ExtentTest logInfo = null;
+        try {
+
+            logInfo = test.createNode(new GherkinKeyword("And"), "Entering name");
+            new InspireSurveySetPage(driver).enterName(name);
+            logInfo = test.createNode(new GherkinKeyword("And"), "Rewardname "+ InspireForceRewardPage.rewardname);
             logInfo.addScreenCaptureFromPath(captureScreenShot(driver));
 
         } catch (AssertionError | Exception e) {

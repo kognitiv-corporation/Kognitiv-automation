@@ -1,5 +1,5 @@
 @Inspire
-Feature: AppV6 promotion group validation
+Feature: AppV6 Reward validation
 
   @Promotion
   Scenario Outline: Appv6 promotion group validations
@@ -19,5 +19,4 @@ Feature: AppV6 promotion group validation
 
     Examples:
       |email|password|tabName|groupName|
-      |shammika.dahanayaka@kognitiv.com|Summer2023|Inspire|NewGroup1|
-      |shammika.dahanayaka@kognitiv.com|Summer2023|Inspire|NewGroup2|
+      |automationQaint@mailinator.com|!!!@Pass@!!!|Inspire|NewGroup1|

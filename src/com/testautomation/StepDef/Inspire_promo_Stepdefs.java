@@ -47,7 +47,7 @@ public class Inspire_promo_Stepdefs extends ExtentReportListener {
     @And("Select Groups from left side menu")
     public void selectGroupsFromLeftSideMenu() {
         try {
-            logInfo = test.createNode(new GherkinKeyword("When"), "Click_groups_tab_item");
+            logInfo = test.createNode(new GherkinKeyword("When"), "Click 'groups' tab");
             new InspirePromotionPage(driver).ClickGroups();
             Thread.sleep(1000);
             logInfo.pass("Clicking groups tab");
