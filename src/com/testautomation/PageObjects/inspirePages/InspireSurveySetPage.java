@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
 
 import java.util.Random;
 
@@ -24,9 +25,19 @@ public class InspireSurveySetPage {
     @FindBy(how= How.ID,using = "ctl00_ContentPlaceHolder1_txtSurveySetName")
     public WebElement txtSurvayName;
 
+    @FindBy(how= How.ID,using = "ctl05_ControlTitle_btnEditItem")
+    public WebElement btnEditProgramQuestions;
+
+    @FindBy(how = How.ID, using = "ctl00_ContentPlaceHolder1_datalistLoyaltyClubs_ctl17_cboQstSet")
+    public WebElement dropDownClub;
+
     public void enterName(String name) {
         txtSurvayName.sendKeys(generateUsername(name));
     }
+    public void clickEditProgramQuestionSettings (){
+        btnEditProgramQuestions.click();
+    }
+
 
     public static String generateUsername(String name) {
         survayName = name+generateRandomString(USERNAME_LENGTH);
@@ -40,5 +51,11 @@ public class InspireSurveySetPage {
             sb.append(CHARACTERS.charAt(random.nextInt(CHARACTERS.length())));
         }
         return sb.toString();
+    }
+
+
+    public void selectDeviceGlobalSurveySetsForClub(String club) {
+        Select selectTimeZone = new Select(dropDownClub);
+        selectTimeZone.selectByVisibleText("Survey_Set_tcscetch");
     }
 }

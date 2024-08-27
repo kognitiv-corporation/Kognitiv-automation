@@ -386,4 +386,102 @@ public class Inspire_user_management_StepDefs extends ExtentReportListener {
             testStepHandle("FAIL", driver, logInfo, e);
         }
     }
+
+    @Then("Click edit program question settings")
+    public void clickEditProgramQuestionSettings() {
+        ExtentTest logInfo = null;
+        try {
+
+            logInfo = test.createNode(new GherkinKeyword("And"), "Clicking edit program question settings");
+            new InspireSurveySetPage(driver).clickEditProgramQuestionSettings();
+            logInfo.addScreenCaptureFromPath(captureScreenShot(driver));
+
+        } catch (AssertionError | Exception e) {
+            testStepHandle("FAIL", driver, logInfo, e);
+        }
+    }
+
+    @And("Select Device Global Survey Sets for club {string}")
+    public void selectDeviceGlobalSurveySetsForClub(String club) {
+        ExtentTest logInfo = null;
+        try {
+
+            logInfo = test.createNode(new GherkinKeyword("And"), "Selecting Device Global Survey Sets for club");
+            new InspireSurveySetPage(driver).selectDeviceGlobalSurveySetsForClub(club);
+            logInfo.addScreenCaptureFromPath(captureScreenShot(driver));
+
+        } catch (AssertionError | Exception e) {
+            testStepHandle("FAIL", driver, logInfo, e);
+        }
+    }
+
+    @And("Enter Transaction Type Name {string}")
+    public void enterTransactionTypeName(String name) {
+        ExtentTest logInfo = null;
+        try {
+
+            logInfo = test.createNode(new GherkinKeyword("And"), "Entering Transaction Type Name");
+            new InspireTransactionTypePage(driver).enterTransactionTypeName(name);
+            logInfo.addScreenCaptureFromPath(captureScreenShot(driver));
+
+        } catch (AssertionError | Exception e) {
+            testStepHandle("FAIL", driver, logInfo, e);
+        }
+    }
+
+    @And("Enter Transaction Type Public Name {string}")
+    public void enterTransactionTypePublicName(String publicName) {
+        ExtentTest logInfo = null;
+        try {
+
+            logInfo = test.createNode(new GherkinKeyword("And"), "Entering Transaction Type Name");
+            new InspireTransactionTypePage(driver).enterTransactionTypePublicName(publicName);
+            logInfo.addScreenCaptureFromPath(captureScreenShot(driver));
+
+        } catch (AssertionError | Exception e) {
+            testStepHandle("FAIL", driver, logInfo, e);
+        }
+    }
+
+    @And("Entrt Transaction Type {string}")
+    public void entrtTransactionType(String type) {
+        ExtentTest logInfo = null;
+        try {
+
+            logInfo = test.createNode(new GherkinKeyword("And"), "Entering Transaction Type Name");
+            new InspireTransactionTypePage(driver).entrtTransactionType(type);
+            logInfo.addScreenCaptureFromPath(captureScreenShot(driver));
+
+        } catch (AssertionError | Exception e) {
+            testStepHandle("FAIL", driver, logInfo, e);
+        }
+    }
+
+    @And("Tick transaction Entry Issues Club Enrollment")
+    public void tickTransactionEntryIssuesClubEnrollment() {
+        ExtentTest logInfo = null;
+        try {
+
+            logInfo = test.createNode(new GherkinKeyword("And"), "Entering Transaction Type Name");
+            new InspireTransactionTypePage(driver).tickTransactionEntryIssuesClubEnrollment();
+            logInfo.addScreenCaptureFromPath(captureScreenShot(driver));
+
+        } catch (AssertionError | Exception e) {
+            testStepHandle("FAIL", driver, logInfo, e);
+        }
+    }
+
+    @And("Select the club")
+    public void selectTheClub() {
+        ExtentTest logInfo = null;
+        try {
+
+            logInfo = test.createNode(new GherkinKeyword("And"), "Entering Transaction Type Name");
+            new InspireTransactionTypePage(driver).selectTheClub(InspireClubCreatePage.clubName);
+            logInfo.addScreenCaptureFromPath(captureScreenShot(driver));
+
+        } catch (AssertionError | Exception e) {
+            testStepHandle("FAIL", driver, logInfo, e);
+        }
+    }
 }
