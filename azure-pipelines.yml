@@ -105,7 +105,7 @@ steps:
   inputs:
     mavenVersionOption: 'Default'
     mavenAuthenticateFeed: false
-    options: 'clean test -DSuiteXmlFile=suitefiles/InspireSuite.xml'
+    options: 'clean test -DSuiteXmlFile=suitefiles/PulseSuite.xml'
   displayName: 'Run Maven Tests'
 
 - script: |
