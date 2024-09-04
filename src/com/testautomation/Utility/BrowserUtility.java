@@ -32,7 +32,7 @@ public class BrowserUtility {
             //System.setProperty("webdriver.chrome.driver", userDir + "/resources/drivers/linux64/chromedriver");
 
             //Win
-            //System.setProperty("webdriver.chrome.driver", "resources/drivers/chromedriver.exe");
+            //System.setProperty("webdriver.chrome.driver", "resources/drivers/Win64_2/chromedriver.exe");
             ChromeOptions options = new ChromeOptions();
             options.addArguments("--headless");
             options.addArguments("--no-sandbox");

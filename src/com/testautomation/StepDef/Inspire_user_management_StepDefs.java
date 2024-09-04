@@ -472,7 +472,7 @@ public class Inspire_user_management_StepDefs extends ExtentReportListener {
     }
 
     @And("Select the club")
-    public void selectTheClub() {
+    public void vselectTheClub() {
         ExtentTest logInfo = null;
         try {
 
@@ -480,6 +480,238 @@ public class Inspire_user_management_StepDefs extends ExtentReportListener {
             new InspireTransactionTypePage(driver).selectTheClub(InspireClubCreatePage.clubName);
             logInfo.addScreenCaptureFromPath(captureScreenShot(driver));
 
+        } catch (AssertionError | Exception e) {
+            testStepHandle("FAIL", driver, logInfo, e);
+        }
+    }
+
+    @And("Select enroll at business unit {string}")
+    public void selectEnrollAtBusinessUnit(String arg0) {
+    }
+
+    @And("Select enroll at location")
+    public void selectEnrollAtLocation() {
+    }
+
+    @And("Give Account ID {string}")
+    public void giveAccountID(String accId) {
+        try {
+            logInfo = test.createNode(new GherkinKeyword("When"), "Entering Account ID");
+            new InspireEnrollMemberPage(driver).giveAccountID(accId);
+            logInfo.addScreenCaptureFromPath(captureScreenShot(driver));
+        } catch (AssertionError | Exception e) {
+            testStepHandle("FAIL", driver, logInfo, e);
+        }
+    }
+
+    @And("Enter first name {string}")
+    public void enterFirstName(String firstName) {
+        try {
+            logInfo = test.createNode(new GherkinKeyword("When"), "Entering first name");
+            new InspireEnrollMemberPage(driver).enterFirstName(firstName);
+            logInfo.addScreenCaptureFromPath(captureScreenShot(driver));
+        } catch (AssertionError | Exception e) {
+            testStepHandle("FAIL", driver, logInfo, e);
+        }
+    }
+
+    @And("Enter last name {string}")
+    public void enterLastName(String lastname) {
+        try {
+            logInfo = test.createNode(new GherkinKeyword("When"), "Entering Account ID");
+            new InspireEnrollMemberPage(driver).enterLastName(lastname);
+            logInfo.addScreenCaptureFromPath(captureScreenShot(driver));
+        } catch (AssertionError | Exception e) {
+            testStepHandle("FAIL", driver, logInfo, e);
+        }
+    }
+
+    @And("Enter birthday MM {string} DD {string} and YR {string}")
+    public void enterBirthdayMMDDAndYR(String mm, String dd, String yr) {
+        try {
+            logInfo = test.createNode(new GherkinKeyword("When"), "Entering Account ID");
+            new InspireEnrollMemberPage(driver).enterBirthdayMMDDAndYR(mm,dd,yr);
+            logInfo.addScreenCaptureFromPath(captureScreenShot(driver));
+        } catch (AssertionError | Exception e) {
+            testStepHandle("FAIL", driver, logInfo, e);
+        }
+    }
+
+    @Then("Click Discard changes button")
+    public void clickDiscardChangesButton() {
+        try {
+            logInfo = test.createNode(new GherkinKeyword("When"), "Clicking Discard changes button");
+            new InspireEnrollMemberPage(driver).clickDiscardChangesButton();
+            logInfo.addScreenCaptureFromPath(captureScreenShot(driver));
+        } catch (AssertionError | Exception e) {
+            testStepHandle("FAIL", driver, logInfo, e);
+        }
+    }
+
+    @And("Enter accId for search {string}")
+    public void enterAccIdForSearch(String accId) {
+        try {
+            logInfo = test.createNode(new GherkinKeyword("When"), "Entering Account ID");
+            new InspireEnrollMemberPage(driver).enterAccIdForSearch(accId);
+            logInfo.addScreenCaptureFromPath(captureScreenShot(driver));
+        } catch (AssertionError | Exception e) {
+            testStepHandle("FAIL", driver, logInfo, e);
+        }
+    }
+
+    @And("Click Search Now button")
+    public void clickSearchNowButton() {
+        try {
+            logInfo = test.createNode(new GherkinKeyword("When"), "Clicking Search Now button");
+            new InspireEnrollMemberPage(driver).clickSearchNowButton();
+            logInfo.addScreenCaptureFromPath(captureScreenShot(driver));
+        } catch (AssertionError | Exception e) {
+            testStepHandle("FAIL", driver, logInfo, e);
+        }
+    }
+
+    @Then("Verify profile is displayed for the search accId")
+    public void verifyProfileIsDisplayedForTheSearchAccId() {
+        try {
+            logInfo = test.createNode(new GherkinKeyword("When"), "Verify profile is displayed for the search accId");
+            new InspireEnrollMemberPage(driver).verifyProfileIsDisplayedForTheSearchAccId();
+            logInfo.addScreenCaptureFromPath(captureScreenShot(driver));
+        } catch (AssertionError | Exception e) {
+            testStepHandle("FAIL", driver, logInfo, e);
+        }
+    }
+
+    @And("Verify first name and last name {string} {string}")
+    public void verifyFirstNameAndLastName(String fname, String lname) {
+        try {
+            logInfo = test.createNode(new GherkinKeyword("When"), "Verify first and last name is displayed in search view");
+            new InspireEnrollMemberPage(driver).vwerifyFirstNameAndLastName(fname,lname);
+            logInfo.addScreenCaptureFromPath(captureScreenShot(driver));
+        } catch (AssertionError | Exception e) {
+            testStepHandle("FAIL", driver, logInfo, e);
+        }
+    }
+
+    @And("Select the club {string}")
+    public void selectTheClub(String club) {
+        try {
+
+            logInfo = test.createNode(new GherkinKeyword("And"), "Select the club");
+            new InspireEnrollMemberPage(driver).tickClub(InspireClubCreatePage.clubName);
+            logInfo.addScreenCaptureFromPath(captureScreenShot(driver));
+
+        } catch (AssertionError | Exception e) {
+            testStepHandle("FAIL", driver, logInfo, e);
+        }
+    }
+
+    @And("Click Activity tab from left side menu")
+    public void clickActivityTabFromLeftSideMenu() {
+        try {
+            logInfo = test.createNode(new GherkinKeyword("When"), "Clicking Activity tab from left side menu");
+            new InspireEnrollMemberPage(driver).clickActivityTabFromLeftSideMenu();
+            logInfo.addScreenCaptureFromPath(captureScreenShot(driver));
+        } catch (AssertionError | Exception e) {
+            testStepHandle("FAIL", driver, logInfo, e);
+        }
+    }
+
+    @And("Tick Enrollment Survey Questions")
+    public void tickEnrollmentSurveyQuestions() {
+        try {
+            logInfo = test.createNode(new GherkinKeyword("When"), "Tick Enrollment Survey Questions");
+            new InspireEnrollMemberPage(driver).tickEnrollmentSurveyQuestions();
+            logInfo.addScreenCaptureFromPath(captureScreenShot(driver));
+        } catch (AssertionError | Exception e) {
+            testStepHandle("FAIL", driver, logInfo, e);
+        }
+    }
+
+    @Then("Verify transaction type {string} value should be {string}")
+    public void verifyTransactionTypeValueShouldBe(String trType, String valueOfTrType) {
+        try {
+            logInfo = test.createNode(new GherkinKeyword("When"), "Verifying received bonius points for transaction type");
+            new InspireEnrollMemberPage(driver).verifyTransactionTypeValueShouldBe(trType,valueOfTrType);
+            logInfo.addScreenCaptureFromPath(captureScreenShot(driver));
+        } catch (AssertionError | Exception e) {
+            testStepHandle("FAIL", driver, logInfo, e);
+        }
+    }
+
+    @Then("Click edit button of transaction type {string}")
+    public void clickEditButtonOfTransactionType(String trType) {
+        try {
+            logInfo = test.createNode(new GherkinKeyword("When"), "Clicking edit button of transaction type");
+            new InspireEnrollMemberPage(driver).clickEditButtopnOfTransactionType(trType);
+            logInfo.addScreenCaptureFromPath(captureScreenShot(driver));
+        } catch (AssertionError | Exception e) {
+            testStepHandle("FAIL", driver, logInfo, e);
+        }
+
+
+    }
+
+    @And("click checkbox of Check To Cancel Transaction")
+    public void clickCheckboxOfCheckToCancelTransaction() {
+        try {
+            logInfo = test.createNode(new GherkinKeyword("When"), "Clicking checkbox of Check To Cancel Transaction");
+            new InspireEnrollMemberPage(driver).clickCheckboxOfCheckToCancelTransaction();
+            logInfo.addScreenCaptureFromPath(captureScreenShot(driver));
+        } catch (AssertionError | Exception e) {
+            testStepHandle("FAIL", driver, logInfo, e);
+        }
+    }
+
+    @And("Enter a choice reward name {string}")
+    public void enterAChoiceRewardName(String name) {
+        try {
+            logInfo = test.createNode(new GherkinKeyword("When"), "Entering a choice reward name");
+            new InspireChoiceRewardPage(driver).enterAChoiceRewardName(name);
+            logInfo.addScreenCaptureFromPath(captureScreenShot(driver));
+        } catch (AssertionError | Exception e) {
+            testStepHandle("FAIL", driver, logInfo, e);
+        }
+    }
+
+    @And("Enter a description for choice reward {string}")
+    public void enterADescriptionForChoiceReward(String desc) {
+        try {
+            logInfo = test.createNode(new GherkinKeyword("When"), "Enter a description for choice reward");
+            new InspireChoiceRewardPage(driver).enterADescriptionForChoiceReward(desc);
+            logInfo.addScreenCaptureFromPath(captureScreenShot(driver));
+        } catch (AssertionError | Exception e) {
+            testStepHandle("FAIL", driver, logInfo, e);
+        }
+    }
+
+    @And("Enter a Retail Value {string}")
+    public void enterARetailValue(String value) {
+        try {
+            logInfo = test.createNode(new GherkinKeyword("When"), "Entering a Retail Value");
+            new InspireChoiceRewardPage(driver).enterARetailValue(value);
+            logInfo.addScreenCaptureFromPath(captureScreenShot(driver));
+        } catch (AssertionError | Exception e) {
+            testStepHandle("FAIL", driver, logInfo, e);
+        }
+    }
+
+    @And("Enter a Point Amount {string}")
+    public void enterAPointAmount(String value) {
+        try {
+            logInfo = test.createNode(new GherkinKeyword("When"), "Entering a Point Amount");
+            new InspireChoiceRewardPage(driver).enterAPointAmount(value);
+            logInfo.addScreenCaptureFromPath(captureScreenShot(driver));
+        } catch (AssertionError | Exception e) {
+            testStepHandle("FAIL", driver, logInfo, e);
+        }
+    }
+
+    @And("Enter a Your Cost {string}")
+    public void enterAYourCost(String value) {
+        try {
+            logInfo = test.createNode(new GherkinKeyword("When"), "Entering a cost Amount");
+            new InspireChoiceRewardPage(driver).enterAYourCost(value);
+            logInfo.addScreenCaptureFromPath(captureScreenShot(driver));
         } catch (AssertionError | Exception e) {
             testStepHandle("FAIL", driver, logInfo, e);
         }

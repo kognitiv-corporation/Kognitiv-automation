@@ -3,7 +3,7 @@ package com.testautomation.StepDef;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.GherkinKeyword;
 import com.testautomation.Listeners.ExtentReportListener;
-import com.testautomation.PageObjects.inspirePages.InspirePromotionPage;
+import com.testautomation.PageObjects.inspirePages.*;
 import com.testautomation.Utility.PropertiesFileReader;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
@@ -129,4 +129,44 @@ public class Inspire_promo_Stepdefs extends ExtentReportListener {
         }
     }
 
+    ////////////////////////////
+
+    @And("Enter Program Enrollment Point Promotion Name {string}")
+    public void enterProgramEnrollmentPointPromotionName(String name) {
+        ExtentTest logInfo = null;
+        try {
+
+            logInfo = test.createNode(new GherkinKeyword("And"), "Entering name");
+            new InspireEnrollmentPointPromotionPage(driver).enterName(name);
+            logInfo.addScreenCaptureFromPath(captureScreenShot(driver));
+
+        } catch (AssertionError | Exception e) {
+            testStepHandle("FAIL", driver, logInfo, e);
+        }
+    }
+
+    @And("select Transaction Type as {string}")
+    public void selectTransactionTypeAs(String arg0) {
+        ExtentTest logInfo = null;
+        try {
+
+            logInfo = test.createNode(new GherkinKeyword("And"), "Entering Transaction Type Name");
+            new InspireEnrollmentPointPromotionPage(driver).selectTheClub(InspireClubCreatePage.clubName);
+            logInfo.addScreenCaptureFromPath(captureScreenShot(driver));
+
+        } catch (AssertionError | Exception e) {
+            testStepHandle("FAIL", driver, logInfo, e);
+        }
+    }
+
+    @And("Enter Points to Issue value as {string}")
+    public void enterPointsToIssueValueAs(String points) {
+        try {
+            logInfo = test.createNode(new GherkinKeyword("When"), "Entering point isse valueapp email");
+            new InspireEnrollmentPointPromotionPage(driver).enterPointvalue(points);
+            logInfo.addScreenCaptureFromPath(captureScreenShot(driver));
+        } catch (AssertionError | Exception e) {
+            testStepHandle("FAIL", driver, logInfo, e);
+        }
+    }
 }
