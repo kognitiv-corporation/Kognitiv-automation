@@ -16,7 +16,7 @@ Feature: Inspire Member Creation and transaction validation
     And Enter first name "Mark"
     And Enter last name "Zuckerberg"
     And Enter birthday MM "June" DD "11" and YR "2020"
-    And Select the club "createdClub"
+    And Select the club "2024.2 Club"
     Then Click Save application user button
     Then Click Discard changes button
     And Click "Member-Services" button from top blue main menu
@@ -45,7 +45,7 @@ Feature: Inspire Member Creation and transaction validation
     And Enter first name "Mark"
     And Enter last name "Zuckerberg"
     And Enter birthday MM "June" DD "11" and YR "2020"
-    And Select the club "createdClub"
+    And Select the club "2024.2 Club"
     Then Click Save application user button
     Then Click Discard changes button
     And Click "Member-Services" button from top blue main menu
@@ -78,3 +78,57 @@ Feature: Inspire Member Creation and transaction validation
     And Enter a Your Cost "11"
     And Select the club "Default Club"
     Then Click Save application user button
+
+  @member
+  Scenario: KLS-4091 Test 21: Issue manual transaction with Once per day
+    Given Open Chrome browser with a Inspire URL
+    When Enter user name as email address "automationQaint@mailinator.com"
+    And Enter user password "!!!@Pass@!!!"
+    And Click the Login button
+    Then Validate application name
+    And Click "Member-Services" button from top blue main menu
+    And Click "Clienteling Services" from drop down menu of main items
+    And Click Search Now button
+    Then Verify profile is displayed for the search accId
+    And Click manual transaction tab from left side menu
+    And Select transaction type "Candy Purchase"
+    And Enter the transaction value "36"
+    #And Enter the Product Value	"36"
+    #And Enter the quantity "10"
+    Then Click Save application user button
+    And Click Activity tab from left side menu
+    Then Verify transaction type "Candy Purchase" value should be "5"
+
+  @member
+  Scenario: KLS-4100 Test 23: Verify trigger a Force reward
+    Given Open Chrome browser with a Inspire URL
+    When Enter user name as email address "automationQaint@mailinator.com"
+    And Enter user password "!!!@Pass@!!!"
+    And Click the Login button
+    Then Validate application name
+    And Click "Member-Services" button from top blue main menu
+    And Click "Clienteling Services" from drop down menu of main items
+    And Click Search Now button
+    Then Verify profile is displayed for the search accId
+    And Click tools from left side menu
+    And Click Process Forced Rewards
+    Then Click Save application user button
+    And Click pending delivery
+    Then Verify force reward displayed in pending delivery
+
+  @member
+  Scenario: KLS-4102 Test 25: Verify Recurring reward did not deduct points when trigger
+    Given Open Chrome browser with a Inspire URL
+    When Enter user name as email address "automationQaint@mailinator.com"
+    And Enter user password "!!!@Pass@!!!"
+    And Click the Login button
+    Then Validate application name
+    And Click "Member-Services" button from top blue main menu
+    And Click "Clienteling Services" from drop down menu of main items
+    And Click Search Now button
+    Then Verify profile is displayed for the search accId
+    And Click tools from left side menu
+    And Click Process Recurring Rewards
+    Then Click Save application user button
+    And Click pending delivery
+    Then Verify force reward displayed in pending delivery

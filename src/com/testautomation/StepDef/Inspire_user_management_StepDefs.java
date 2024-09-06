@@ -434,7 +434,7 @@ public class Inspire_user_management_StepDefs extends ExtentReportListener {
         ExtentTest logInfo = null;
         try {
 
-            logInfo = test.createNode(new GherkinKeyword("And"), "Entering Transaction Type Name");
+            logInfo = test.createNode(new GherkinKeyword("And"), "Entering Transaction Type Public Name");
             new InspireTransactionTypePage(driver).enterTransactionTypePublicName(publicName);
             logInfo.addScreenCaptureFromPath(captureScreenShot(driver));
 
@@ -448,7 +448,7 @@ public class Inspire_user_management_StepDefs extends ExtentReportListener {
         ExtentTest logInfo = null;
         try {
 
-            logInfo = test.createNode(new GherkinKeyword("And"), "Entering Transaction Type Name");
+            logInfo = test.createNode(new GherkinKeyword("And"), "Entering Transaction Type");
             new InspireTransactionTypePage(driver).entrtTransactionType(type);
             logInfo.addScreenCaptureFromPath(captureScreenShot(driver));
 
@@ -462,7 +462,7 @@ public class Inspire_user_management_StepDefs extends ExtentReportListener {
         ExtentTest logInfo = null;
         try {
 
-            logInfo = test.createNode(new GherkinKeyword("And"), "Entering Transaction Type Name");
+            logInfo = test.createNode(new GherkinKeyword("And"), "Tick transaction Entry Issues Club Enrollment");
             new InspireTransactionTypePage(driver).tickTransactionEntryIssuesClubEnrollment();
             logInfo.addScreenCaptureFromPath(captureScreenShot(driver));
 
@@ -476,8 +476,9 @@ public class Inspire_user_management_StepDefs extends ExtentReportListener {
         ExtentTest logInfo = null;
         try {
 
-            logInfo = test.createNode(new GherkinKeyword("And"), "Entering Transaction Type Name");
-            new InspireTransactionTypePage(driver).selectTheClub(InspireClubCreatePage.clubName);
+            logInfo = test.createNode(new GherkinKeyword("And"), "Select the club");
+            //new InspireTransactionTypePage(driver).selectTheClub(InspireClubCreatePage.clubName);
+            new InspireTransactionTypePage(driver).selectTheClub("Default Club");
             logInfo.addScreenCaptureFromPath(captureScreenShot(driver));
 
         } catch (AssertionError | Exception e) {
@@ -595,9 +596,16 @@ public class Inspire_user_management_StepDefs extends ExtentReportListener {
     @And("Select the club {string}")
     public void selectTheClub(String club) {
         try {
-
             logInfo = test.createNode(new GherkinKeyword("And"), "Select the club");
-            new InspireEnrollMemberPage(driver).tickClub(InspireClubCreatePage.clubName);
+
+            // Check if clubName is null
+            String clubName = InspireClubCreatePage.clubName;
+            if (clubName == null) {
+                clubName = club;  // Default club name
+            }
+
+            // Select the club
+            new InspireEnrollMemberPage(driver).tickClub(clubName);
             logInfo.addScreenCaptureFromPath(captureScreenShot(driver));
 
         } catch (AssertionError | Exception e) {
@@ -711,6 +719,110 @@ public class Inspire_user_management_StepDefs extends ExtentReportListener {
         try {
             logInfo = test.createNode(new GherkinKeyword("When"), "Entering a cost Amount");
             new InspireChoiceRewardPage(driver).enterAYourCost(value);
+            logInfo.addScreenCaptureFromPath(captureScreenShot(driver));
+        } catch (AssertionError | Exception e) {
+            testStepHandle("FAIL", driver, logInfo, e);
+        }
+    }
+
+    @And("Click manual transaction tab from left side menu")
+    public void clickManualTransactionTabFromLeftSideMenu() {
+        try {
+            logInfo = test.createNode(new GherkinKeyword("When"), "Clicking manual transaction tab from left side menu");
+            new InspireManaualTransaction(driver).clickManualTransactionTabFromLeftSideMenu();
+            logInfo.addScreenCaptureFromPath(captureScreenShot(driver));
+        } catch (AssertionError | Exception e) {
+            testStepHandle("FAIL", driver, logInfo, e);
+        }
+    }
+
+    @And("Select transaction type {string}")
+    public void selectTransactionType(String trType) {
+        try {
+            logInfo = test.createNode(new GherkinKeyword("When"), "Select transaction type "+trType);
+            new InspireManaualTransaction(driver).selectTransactionType(trType);
+            logInfo.addScreenCaptureFromPath(captureScreenShot(driver));
+        } catch (AssertionError | Exception e) {
+            testStepHandle("FAIL", driver, logInfo, e);
+        }
+    }
+
+    @And("Enter the Product Value	{string}")
+    public void enterTheProductValue(String value) {
+        try {
+            logInfo = test.createNode(new GherkinKeyword("When"), "Enter the Product Value "+value);
+            new InspireManaualTransaction(driver).enterTheProductValue(value);
+            logInfo.addScreenCaptureFromPath(captureScreenShot(driver));
+        } catch (AssertionError | Exception e) {
+            testStepHandle("FAIL", driver, logInfo, e);
+        }
+    }
+
+    @And("Enter the quantity {string}")
+    public void enterTheQuantity(String qnt) {
+        try {
+            logInfo = test.createNode(new GherkinKeyword("When"), "Enter the quantity "+qnt);
+            new InspireManaualTransaction(driver).enterTheQuantity(qnt);
+            logInfo.addScreenCaptureFromPath(captureScreenShot(driver));
+        } catch (AssertionError | Exception e) {
+            testStepHandle("FAIL", driver, logInfo, e);
+        }
+    }
+
+    @And("Enter the transaction value {string}")
+    public void enterTheTransactionValue(String trValue) {
+        try {
+            logInfo = test.createNode(new GherkinKeyword("When"), "Enter the transaction value "+trValue);
+            new InspireManaualTransaction(driver).enterTheTransactionValue(trValue);
+            logInfo.addScreenCaptureFromPath(captureScreenShot(driver));
+        } catch (AssertionError | Exception e) {
+            testStepHandle("FAIL", driver, logInfo, e);
+        }
+    }
+
+    @And("Click tools from left side menu")
+    public void clickToolsFromLeftSideMenu() {
+        try {
+            logInfo = test.createNode(new GherkinKeyword("When"), "Elick tools from left side menu");
+            new InspireManaualTransaction(driver).clickToolsFromLeftSideMenu();
+            logInfo.addScreenCaptureFromPath(captureScreenShot(driver));
+        } catch (AssertionError | Exception e) {
+            testStepHandle("FAIL", driver, logInfo, e);
+        }
+
+    }
+
+    @And("Click Process Forced Rewards")
+    public void clickProcessForcedRewards() {
+        try {
+            logInfo = test.createNode(new GherkinKeyword("When"), "Click Process Forced Rewards");
+            new InspireManaualTransaction(driver).clickProcessForcedRewards();
+            logInfo.addScreenCaptureFromPath(captureScreenShot(driver));
+        } catch (AssertionError | Exception e) {
+            testStepHandle("FAIL", driver, logInfo, e);
+        }
+    }
+
+    @And("Click pending delivery")
+    public void clickPendingDelivery() {
+        try {
+            logInfo = test.createNode(new GherkinKeyword("When"), "Click pending delivery");
+            new InspireManaualTransaction(driver).clickPendingDelivery();
+            logInfo.addScreenCaptureFromPath(captureScreenShot(driver));
+        } catch (AssertionError | Exception e) {
+            testStepHandle("FAIL", driver, logInfo, e);
+        }
+    }
+
+    @Then("Verify force reward displayed in pending delivery")
+    public void verifyForceRewardDisplayedInPendingDelivery() {
+    }
+
+    @And("Click Process Recurring Rewards")
+    public void clickProcessRecurringRewards() {
+        try {
+            logInfo = test.createNode(new GherkinKeyword("When"), "Click Process Recurring Rewards");
+            new InspireManaualTransaction(driver).clickProcessRecurringRewards();
             logInfo.addScreenCaptureFromPath(captureScreenShot(driver));
         } catch (AssertionError | Exception e) {
             testStepHandle("FAIL", driver, logInfo, e);

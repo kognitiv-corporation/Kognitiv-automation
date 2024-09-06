@@ -7,7 +7,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import java.util.Random;
@@ -61,7 +63,7 @@ public class InspireEnrollMemberPage {
     @FindBy(how= How.ID,using="ctl05_NavMenu_20")
     public WebElement tabActivity;
 
-    @FindBy(how= How.XPATH,using="//input[@id='ctl00_ContentPlaceHolder1_dlQuestions_ctl00_nodeQuestion_dlMutipleAnswers_ctl03_chkAnswer']")
+    @FindBy(how= How.ID,using="ctl00_ContentPlaceHolder1_dlQuestions_ctl00_nodeQuestion_dlMutipleAnswers_ctl03_chkAnswer")
     public WebElement checkBoxSurveyQues;
 
     @FindBy(how= How.ID,using="ctl00_ContentPlaceHolder1_chkCancel")
@@ -149,8 +151,15 @@ public class InspireEnrollMemberPage {
 
     public void tickEnrollmentSurveyQuestions() {
         scrollToBottom();
+        //driver.switchTo().frame("iframe"); // Use the frame's name or id
+        WebDriverWait wait = new WebDriverWait(driver, 20); // Wait up to 20 seconds
+        WebElement checkBoxSurveyQues = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//table[@id='ctl00_ContentPlaceHolder1_dlQuestions_ctl00_nodeQuestion_dlMutipleAnswers']//input[@type='checkbox']")));
+
         checkBoxSurveyQues.click();
         checkBoxSurveyQues.sendKeys();
+
+        // Switch back to the default content after interacting with the iframe
+        //driver.switchTo().defaultContent();
     }
 
     public WebElement getTrTypeValue(String trType) {

@@ -29,11 +29,23 @@ public class InspireLoginStepDefs extends ExtentReportListener {
 
 
 
-    @Given("Open Chrome browser with a Inspire URL")
+/*    @Given("Open Chrome browser with a Inspire URL")
     public void openChromeBrowserWithAInspireURL() {
         try {
             test = extent.createTest(Feature.class, "AppV6 Login validation");
             test = test.createNode(Scenario.class, "AppV6 Login - Success validations");
+            logInfo = test.createNode(new GherkinKeyword("Given"), "open_Chrome_browser_with_URL");
+            Properties properties = obj.getProperty();
+            logInfo.pass("Opened chrome browser and entered url");
+            logInfo.addScreenCaptureFromPath(captureScreenShot(driver));
+        } catch (AssertionError | Exception e) {
+            testStepHandle("FAIL", driver, logInfo, e);
+        }
+    }*/
+
+    @Given("Open Chrome browser with a Inspire URL")
+    public void openChromeBrowserWithAInspireURL() {
+        try {
             logInfo = test.createNode(new GherkinKeyword("Given"), "open_Chrome_browser_with_URL");
             Properties properties = obj.getProperty();
             logInfo.pass("Opened chrome browser and entered url");

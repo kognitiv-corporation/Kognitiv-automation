@@ -27,7 +27,7 @@ public class BrowserUtility {
 
 
             // Linux
-            String userDir = System.getProperty("user.dir");
+            //String userDir = System.getProperty("user.dir");
             System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver");
             //System.setProperty("webdriver.chrome.driver", userDir + "/resources/drivers/linux64/chromedriver");
 

@@ -1,5 +1,6 @@
 package com.testautomation.PageObjects.inspirePages;
 
+import cucumber.api.java.eo.Se;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -32,6 +33,7 @@ public class InspireEnrollmentPointPromotionPage {
     public WebElement txtPoints;
 
 
+
     public void enterName(String name) {
         txtPointPromotiondName.sendKeys(generateUsername(name));
     }
@@ -60,4 +62,8 @@ public class InspireEnrollmentPointPromotionPage {
         txtPoints.sendKeys(points);
     }
 
+    public void selectTransactionTypeAs(String trTypeName) {
+        Select ddtrType = new Select(dropDownTrType);
+        ddtrType.selectByVisibleText(trTypeName);
+    }
 }

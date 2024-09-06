@@ -14,6 +14,7 @@ import cucumber.api.testng.*;
         features = "./features/"
         ,glue = {"com.testautomation.StepDef"}
         ,plugin = {"pretty", "json:target/cucumber-reports/Cucumber.json"}
+        //,tags = {"@member","@Force_reward"}
         ,tags = {"@Inspire"}
         ,monochrome = true)
 public class TestRunner_Inspire {

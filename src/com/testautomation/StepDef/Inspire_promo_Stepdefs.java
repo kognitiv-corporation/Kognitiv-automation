@@ -151,7 +151,7 @@ public class Inspire_promo_Stepdefs extends ExtentReportListener {
         try {
 
             logInfo = test.createNode(new GherkinKeyword("And"), "Entering Transaction Type Name");
-            new InspireEnrollmentPointPromotionPage(driver).selectTheClub(InspireClubCreatePage.clubName);
+            new InspireEnrollmentPointPromotionPage(driver).selectTransactionTypeAs(InspireTransactionTypePage.TrTypeName);
             logInfo.addScreenCaptureFromPath(captureScreenShot(driver));
 
         } catch (AssertionError | Exception e) {
