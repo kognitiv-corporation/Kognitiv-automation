@@ -46,9 +46,9 @@ public class InspireLoginStepDefs extends ExtentReportListener {
     @Given("Open Chrome browser with a Inspire URL")
     public void openChromeBrowserWithAInspireURL() {
         try {
-            logInfo = test.createNode(new GherkinKeyword("Given"), "open_Chrome_browser_with_URL");
+            logInfo = test.createNode(new GherkinKeyword("Given"), "Opened chrome browser and entered url");
             Properties properties = obj.getProperty();
-            logInfo.pass("Opened chrome browser and entered url");
+            //logInfo.pass("Opened chrome browser and entered url");
             logInfo.addScreenCaptureFromPath(captureScreenShot(driver));
         } catch (AssertionError | Exception e) {
             testStepHandle("FAIL", driver, logInfo, e);
@@ -58,14 +58,14 @@ public class InspireLoginStepDefs extends ExtentReportListener {
     @When("Enter user name as email address {string}")
     public void enterUserNameAsEmailAddress(String emailaddress) {
         try {
-            logInfo = test.createNode(new GherkinKeyword("When"), "enter_email_address");
+            logInfo = test.createNode(new GherkinKeyword("When"), "Entering email address");
             String loginsEmail = LoginsPage.email;
             if (emailaddress.equalsIgnoreCase("CreatedUser")) {
                 new InspireLoginPage(driver).enterEmail(loginsEmail);
             } else {
                 new InspireLoginPage(driver).enterEmail(emailaddress);
             }
-            logInfo.pass("Entering email address");
+            //logInfo.pass("Entering email address");
             logInfo.addScreenCaptureFromPath(captureScreenShot(driver));
         } catch (AssertionError | Exception e) {
             testStepHandle("FAIL", driver, logInfo, e);
@@ -75,13 +75,13 @@ public class InspireLoginStepDefs extends ExtentReportListener {
     @And("Enter user password {string}")
     public void enterUserPassword(String password) {
         try {
-            logInfo = test.createNode(new GherkinKeyword("And"), "enter_password");
+            logInfo = test.createNode(new GherkinKeyword("And"), "Entering password");
             if (password.equalsIgnoreCase("123456")) {
                 new InspireLoginPage(driver).enterPassword("123456");
             } else {
                 new InspireLoginPage(driver).enterPassword(password);
             }
-            logInfo.pass("Entering password");
+            ///logInfo.pass("Entering password");
             logInfo.addScreenCaptureFromPath(captureScreenShot(driver));
         } catch (AssertionError | Exception e) {
             testStepHandle("FAIL", driver, logInfo, e);
@@ -91,10 +91,10 @@ public class InspireLoginStepDefs extends ExtentReportListener {
     @And("Click the Login button")
     public void clickTheLoginButton() {
         try {
-            logInfo = test.createNode(new GherkinKeyword("And"), "Click_login_button");
+            logInfo = test.createNode(new GherkinKeyword("And"), "Clicking login button");
             new InspireLoginPage(driver).ClickLoginBtn();
             Thread.sleep(7000);
-            logInfo.pass("Clicking login");
+            //logInfo.pass("Clicking login");
             logInfo.addScreenCaptureFromPath(captureScreenShot(driver));
         } catch (AssertionError | Exception e) {
             testStepHandle("FAIL", driver, logInfo, e);
@@ -105,9 +105,9 @@ public class InspireLoginStepDefs extends ExtentReportListener {
     @And("Click {string} button from top blue main menu")
     public void clickButton(String menuOption) {
         try {
-            logInfo = test.createNode(new GherkinKeyword("When"), "Click main menu item");
+           logInfo = test.createNode(new GherkinKeyword("When"), "Click main menu item " +menuOption);
             new BlueMenuBar(driver).ClicktabMenuBlueBar(menuOption);
-            logInfo.pass("Clicking main menu item " + menuOption);
+            //logInfo.pass("Clicking main menu item " + menuOption);
             logInfo.addScreenCaptureFromPath(captureScreenShot(driver));
             Thread.sleep(2000);
         } catch (AssertionError | Exception e) {
@@ -120,9 +120,9 @@ public class InspireLoginStepDefs extends ExtentReportListener {
     public void clickFromDropdown(String dp) {
 
         try {
-            logInfo = test.createNode(new GherkinKeyword("When"), "Click drop down " + dp + " menuitem");
+            logInfo = test.createNode(new GherkinKeyword("When"), "Clicking sub menu item " + dp);
             new InspirePromotionPage(driver).clickLoginsDropdown();
-            logInfo.pass("Clicking main menu item " + dp);
+            //logInfo.pass("Clicking main menu item " + dp);
             logInfo.addScreenCaptureFromPath(captureScreenShot(driver));
         } catch (AssertionError | Exception e) {
             testStepHandle("FAIL", driver, logInfo, e);

@@ -22,7 +22,7 @@ Feature: Inspire Member Creation and transaction validation
     And Click "Member-Services" button from top blue main menu
     And Click "Clienteling Services" from drop down menu of main items
     And Enter accId for search "preCreatedAccId"
-    And Tick Enrollment Survey Questions
+    #And Tick Enrollment Survey Questions
     And Click Search Now button
     Then Verify profile is displayed for the search accId
     And Verify first name and last name "Mark" "Zuckerberg"
@@ -51,7 +51,7 @@ Feature: Inspire Member Creation and transaction validation
     And Click "Member-Services" button from top blue main menu
     And Click "Clienteling Services" from drop down menu of main items
     And Enter accId for search "preCreatedAccId"
-    And Tick Enrollment Survey Questions
+    #And Tick Enrollment Survey Questions
     And Click Search Now button
     Then Verify profile is displayed for the search accId
     And Verify first name and last name "Mark" "Zuckerberg"

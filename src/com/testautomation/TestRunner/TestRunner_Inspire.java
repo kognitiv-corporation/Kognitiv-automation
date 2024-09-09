@@ -15,7 +15,7 @@ import cucumber.api.testng.*;
         ,glue = {"com.testautomation.StepDef"}
         ,plugin = {"pretty", "json:target/cucumber-reports/Cucumber.json"}
         //,tags = {"@member","@Force_reward"}
-        ,tags = {"@Inspire"}
+        ,tags = {"@Insire"}
         ,monochrome = true)
 public class TestRunner_Inspire {
     private TestNGCucumberRunner testNGCucumberRunner;

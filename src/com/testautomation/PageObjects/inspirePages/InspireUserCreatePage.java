@@ -63,6 +63,11 @@ public class InspireUserCreatePage {
     @FindBy(how = How.ID, using = "ctl00_ContentPlaceHolder1_txtMaxPoints")
     public WebElement maxPoint;
 
+    @FindBy(how = How.ID, using = "NavMenu_35")
+    public WebElement subMenuSurveySets;
+
+
+
 
 
 /*    public void clickDropdown(String dp) {
@@ -75,10 +80,14 @@ public class InspireUserCreatePage {
         return driver.findElement(By.xpath(xpath));
     }
 
-    // Method to click the dynamic element
     public void clickDropdown(String menuItem) {
         WebElement menuElement = getMenuElement(menuItem);
         menuElement.click();
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         //menuElement.submit();
     }
 

@@ -153,10 +153,15 @@ public class InspireEnrollMemberPage {
         scrollToBottom();
         //driver.switchTo().frame("iframe"); // Use the frame's name or id
         WebDriverWait wait = new WebDriverWait(driver, 20); // Wait up to 20 seconds
-        WebElement checkBoxSurveyQues = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//table[@id='ctl00_ContentPlaceHolder1_dlQuestions_ctl00_nodeQuestion_dlMutipleAnswers']//input[@type='checkbox']")));
+        //WebElement checkBoxSurveyQues = wait.until(ExpectedConditions.elementToBeClickable(By.id("ctl00_ContentPlaceHolder1_dlQuestions_ctl00_nodeQuestion_dlMutipleAnswers_ctl00_chkAnswer")));
+        WebElement button = driver.findElement(By.id("ctl00_ContentPlaceHolder1_dlQuestions_ctl00_nodeQuestion_dlMutipleAnswers_ctl00_chkAnswer"));
 
-        checkBoxSurveyQues.click();
-        checkBoxSurveyQues.sendKeys();
+        //checkBoxSurveyQues.click();
+        //checkBoxSurveyQues.sendKeys();
+
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+        jsExecutor.executeScript("arguments[0].scrollIntoView(true);", button);
+        jsExecutor.executeScript("arguments[0].click();", button);
 
         // Switch back to the default content after interacting with the iframe
         //driver.switchTo().defaultContent();

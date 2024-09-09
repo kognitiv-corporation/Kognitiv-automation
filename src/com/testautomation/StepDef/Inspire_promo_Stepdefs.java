@@ -25,7 +25,7 @@ public class Inspire_promo_Stepdefs extends ExtentReportListener {
         try {
             logInfo = test.createNode(new GherkinKeyword("And"), "Verifying title");
             String title = new InspirePromotionPage(driver).getTitle();
-            logInfo.pass("Title : " + title);
+            //logInfo.pass("Title : " + title);
             logInfo.addScreenCaptureFromPath(captureScreenShot(driver));
         } catch (AssertionError | Exception e) {
             testStepHandle("FAIL", driver, logInfo, e);
@@ -35,9 +35,9 @@ public class Inspire_promo_Stepdefs extends ExtentReportListener {
     @When("I click {string} from tab menu")
     public void iClickFromTabMenu(String menuItem) {
         try {
-            logInfo = test.createNode(new GherkinKeyword("When"), "Click main menuitem");
+            logInfo = test.createNode(new GherkinKeyword("When"), "Clicking main menuitem "+menuItem);
             new InspirePromotionPage(driver).ClickMenuItem(menuItem);
-            logInfo.pass("Clicking main menu item " + menuItem);
+            //logInfo.pass("Clicking main menu item " + menuItem);
             logInfo.addScreenCaptureFromPath(captureScreenShot(driver));
         } catch (AssertionError | Exception e) {
             testStepHandle("FAIL", driver, logInfo, e);

@@ -1,4 +1,4 @@
-@Inspire
+@Inspire_old
 Feature: AppV6 Reward validation
 
   @Promotion

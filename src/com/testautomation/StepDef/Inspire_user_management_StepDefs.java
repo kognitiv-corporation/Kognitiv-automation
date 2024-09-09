@@ -24,7 +24,7 @@ public class Inspire_user_management_StepDefs extends ExtentReportListener {
     public void clickFromDropDownMenuOfMainItems(String dp) {
 
         try {
-            logInfo = test.createNode(new GherkinKeyword("When"), "Click drop down "+dp+" menuitem");
+            logInfo = test.createNode(new GherkinKeyword("When"), "Click sub menu item "+dp);
             new InspireUserCreatePage(driver).clickDropdown(dp);
             logInfo.addScreenCaptureFromPath(captureScreenShot(driver));
         } catch (AssertionError | Exception e) {

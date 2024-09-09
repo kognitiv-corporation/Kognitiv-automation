@@ -15,7 +15,7 @@ Feature: Inspire Survey set adding
     And Enter Survey Set Name name "Auto_Survey_Set_"
     And Click save button
 
-  @Survey1
+  @Survey
   Scenario: KLS-4048 Test 09: Verify assign survey set as an enrollment survey
     Given Open Chrome browser with a Inspire URL
     When Enter user name as email address "automationQaint@mailinator.com"
