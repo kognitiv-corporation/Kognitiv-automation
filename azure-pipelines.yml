@@ -119,13 +119,13 @@ steps:
   displayName: 'Print Working Directory and Target Folder Path'
 
 - task: PublishPipelineArtifact@1
-  displayName: Publish JMeter Report artifacts
+  displayName: Publishing Reports-HTML
   inputs:
     targetPath: /home/vsts/work/1/s/Reports
-    artifact: Publishing Reports-HTML
+    artifact: Reports-HTML
 
 - task: PublishPipelineArtifact@1
-  displayName: Publish JMeter Report artifacts
+  displayName: Publishing Cucumber-Reports
   inputs:
     targetPath: /home/vsts/work/1/s/target/cucumber-reports
-    artifact: Publishing Cucumber-Reports
+    artifact: Cucumber-Reports
