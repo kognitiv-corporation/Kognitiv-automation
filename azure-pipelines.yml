@@ -98,6 +98,7 @@ steps:
     # Run a simple curl command to test network connectivity
     echo "Testing network connectivity..."
     curl -I https://www.google.com
+    ls -al
   displayName: 'Test Network Connectivity'
 
 - task: Maven@3
@@ -114,5 +115,5 @@ steps:
 
     # Print the path to the target folder
     echo "Path to target folder:"
-    ls -la target
+    ls -la
   displayName: 'Print Working Directory and Target Folder Path'
