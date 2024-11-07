@@ -127,5 +127,5 @@ steps:
 - task: PublishPipelineArtifact@1
   displayName: Publish JMeter Report artifacts
   inputs:
-    targetPath: /home/vsts/work/1/s/targets/cucumber-reports
+    targetPath: /home/vsts/work/1/s/target/cucumber-reports
     artifact: Publishing Cucumber-Reports
