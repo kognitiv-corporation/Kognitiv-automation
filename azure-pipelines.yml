@@ -117,3 +117,15 @@ steps:
     echo "Path to target folder:"
     ls -la
   displayName: 'Print Working Directory and Target Folder Path'
+
+- task: PublishPipelineArtifact@1
+  displayName: Publish JMeter Report artifacts
+  inputs:
+    targetPath: /home/vsts/work/1/s/Reports
+    artifact: Publishing Reports-HTML
+
+- task: PublishPipelineArtifact@1
+  displayName: Publish JMeter Report artifacts
+  inputs:
+    targetPath: /home/vsts/work/1/s/targets/cucumber-reports
+    artifact: Publishing Cucumber-Reports
